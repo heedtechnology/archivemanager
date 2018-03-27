@@ -1,0 +1,10 @@
+<project name="org.archivemanager.server" basedir="." default="deploy">
+	<property name="module.version" value="1.0.0" />
+		<property name="dist.dir" value="target" />
+		
+		<import file="../build-common.xml"/>
+		
+		<target name="deploy" depends="mvn clean package">
+		</target>
+	
+</project>

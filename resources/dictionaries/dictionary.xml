@@ -1,0 +1,1768 @@
+<?xml version="1.0"?>
+
+<dictionary>
+	<models>
+		<model namespace="openapps_org_repository_1_0" localname="accession">
+			<description>AM Accession</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="books" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="1" namespace="openapps_org_repository_1_0" localname="existing_collection" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="1" namespace="openapps_org_repository_1_0" localname="new_collection" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="use_note" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="1" namespace="openapps_org_repository_1_0" localname="use_restricted" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="access_restriction_note" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="1" namespace="openapps_org_repository_1_0" localname="access_restricted" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="access_note" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="rights_note" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="6" namespace="openapps_org_repository_1_0" localname="rights_date" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="1" namespace="openapps_org_repository_1_0" localname="acknowledged" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="1" namespace="openapps_org_repository_1_0" localname="complete" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="status" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="processors" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="priority" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="6" namespace="openapps_org_repository_1_0" localname="end_date" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="6" namespace="openapps_org_repository_1_0" localname="start_date" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="general_note" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="condition" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="inventory" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="1" namespace="openapps_org_repository_1_0" localname="appraisal" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="2" namespace="openapps_org_repository_1_0" localname="estimated_packages" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="2" namespace="openapps_org_repository_1_0" localname="pagebox_quantity" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="2" namespace="openapps_org_repository_1_0" localname="linear_feet" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="1" namespace="openapps_org_repository_1_0" localname="paid" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="extent_type" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>linear foot</value>
+						<value>package</value>
+						<value>envelope</value>
+						<value>box</value>
+						<value></value>
+					</values>
+				</property>
+				<property type="2" namespace="openapps_org_repository_1_0" localname="extent_number" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="cost" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="aquisition_type" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Transfer</value>
+						<value>Purchase</value>
+						<value>Gift</value>
+						<value>Deposit</value>
+						<value></value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="identifier" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="6" namespace="openapps_org_repository_1_0" localname="date" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_repository_1_0" localname="locations">
+					<target namespace="openapps_org_repository_1_0" localname="location"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="users">
+					<target namespace="openapps_org_system_1_0" localname="user"></target>
+					<properties>
+						<property type="5" namespace="openapps_org_system_1_0" localname="role"></property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_contact_1_0" localname="addresses">
+					<target namespace="openapps_org_contact_1_0" localname="address"></target>
+				</association>
+				<association namespace="openapps_org_contact_1_0" localname="contacts">
+					<target namespace="openapps_org_contact_1_0" localname="contact"></target>
+					<properties>
+						<property type="5" namespace="openapps_org_contact_1_0" localname="relationship"></property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="tasks">
+					<target namespace="openapps_org_system_1_0" localname="task"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="activities">
+					<target namespace="openapps_org_system_1_0" localname="activity"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="notes">
+					<target namespace="openapps_org_system_1_0" localname="note"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="donors">
+					<target namespace="openapps_org_contact_1_0" localname="contact"></target>
+				</association>
+				<association namespace="openapps_org_repository_1_0" localname="extents">
+					<target namespace="openapps_org_repository_1_0" localname="extent"></target>
+				</association>
+				<association namespace="openapps_org_repository_1_0" localname="items">
+					<target namespace="openapps_org_repository_1_0" localname="item"></target>
+				</association>
+				<association namespace="openapps_org_repository_1_0" localname="accessions">
+					<target namespace="openapps_org_repository_1_0" localname="accession"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_system_1_0" localname="activity">
+			<description>Activity</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="content" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="duration" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="6" namespace="openapps_org_system_1_0" localname="date" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_system_1_0" localname="activities">
+					<target namespace="openapps_org_system_1_0" localname="activity"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="activities">
+					<target namespace="openapps_org_system_1_0" localname="activity"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="activities">
+					<target namespace="openapps_org_system_1_0" localname="activity"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="activities">
+					<target namespace="openapps_org_system_1_0" localname="activity"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="activities">
+					<target namespace="openapps_org_system_1_0" localname="activity"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="activities">
+					<target namespace="openapps_org_system_1_0" localname="activity"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="activities">
+					<target namespace="openapps_org_system_1_0" localname="activity"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="activities">
+					<target namespace="openapps_org_system_1_0" localname="activity"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_contact_1_0" localname="address">
+			<description>Address</description>
+			<properties>
+				<property type="1" namespace="openapps_org_contact_1_0" localname="primary" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="zip" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="country" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Poland</value>
+						<value>Ireland</value>
+						<value>Spain</value>
+						<value>Italy</value>
+						<value>Germany</value>
+						<value>France</value>
+						<value>United Kingdom</value>
+						<value>United States</value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="state" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="city" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="address2" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="address1" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_contact_1_0" localname="addresses">
+					<target namespace="openapps_org_contact_1_0" localname="address"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="artwork" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Artwork</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="medium" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Unknown</value>
+						<value>Mixed media</value>
+						<value>Wood</value>
+						<value>Porcelain</value>
+						<value>Stone</value>
+						<value>Metal</value>
+						<value>Ink</value>
+						<value>Pencil</value>
+						<value>Pastel</value>
+						<value>Wamercolor</value>
+						<value>Acrylic</value>
+						<value>Oil</value>
+						<value></value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="genre" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Unknown</value>
+						<value>Wamercolor</value>
+						<value>Pastel</value>
+						<value>Bas-relief</value>
+						<value>Illustramion</value>
+						<value>Comic strip</value>
+						<value>Cartoon</value>
+						<value>Caricamure</value>
+						<value>Landscape</value>
+						<value>Bust</value>
+						<value>Portrait</value>
+						<value></value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="form" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Unknown</value>
+						<value>Textile</value>
+						<value>Ceramic</value>
+						<value>Print</value>
+						<value>Drawing, ink</value>
+						<value>Sculpture</value>
+						<value>Painting</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_search_1_0" localname="attribute">
+			<description>Search Definition</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="sort" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_search_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_search_1_0" localname="attribute_values">
+					<target namespace="openapps_org_search_1_0" localname="attribute_value"></target>
+				</association>
+				<association namespace="openapps_org_search_1_0" localname="attributes">
+					<target namespace="openapps_org_search_1_0" localname="attribute"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_search_1_0" localname="attribute_value">
+			<description>Search Definition</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="value" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="audio" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Audio Material</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="medium" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Unknown</value>
+						<value>Acetame disc</value>
+						<value>Compact disc</value>
+						<value>Digital audio tape</value>
+						<value>Reel-to-reel tape, 2?</value>
+						<value>Reel-to-reel tape, 1/4?</value>
+						<value>8-Track tape</value>
+						<value>Cassette</value>
+						<value>Phonograph record, 78 rpm</value>
+						<value>Phonograph record, 45 rpm</value>
+						<value>Phonograph record, 33 1/3 rpm</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="category">
+			<parent namespace="openapps_org_repository_1_0" localname="repository_object"></parent>
+			<description>AM Component</description>
+			<properties>
+				<property type="2" namespace="openapps_org_repository_1_0" localname="order"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="container" mandatory="false" unique="false" hidden="false" label="Container"></property>
+				<property type="7" format="3" namespace="openapps_org_repository_1_0" localname="summary" mandatory="false" unique="false" hidden="false" label="Summary"></property>
+				<property type="7" format="3" namespace="openapps_org_repository_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="Description"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="collection" search-index="true" entity-index="true">
+			<parent namespace="openapps_org_repository_1_0" localname="repository_object"></parent>
+			<description>AM Collection</description>
+			<properties>				
+				<property type="5" namespace="openapps_org_repository_1_0" localname="bulk_end" mandatory="false" unique="false" hidden="false" label="Bulk End"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="bulk_begin" mandatory="false" unique="false" hidden="false" label="Bulk Begin"></property>
+				<property type="7" format="3" namespace="openapps_org_repository_1_0" localname="bio_note" mandatory="false" unique="false" hidden="false" label="Bio Note"></property>				
+				<property type="7" format="3" namespace="openapps_org_repository_1_0" localname="scope_note" mandatory="false" unique="false" hidden="false" label="Scope Note"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="identifier" mandatory="false" unique="false" hidden="false" label="Identifier"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="code" mandatory="false" unique="false" hidden="false" label="Collection Code" tokenized="true"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_repository_1_0" localname="accessions" cascade="true">
+					<target namespace="openapps_org_repository_1_0" localname="accession"></target>
+				</association>
+				<association namespace="openapps_org_repository_1_0" localname="collections">
+					<target namespace="openapps_org_repository_1_0" localname="collection"></target>
+				</association>
+				<association namespace="openapps_org_crawling_1_0" localname="crawlers">
+					<target namespace="openapps_org_crawling_1_0" localname="crawler"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_contact_1_0" localname="contact" search-index="false" entity-index="true">
+			<description>Contact</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="6" namespace="openapps_org_contact_1_0" localname="last_wrote" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="6" namespace="openapps_org_contact_1_0" localname="last_ship" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="dateList" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="alternate_addresses" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="note" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="status" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="fax1" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>				
+			</properties>
+			<associations>
+				<association namespace="openapps_org_contact_1_0" localname="addresses">
+					<target namespace="openapps_org_contact_1_0" localname="address"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="tasks">
+					<target namespace="openapps_org_system_1_0" localname="task"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="notes">
+					<target namespace="openapps_org_system_1_0" localname="note"></target>
+				</association>
+				<association namespace="openapps_org_contact_1_0" localname="webs">
+					<target namespace="openapps_org_contact_1_0" localname="web"></target>
+				</association>
+				<association namespace="openapps_org_contact_1_0" localname="feeds">
+					<target namespace="openapps_org_contact_1_0" localname="feed"></target>
+				</association>
+				<association namespace="openapps_org_contact_1_0" localname="emails">
+					<target namespace="openapps_org_contact_1_0" localname="email"></target>
+				</association>
+				<association namespace="openapps_org_contact_1_0" localname="phones">
+					<target namespace="openapps_org_contact_1_0" localname="phone"></target>
+				</association>
+				<association namespace="openapps_org_contact_1_0" localname="contacts">
+					<target namespace="openapps_org_contact_1_0" localname="contact"></target>
+					<properties>
+						<property type="5" namespace="openapps_org_contact_1_0" localname="relationship"></property>
+					</properties>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_classification_1_0" localname="corporation" search-index="true" entity-index="true">
+			<parent namespace="openapps_org_classification_1_0" localname="named_entity"></parent>
+			<description>Corporation</description>
+			<properties>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="subordinate2" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="subordinate1" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="correspondence" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Correspondence</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="form" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>TL</value>
+						<value>AL</value>
+						<value>TNS</value>
+						<value>ANS</value>
+						<value>CTLS</value>
+						<value>TLS</value>
+						<value>ALS</value>
+						<value></value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="genre" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Note</value>
+						<value>Memo</value>
+						<value>E-mail</value>
+						<value>Fax</value>
+						<value>Invitation</value>
+						<value>Telegram</value>
+						<value>Card</value>
+						<value>Postcard</value>
+						<value>Letter</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_content_1_0" localname="datasource">
+			<description>OpenApps Datasource</description>
+			<properties>
+				<property type="2" namespace="openapps_org_content_1_0" localname="depth" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="password" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="username" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="domain" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="url" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="protocol" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>database</value>
+						<value>web</value>
+						<value>file</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_content_1_0" localname="files">
+					<target namespace="openapps_org_content_1_0" localname="file"></target>
+				</association>
+				<association namespace="openapps_org_content_1_0" localname="folders">
+					<target namespace="openapps_org_content_1_0" localname="folder"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_search_1_0" localname="definition">
+			<description>Search Definition</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="value" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_search_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_search_1_0" localname="definitions">
+					<target namespace="openapps_org_search_1_0" localname="definition"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_search_1_0" localname="dictionary" search-index="false" entity-index="true">
+			<description>Search Dictionary</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_search_1_0" localname="properties">
+					<target namespace="openapps_org_search_1_0" localname="property"></target>
+				</association>
+				<association namespace="openapps_org_search_1_0" localname="dictionaries">
+					<target namespace="openapps_org_search_1_0" localname="dictionary"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_contact_1_0" localname="email">
+			<description>EMail</description>
+			<properties>
+				<property type="1" namespace="openapps_org_contact_1_0" localname="primary" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="address" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_classification_1_0" localname="entry" search-index="true" entity-index="false">
+			<description>AM Repository Entry</description>
+			<properties>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="location" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="date" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="items" mandatory="false" unique="false" hidden="false" label="false" tokenized="true"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="collection_name" mandatory="false" unique="false" hidden="false" label="false" tokenized="true"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_classification_1_0" localname="entries">
+					<target namespace="openapps_org_classification_1_0" localname="entry"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="extent">
+			<description>AM Accession Extent</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>linear foot</value>
+						<value>package</value>
+						<value>envelope</value>
+						<value>box</value>
+						<value></value>
+					</values>
+				</property>
+				<property type="2" namespace="openapps_org_repository_1_0" localname="value" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_classification_1_0" localname="family" search-index="true" entity-index="true">
+			<parent namespace="openapps_org_classification_1_0" localname="named_entity"></parent>
+			<description>Family</description>
+			<properties></properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_contact_1_0" localname="feed">
+			<description>Feed</description>
+			<properties>
+				<property type="1" namespace="openapps_org_contact_1_0" localname="primary" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="address" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_content_1_0" localname="file">
+			<description>AM File</description>
+			<properties>
+				<property type="7" format="3" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="Description"></property>
+				<property type="3" namespace="openapps_org_system_1_0" localname="foreignkey" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="url" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="mimetype" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="content_type" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="2" namespace="openapps_org_content_1_0" localname="size" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="path" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="3" namespace="openapps_org_content_1_0" localname="datasource" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="3" namespace="openapps_org_content_1_0" localname="width" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="3" namespace="openapps_org_content_1_0" localname="height" mandatory="false" unique="false" hidden="false" label="false"></property>				
+				<property type="5" namespace="openapps_org_content_1_0" localname="group" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="2" namespace="openapps_org_content_1_0" localname="order" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_classification_1_0" localname="named_entities">
+					<target namespace="openapps_org_classification_1_0" localname="named_entity"></target>
+					<properties>
+						<property type="5" namespace="openapps_org_repository_1_0" localname="role">
+							<list name="roles"></list>
+						</property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_classification_1_0" localname="subjects">
+					<target namespace="openapps_org_classification_1_0" localname="subject"></target>
+				</association>
+				<association namespace="openapps_org_classification_1_0" localname="tags">
+					<target namespace="openapps_org_classification_1_0" localname="tag"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="tasks">
+					<target namespace="openapps_org_system_1_0" localname="task"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="notes">
+					<target namespace="openapps_org_system_1_0" localname="note"></target>
+				</association>
+				<association namespace="openapps_org_content_1_0" localname="files">
+					<target namespace="openapps_org_content_1_0" localname="file"></target>
+					<properties>
+						<property type="2" namespace="openapps_org_classification_1_0" localname="order"></property>
+						<property type="5" namespace="openapps_org_classification_1_0" localname="group"></property>
+						<property type="5" namespace="openapps_org_content_1_0" localname="type">
+							<values>
+								<value>slide</value>
+								<value>avatar</value>
+							</values>
+						</property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_content_1_0" localname="files">
+					<target namespace="openapps_org_content_1_0" localname="file"></target>
+					<properties>
+						<property type="2" namespace="openapps_org_classification_1_0" localname="order"></property>
+						<property type="5" namespace="openapps_org_classification_1_0" localname="group"></property>
+						<property type="5" namespace="openapps_org_content_1_0" localname="type">
+							<values>
+								<value>slide</value>
+								<value>avatar</value>
+							</values>
+						</property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_content_1_0" localname="files">
+					<target namespace="openapps_org_content_1_0" localname="file"></target>
+					<properties>
+						<property type="2" namespace="openapps_org_classification_1_0" localname="order"></property>
+						<property type="5" namespace="openapps_org_classification_1_0" localname="group"></property>
+						<property type="5" namespace="openapps_org_content_1_0" localname="type">
+							<values>
+								<value>slide</value>
+								<value>avatar</value>
+							</values>
+						</property>
+					</properties>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="financial" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Financial Material</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="genre" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Bank stamement</value>
+						<value>Check stub</value>
+						<value>Tax return</value>
+						<value>Royalty stamement</value>
+						<value>Receipt</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_content_1_0" localname="folder">
+			<description>AM Folder</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="title" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="text_content" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="staff" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="source" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="location" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="date" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="author" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="dimensions" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="contextual_information" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="content_type" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>miscellaneous</value>
+						<value>memorabilia</value>
+						<value>medical</value>
+						<value>scrapbook</value>
+						<value>notebook</value>
+						<value>journal</value>
+						<value>artwork</value>
+						<value>photographs</value>
+						<value>video</value>
+						<value>audio</value>
+						<value>financial</value>
+						<value>legal</value>
+						<value>research</value>
+						<value>professional</value>
+						<value>manuscript</value>
+						<value>correspondence</value>
+						<value>printed_material</value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="collection" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="path" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="3" namespace="openapps_org_content_1_0" localname="datasource" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_classification_1_0" localname="named_entities">
+					<target namespace="openapps_org_classification_1_0" localname="named_entity"></target>
+					<properties>
+						<property type="5" namespace="openapps_org_repository_1_0" localname="role">
+							<list name="roles"></list>
+						</property>
+						<property type="5" namespace="openapps_org_repository_1_0" localname="function">
+							<values>
+								<value>Subject</value>
+								<value>Source</value>
+								<value>Creator</value>
+							</values>
+						</property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_classification_1_0" localname="subjects">
+					<target namespace="openapps_org_classification_1_0" localname="subject"></target>
+				</association>
+				<association namespace="openapps_org_classification_1_0" localname="tags">
+					<target namespace="openapps_org_classification_1_0" localname="tag"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="tasks">
+					<target namespace="openapps_org_system_1_0" localname="task"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="notes">
+					<target namespace="openapps_org_system_1_0" localname="note"></target>
+				</association>
+				<association namespace="openapps_org_content_1_0" localname="folders">
+					<target namespace="openapps_org_content_1_0" localname="folder"></target>
+				</association>
+				<association namespace="openapps_org_content_1_0" localname="folders">
+					<target namespace="openapps_org_content_1_0" localname="folder"></target>
+				</association>
+				<association namespace="openapps_org_repository_1_0" localname="digital_objects">
+					<target namespace="openapps_org_content_1_0" localname="folder"></target>
+				</association>
+				<association namespace="openapps_org_content_1_0" localname="folders">
+					<target namespace="openapps_org_content_1_0" localname="folder"></target>
+				</association>
+				<association namespace="openapps_org_content_1_0" localname="folders">
+					<target namespace="openapps_org_content_1_0" localname="folder"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_system_1_0" localname="group" search-index="false" entity-index="true">
+			<description>Group</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_system_1_0" localname="roles">
+					<target namespace="openapps_org_system_1_0" localname="role"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="groups">
+					<target namespace="openapps_org_system_1_0" localname="group"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_contact_1_0" localname="individual" search-index="false" entity-index="true">
+			<parent namespace="openapps_org_contact_1_0" localname="contact"></parent>
+			<description>Individual</description>
+			<properties>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="suffix" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="role" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="nick_name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="6" namespace="openapps_org_contact_1_0" localname="death_date" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="6" namespace="openapps_org_contact_1_0" localname="birth_date" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="spouse" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="alt_salutation" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="salutation" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="greeting" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="6" namespace="openapps_org_contact_1_0" localname="last_update" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="last_name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="middle_name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="first_name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="biography" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="bio_sources" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="item" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="repository_object"></parent>
+			<description>AM Item</description>
+			<properties>
+				<property type="2" namespace="openapps_org_repository_1_0" localname="order"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="container" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="summary" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="authors" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="1" namespace="openapps_org_repository_1_0" localname="digital_reserve" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="journals" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Diaries and Journals</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="form" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>TS</value>
+						<value>Holograph</value>
+						<value></value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="genre" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Commonplace book</value>
+						<value>Daily planner</value>
+						<value>Journal</value>
+						<value>Diary</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="legal" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Legal Material</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="genre" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Court transcript</value>
+						<value>Deamh certificame</value>
+						<value>Marriage certificame</value>
+						<value>Birth certificame</value>
+						<value>Passport</value>
+						<value>Deed</value>
+						<value>Contract</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="location" search-index="false" entity-index="true">
+			<description>AM Location</description>
+			<properties>
+				<property type="2" namespace="openapps_org_repository_1_0" localname="space" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="code" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="container" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="accession" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="collection" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="bay" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="aisle" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="floor" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="building" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_system_1_0" localname="tasks">
+					<target namespace="openapps_org_system_1_0" localname="task"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="notes">
+					<target namespace="openapps_org_system_1_0" localname="note"></target>
+				</association>
+				<association namespace="openapps_org_repository_1_0" localname="locations">
+					<target namespace="openapps_org_repository_1_0" localname="location"></target>
+				</association>
+				<association namespace="openapps_org_repository_1_0" localname="locations">
+					<target namespace="openapps_org_repository_1_0" localname="location"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="manuscript" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Manuscript</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="form" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>CTS</value>
+						<value>TS</value>
+						<value>Holograph</value>
+						<value></value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="genre" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Notes</value>
+						<value>Memoir</value>
+						<value>Speech</value>
+						<value>Article</value>
+						<value>Essay</value>
+						<value>Poem</value>
+						<value>Radio play</value>
+						<value>Teleplay</value>
+						<value>Screenplay</value>
+						<value>Stage play</value>
+						<value>Short story</value>
+						<value>Novel</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="medical" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Medical Records</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="genre" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Personal health report</value>
+						<value>Prescription</value>
+						<value>Ultrasound</value>
+						<value>X-ray film</value>
+						<value>Chart</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="memorabilia" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Personal Memorabilia</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="genre" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Unknown</value>
+						<value>Award</value>
+						<value>Textile</value>
+						<value>Object</value>
+						<value>Certificame</value>
+						<value>Diploma</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="miscellaneous" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Miscellaneous Material</description>
+			<properties></properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_classification_1_0" localname="named_entity">
+			<description>Named Entity</description>
+			<properties>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="fuller_form_name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="dates" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="url" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="citation" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="note" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="note_type" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Biography</value>
+						<value>Administrative History</value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="rule" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Local</value>
+						<value>Describing Archives: A Content Standard</value>
+						<value>Anglo-American Cataloguing Rules</value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="source" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Union List of Artist Names</value>
+						<value>NAD/ARK II Authority Database</value>
+						<value>NACO Authority File</value>
+						<value>Local Sources</value>
+						<value>ingest</value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="secondary_name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="primary_name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_classification_1_0" localname="entries">
+					<target namespace="openapps_org_classification_1_0" localname="entry"></target>
+				</association>
+				<association namespace="openapps_org_content_1_0" localname="web_links">
+					<target namespace="openapps_org_content_1_0" localname="web_link"></target>
+					<properties>
+						<property type="2" namespace="openapps_org_classification_1_0" localname="order"></property>
+						<property type="5" namespace="openapps_org_classification_1_0" localname="group"></property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_content_1_0" localname="web_content_items">
+					<target namespace="openapps_org_content_1_0" localname="web_content"></target>
+					<properties>
+						<property type="2" namespace="openapps_org_classification_1_0" localname="order"></property>
+						<property type="5" namespace="openapps_org_classification_1_0" localname="group"></property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="tasks">
+					<target namespace="openapps_org_system_1_0" localname="task"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="notes">
+					<target namespace="openapps_org_system_1_0" localname="note"></target>
+				</association>
+				<association namespace="openapps_org_search_1_0" localname="search_terms">
+					<target namespace="openapps_org_search_1_0" localname="search_term"></target>
+				</association>
+				<association namespace="openapps_org_classification_1_0" localname="named_entities">
+					<target namespace="openapps_org_classification_1_0" localname="named_entity"></target>
+					<properties>
+						<property type="5" namespace="openapps_org_repository_1_0" localname="role">
+							<list name="roles"></list>
+						</property>
+						<property type="5" namespace="openapps_org_repository_1_0" localname="function">
+							<values>
+								<value>Subject</value>
+								<value>Source</value>
+								<value>Creator</value>
+							</values>
+						</property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="permissions" cascade="true">
+					<target namespace="openapps_org_system_1_0" localname="permission"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_system_1_0" localname="note">
+			<description>Note</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="content" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="title" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_system_1_0" localname="notes">
+					<target namespace="openapps_org_system_1_0" localname="note"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="notes">
+					<target namespace="openapps_org_system_1_0" localname="note"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="notes">
+					<target namespace="openapps_org_system_1_0" localname="note"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="notebooks" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Notebooks</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="genre" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>General notebook</value>
+						<value>Reporter?s notebook</value>
+						<value></value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="form" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>TS</value>
+						<value>Holograph</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_contact_1_0" localname="organization" search-index="true" entity-index="true">
+			<parent namespace="openapps_org_contact_1_0" localname="contact"></parent>
+			<description>Organization</description>
+			<properties>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="industry" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="classification" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_system_1_0" localname="permission">
+			<description>Permission</description>
+			<properties>
+				<property type="3" namespace="openapps_org_system_1_0" localname="node" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="2" namespace="openapps_org_system_1_0" localname="level" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_classification_1_0" localname="person" search-index="true" entity-index="true">
+			<parent namespace="openapps_org_classification_1_0" localname="named_entity"></parent>
+			<description>Person</description>
+			<properties>				
+				<property type="5" namespace="openapps_org_classification_1_0" localname="suffix" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="title" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="prefix" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_contact_1_0" localname="phone">
+			<description>Phone</description>
+			<properties>
+				<property type="1" namespace="openapps_org_contact_1_0" localname="primary" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="number" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="photographs" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Photographic Material</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="form" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Unknown</value>
+						<value>Cyanotype</value>
+						<value>Albumen print</value>
+						<value>Carte de visite</value>
+						<value>Tintype</value>
+						<value>Glass plame negamive</value>
+						<value>Daguerrotype</value>
+						<value>Polaroid</value>
+						<value>Slide</value>
+						<value>Negamive</value>
+						<value>Contact sheet</value>
+						<value>Print</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_classification_1_0" localname="place" search-index="false" entity-index="true">
+			<parent namespace="openapps_org_classification_1_0" localname="named_entity"></parent>
+			<description>Place</description>
+			<properties></properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="printed_material" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Printed Material</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="genre" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Map</value>
+						<value>Proof</value>
+						<value>Flyer</value>
+						<value>Poster</value>
+						<value>Booklet</value>
+						<value>Pamphlet</value>
+						<value>Program</value>
+						<value>Magazine</value>
+						<value>Newspaper</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="professional" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Professional Material</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="genre" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Press kit</value>
+						<value>Itinerary</value>
+						<value>Report</value>
+						<value>Appointment book</value>
+						<value>Meeting minutes</value>
+						<value>Schedule</value>
+						<value>Agenda</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_system_1_0" localname="property">
+			<description>Property</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="value" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_search_1_0" localname="property">
+			<description>Search Definition</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="value" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_search_1_0" localname="properties">
+					<target namespace="openapps_org_search_1_0" localname="property"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="repository" search-index="false" entity-index="true">
+			<description>AM Repository</description>
+			<properties>
+				<property type="1" namespace="openapps_org_repository_1_0" localname="isPublic" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="country_code" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="url" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="lang" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="branding" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="nces" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="agency_code" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="institution" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="short_name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_repository_1_0" localname="collections">
+					<target namespace="openapps_org_repository_1_0" localname="collection"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="tasks">
+					<target namespace="openapps_org_system_1_0" localname="task"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="repository_object">
+			<description>AM Component</description>
+			<properties>
+				<property type="1" namespace="openapps_org_repository_1_0" localname="isPublic" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="1" namespace="openapps_org_repository_1_0" localname="internal" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="2" namespace="openapps_org_repository_1_0" localname="size" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="1" namespace="openapps_org_repository_1_0" localname="restrictions" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="7" format="3" namespace="openapps_org_repository_1_0" localname="comments" mandatory="false" unique="false" hidden="false" label="Comments"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="url" mandatory="false" unique="false" hidden="false" label="URL"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="language" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>ru</value>
+						<value>ko</value>
+						<value>ja</value>
+						<value>it</value>
+						<value>fr</value>
+						<value>el</value>
+						<value>es</value>
+						<value>en</value>
+						<value>de</value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="extent_units" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>linear_feet</value>
+						<value>cubic_feet</value>
+						<value>box</value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="okra_num" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="2" namespace="openapps_org_repository_1_0" localname="extent_number" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="end" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="begin" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="6" namespace="openapps_org_repository_1_0" localname="accession_date" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="6" namespace="openapps_org_repository_1_0" localname="date_expression" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="level" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>item</value>
+						<value>file</value>
+						<value>subgroup</value>
+						<value>group</value>
+						<value>subseries</value>
+						<value>series</value>
+					</values>
+				</property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_content_1_0" localname="web_links" cascade="true">
+					<target namespace="openapps_org_content_1_0" localname="web_link"></target>
+					<properties>
+						<property type="2" namespace="openapps_org_classification_1_0" localname="order"></property>
+						<property type="5" namespace="openapps_org_classification_1_0" localname="group"></property>
+						<property type="5" namespace="openapps_org_content_1_0" localname="type">
+							<values>
+								<value>avatar</value>
+								<value>flippingbook</value>
+								<value>navigation</value>
+								<value>partner</value>
+								<value>rendition</value>
+								<value>zoomify</value>
+							</values>
+						</property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_content_1_0" localname="web_content_items" cascade="true">
+					<target namespace="openapps_org_content_1_0" localname="web_content"></target>
+					<properties>
+						<property type="2" namespace="openapps_org_classification_1_0" localname="order"></property>
+						<property type="5" namespace="openapps_org_classification_1_0" localname="group"></property>
+						<property type="5" namespace="openapps_org_content_1_0" localname="type">
+							<values>
+								<value>avatar</value>
+								<value>flippingbook</value>
+								<value>navigation</value>
+								<value>partner</value>
+								<value>rendition</value>
+								<value>zoomify</value>
+							</values>
+						</property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_classification_1_0" localname="subjects" cascade="false">
+					<target namespace="openapps_org_classification_1_0" localname="subject"></target>
+				</association>
+				<association namespace="openapps_org_classification_1_0" localname="named_entities" cascade="false">
+					<target namespace="openapps_org_classification_1_0" localname="named_entity"></target>
+					<properties>
+						<property type="5" namespace="openapps_org_repository_1_0" localname="role">
+							<list name="roles"></list>
+						</property>
+						<property type="5" namespace="openapps_org_repository_1_0" localname="function">
+							<values>
+								<value>Subject</value>
+								<value>Source</value>
+								<value>Creator</value>
+							</values>
+						</property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_classification_1_0" localname="tags" cascade="true">
+					<target namespace="openapps_org_classification_1_0" localname="tag"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="tasks" cascade="true">
+					<target namespace="openapps_org_system_1_0" localname="task"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="activities" cascade="true">
+					<target namespace="openapps_org_system_1_0" localname="activity"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="notes" cascade="true">
+					<target namespace="openapps_org_system_1_0" localname="note"></target>
+				</association>
+				<association namespace="openapps_org_search_1_0" localname="search_terms" cascade="true">
+					<target namespace="openapps_org_search_1_0" localname="search_term"></target>
+				</association>
+				<association namespace="openapps_org_content_1_0" localname="files">
+					<target namespace="openapps_org_content_1_0" localname="file"></target>
+					<properties>
+						<property type="2" namespace="openapps_org_classification_1_0" localname="order"></property>
+						<property type="5" namespace="openapps_org_classification_1_0" localname="group"></property>
+						<property type="5" namespace="openapps_org_content_1_0" localname="type">
+							<values>
+								<value>avatar</value>
+								<value>flippingbook</value>
+								<value>navigation</value>
+								<value>partner</value>
+								<value>rendition</value>
+								<value>zoomify</value>
+							</values>
+						</property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_content_1_0" localname="folders" cascade="true">
+					<target namespace="openapps_org_content_1_0" localname="folder"></target>
+				</association>
+				<association namespace="openapps_org_repository_1_0" localname="categories" cascade="true">
+					<target namespace="openapps_org_repository_1_0" localname="category"></target>
+				</association>
+				<association namespace="openapps_org_repository_1_0" localname="items" cascade="true">
+					<target namespace="openapps_org_repository_1_0" localname="item"></target>
+				</association>
+				<association namespace="openapps_org_repository_1_0" localname="locations">
+					<target namespace="openapps_org_repository_1_0" localname="location"></target>
+				</association>
+				<association namespace="openapps_org_repository_1_0" localname="digital_objects" cascade="true">
+					<target namespace="openapps_org_content_1_0" localname="folder"></target>
+				</association>
+				<association namespace="openapps_org_contact_1_0" localname="contacts" cascade="false">
+					<target namespace="openapps_org_contact_1_0" localname="contact"></target>
+					<properties>
+						<property type="5" namespace="openapps_org_contact_1_0" localname="relationship"></property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="permissions" cascade="true">
+					<target namespace="openapps_org_system_1_0" localname="permission"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="research" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Research Material</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="genre" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Notes</value>
+						<value>Interview</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_system_1_0" localname="role" search-index="false" entity-index="true">
+			<description>Role</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_system_1_0" localname="roles">
+					<target namespace="openapps_org_system_1_0" localname="role"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="scrapbooks" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Scrapbooks</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="form" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Manuscripts</value>
+						<value>Correspondence</value>
+						<value>Photographs</value>
+						<value>Printed mamerial</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_search_1_0" localname="search_term">
+			<description>Search Term</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="value" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_search_1_0" localname="search_terms">
+					<target namespace="openapps_org_search_1_0" localname="search_term"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_search_1_0" localname="searcher">
+			<description>Search Definition</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_classification_1_0" localname="subject" search-index="true" entity-index="true">
+			<description>Subject</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="url" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Uniform Title (630)</value>
+						<value>Topical Term (650)</value>
+						<value>Occupation (656)</value>
+						<value>Geographic Name (651)</value>
+						<value>Genre/Form (655)</value>
+						<value>Function (657)</value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="source" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Thesaurus for Graphic Materials</value>
+						<value>Medical Subject Headings</value>
+						<value>Local Sources (local)</value>
+						<value>Library of Congress Subject Headings (lcsh)</value>
+						<value>lcnaf</value>
+						<value>ingest</value>
+						<value>Getty Thesaurus of Geographic Names (tgn)</value>
+						<value>GeoRef Thesaurus (georeft)</value>
+						<value>Genre Terms: A Thesaurus for Use in Rare Book and Special Collections Cataloging (rbgenr)</value>
+						<value>Dictionary of Occupational Titles (dot)</value>
+						<value>Art and Architecture Thesaurus (aat)</value>						
+						<value>Subject Guide</value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="citation" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="note" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_classification_1_0" localname="note_type" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Biography</value>
+						<value>Administrative History</value>
+					</values>
+				</property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_content_1_0" localname="web_links">
+					<target namespace="openapps_org_content_1_0" localname="web_link"></target>
+					<properties>
+						<property type="2" namespace="openapps_org_classification_1_0" localname="order"></property>
+						<property type="5" namespace="openapps_org_classification_1_0" localname="group"></property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_content_1_0" localname="web_content_items">
+					<target namespace="openapps_org_content_1_0" localname="web_content"></target>
+					<properties>
+						<property type="2" namespace="openapps_org_classification_1_0" localname="order"></property>
+						<property type="5" namespace="openapps_org_classification_1_0" localname="group"></property>
+					</properties>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="tasks">
+					<target namespace="openapps_org_system_1_0" localname="task"></target>
+				</association>
+				<association namespace="openapps_org_search_1_0" localname="search_terms">
+					<target namespace="openapps_org_search_1_0" localname="search_term"></target>
+				</association>
+				<association namespace="openapps_org_system_1_0" localname="permissions" cascade="true">
+					<target namespace="openapps_org_system_1_0" localname="permission"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_classification_1_0" localname="tag">
+			<description>Tag</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_system_1_0" localname="task">
+			<description>Task</description>
+			<properties>
+				<property type="6" namespace="openapps_org_system_1_0" localname="end_date" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="6" namespace="openapps_org_system_1_0" localname="start_date" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="status" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_system_1_0" localname="users">
+					<target namespace="openapps_org_system_1_0" localname="user"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_system_1_0" localname="user" search-index="false" entity-index="true">
+			<description>User</description>
+			<properties>
+				<property type="1" namespace="openapps_org_system_1_0" localname="active" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="1" namespace="openapps_org_system_1_0" localname="terms" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="organization" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="last_name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="first_name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="email" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="password" mandatory="false" unique="false" hidden="false" label="false">
+					<format>0</format>
+				</property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="username" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_classification_1_0" localname="subjects">
+					<target namespace="openapps_org_classification_1_0" localname="subject"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="video" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="item"></parent>
+			<description>AM Film and Video Material</description>
+			<properties>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="form" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Unknown</value>
+						<value>DVD (optical disc)</value>
+						<value>Laserdisc (optical disc)</value>
+						<value>DV or MiniDV (digital video)</value>
+						<value>Betacam (digital video)</value>
+						<value>Reel-to-reel video (analog video)</value>
+						<value>Betamax (analog video)</value>
+						<value>U-Mamic (analog video)</value>
+						<value>VHS, PAL (analog video)</value>
+						<value>VHS, NTSC (analog video)</value>
+						<value>35mm (film)</value>
+						<value>16mm (film)</value>
+						<value>8mm or Super 8mm (film)</value>
+						<value></value>
+					</values>
+				</property>
+				<property type="5" namespace="openapps_org_repository_1_0" localname="medium" mandatory="false" unique="false" hidden="false" label="false">
+					<values>
+						<value>Other</value>
+						<value>Unknown</value>
+						<value>Optical disc</value>
+						<value>Digital video cassette</value>
+						<value>Analog video cassette or reel</value>
+						<value>Film reel</value>
+						<value></value>
+					</values>
+				</property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_contact_1_0" localname="web">
+			<description>Web</description>
+			<properties>
+				<property type="1" namespace="openapps_org_contact_1_0" localname="primary" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_contact_1_0" localname="address" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_content_1_0" localname="web_link">
+			<description>AM Web Content</description>
+			<properties>
+				<property type="1" namespace="openapps_org_content_1_0" localname="archived" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="mimetype" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="url" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="group" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="2" namespace="openapps_org_content_1_0" localname="order" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_content_1_0" localname="web_content">
+			<description>AM Web Content</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="content" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="group" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="2" namespace="openapps_org_content_1_0" localname="order" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="event" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="repository_object"></parent>
+			<description>AM Archive Events</description>
+			<properties>
+				<property type="5" namespace="openapps_org_content_1_0" localname="date_label" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="url" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+		<model namespace="openapps_org_repository_1_0" localname="exhibition" search-index="true" entity-index="false">
+			<parent namespace="openapps_org_repository_1_0" localname="repository_object"></parent>
+			<description>AM Archive Exhibitions</description>
+			<properties>
+				<property type="5" namespace="openapps_org_content_1_0" localname="date_label" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="url" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="type" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations></associations>
+		</model>
+	</models>
+	<lists>
+		<list name="roles">
+			<values>
+				<value>Writer of accompanying material</value>
+				<value>Woodcutter</value>
+				<value>Wood-engraver</value>
+				<value>Witness</value>
+				<value>Vocalist</value>
+				<value>Videographer</value>
+				<value>Typographer</value>
+				<value>Type designer</value>
+				<value>Translator</value>
+				<value>Transcriber</value>
+				<value>Thesis advisor</value>
+				<value>Teacher</value>
+				<value>Surveyor</value>
+				<value>Storyteller</value>
+				<value>Stereotyper</value>
+				<value>Standards body</value>
+				<value>Sponsor</value>
+				<value>Speaker</value>
+				<value>Singer</value>
+				<value>Signer</value>
+				<value>Set designer</value>
+				<value>Secretary</value>
+				<value>Second party</value>
+				<value>Sculptor</value>
+				<value>Scribe</value>
+				<value>Scientific advisor</value>
+				<value>Scenarist</value>
+				<value>Rubicator</value>
+				<value>Reviewer</value>
+				<value>Restager</value>
+				<value>Responsible party</value>
+				<value>Respondent-appellee</value>
+				<value>Respondent-appellant</value>
+				<value>Respondent</value>
+				<value>Researcher</value>
+				<value>Research team member</value>
+				<value>Research team head</value>
+				<value>Reporter</value>
+				<value>Renderer</value>
+				<value>Redactor</value>
+				<value>Recording engineer</value>
+				<value>Recipient</value>
+				<value>Puppeteer</value>
+				<value>Publishing director</value>
+				<value>Publisher</value>
+				<value>Proofreader</value>
+				<value>Programmer</value>
+				<value>Production personnel</value>
+				<value>Producer</value>
+				<value>Process contact</value>
+				<value>Printmaker</value>
+				<value>Printer of plates</value>
+				<value>Printer</value>
+				<value>Platemaker</value>
+				<value>Plaintiff-appellee</value>
+				<value>Plaintiff-appellant</value>
+				<value>Plaintiff</value>
+				<value>Photographer</value>
+				<value>Performer</value>
+				<value>Patron</value>
+				<value>Patent holder</value>
+				<value>Patent applicant</value>
+				<value>Papermaker</value>
+				<value>Other</value>
+				<value>Originator</value>
+				<value>Organizer of meeting</value>
+				<value>Opponent</value>
+				<value>Narrator</value>
+				<value>Musician</value>
+				<value>Monitor</value>
+				<value>Moderator</value>
+				<value>Metal-engraver</value>
+				<value>Metadata contact</value>
+				<value>Markup editor</value>
+				<value>Manufacturer</value>
+				<value>Lyricist</value>
+				<value>Lithographer</value>
+				<value>Lighting designer</value>
+				<value>Licensor</value>
+				<value>Licensee</value>
+				<value>Librettist</value>
+				<value>Libelee-appellee</value>
+				<value>Libelee-appellant</value>
+				<value>Libelee</value>
+				<value>Libelant-appellee</value>
+				<value>Libelant-appellant</value>
+				<value>Libelant</value>
+				<value>Lender</value>
+				<value>Landscape architect</value>
+				<value>Inventor</value>
+				<value>Interviewer</value>
+				<value>Interviewee</value>
+				<value>Instrumentalist</value>
+				<value>Inscriber</value>
+				<value>Illustrator</value>
+				<value>Illuminator</value>
+				<value>Host</value>
+				<value>Honoree</value>
+				<value>Forger</value>
+				<value>First party</value>
+				<value>Film editor</value>
+				<value>Facsimilist</value>
+				<value>Expert</value>
+				<value>Etcher</value>
+				<value>Engraver</value>
+				<value>Engineer</value>
+				<value>Electrotyper</value>
+				<value>Editor</value>
+				<value>Dubious author</value>
+				<value>Draftsman</value>
+				<value>Distributor</value>
+				<value>Dissertant</value>
+				<value>Director</value>
+				<value>Designer</value>
+				<value>Depicted</value>
+				<value>Delineator</value>
+				<value>Degree grantor</value>
+				<value>Defendant-appellee</value>
+				<value>Defendant-appellant</value>
+				<value>Defendant</value>
+				<value>Dedicator</value>
+				<value>Dedicatee</value>
+				<value>Dancer</value>
+				<value>Curator of an exhibition</value>
+				<value>Creator</value>
+				<value>Cover designer</value>
+				<value>Costume designer</value>
+				<value>Correspondent</value>
+				<value>Corrector</value>
+				<value>Copyright holder</value>
+				<value>Copyright claimant</value>
+				<value>Contributor</value>
+				<value>Contractor</value>
+				<value>Contestee-appellee</value>
+				<value>Contestee-appellant</value>
+				<value>Contestee</value>
+				<value>Contestant-appellee</value>
+				<value>Contestant-appellant</value>
+				<value>Contestant</value>
+				<value>Consultant to a project</value>
+				<value>Consultant</value>
+				<value>Conductor</value>
+				<value>Conceptor</value>
+				<value>Compositor</value>
+				<value>Composer</value>
+				<value>Complainant-appellee</value>
+				<value>Complainant-appellant</value>
+				<value>Complainant</value>
+				<value>Compiler</value>
+				<value>Commentator for written text</value>
+				<value>Commentator</value>
+				<value>Collotyper</value>
+				<value>Collaborator</value>
+				<value>Client</value>
+				<value>Cinematographer</value>
+				<value>Choreographer</value>
+				<value>Censor</value>
+				<value>Cartographer</value>
+				<value>Calligrapher</value>
+				<value>Bookplate designer</value>
+				<value>Bookjacket designer</value>
+				<value>Book producer</value>
+				<value>Book designer</value>
+				<value>Binding designer</value>
+				<value>Binder</value>
+				<value>Bibliographic antecedent</value>
+				<value>Author of screenplay, etc.</value>
+				<value>Author of introduction</value>
+				<value>Author of dialog</value>
+				<value>Author of afterword, colophon, etc.</value>
+				<value>Author in quotations or text extracts</value>
+				<value>Author</value>
+				<value>Attributed name</value>
+				<value>Associated name</value>
+				<value>Assignee</value>
+				<value>Artist</value>
+				<value>Arranger</value>
+				<value>Architect</value>
+				<value>Applicant</value>
+				<value>Annotator</value>
+				<value>Animator</value>
+				<value>Adapter</value>
+				<value>Actor</value>
+			</values>
+		</list>
+	</lists>
+</dictionary>

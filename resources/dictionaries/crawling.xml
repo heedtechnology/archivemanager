@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+
+<dictionary>
+	<models>
+		<model namespace="openapps_org_crawling_1_0" localname="category" search-index="false" entity-index="true">
+			<description>OpenApps Crawling Category</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="Summary"></property>				
+			</properties>
+			<associations>
+				<association namespace="openapps_org_crawling_1_0" localname="categories">
+					<target namespace="openapps_org_crawling_1_0" localname="category"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_crawling_1_0" localname="crawler" search-index="false" entity-index="true">
+			<description>OpenApps Crawling Crawler</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="protocol" mandatory="false" unique="false" hidden="false" label="Protocol"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="domain" mandatory="false" unique="false" hidden="false" label="Domain"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="path" mandatory="false" unique="false" hidden="false" label="Path"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="query" mandatory="false" unique="false" hidden="false" label="Query"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="username" mandatory="false" unique="false" hidden="false" label="Username"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="password" mandatory="false" unique="false" hidden="false" label="Password"></property>
+				<property type="3" namespace="openapps_org_crawling_1_0" localname="category" mandatory="false" unique="false" hidden="false" label="URL"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="message" mandatory="false" unique="false" hidden="false" label="Message"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="search_terms" mandatory="false" unique="false" hidden="false" label="Search Terms"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="filter_terms" mandatory="false" unique="false" hidden="false" label="Filter Terms"></property>
+				<property type="2" namespace="openapps_org_crawling_1_0" localname="frequency" mandatory="false" unique="false" hidden="false" label="Frequency"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="day_of_week" mandatory="false" unique="false" hidden="false" label="Day of the Week"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="time_of_day_1" mandatory="false" unique="false" hidden="false" label="Time of Day 1"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="time_of_day_2" mandatory="false" unique="false" hidden="false" label="Time of Day 2"></property>
+				<property type="2" namespace="openapps_org_crawling_1_0" localname="hops" mandatory="false" unique="false" hidden="false" label="Hops"></property>
+				<property type="2" namespace="openapps_org_crawling_1_0" localname="max_results" mandatory="false" unique="false" hidden="false" label="Maximum Result Count"></property>
+				<property type="1" namespace="openapps_org_crawling_1_0" localname="same_domain" mandatory="false" unique="false" hidden="false" label="Same Domain"></property>
+				<property type="3" namespace="openapps_org_crawling_1_0" localname="last_crawl" mandatory="false" unique="false" hidden="false" label="Last Crawl"></property>
+				<property type="3" namespace="openapps_org_crawling_1_0" localname="next_crawl" mandatory="false" unique="false" hidden="false" label="Last Crawl"></property>
+				<property type="2" namespace="openapps_org_crawling_1_0" localname="status" mandatory="false" unique="false" hidden="false" label="Status"></property>
+				<property type="1" namespace="openapps_org_crawling_1_0" localname="loaded" mandatory="false" unique="false" hidden="false" label="Loaded"></property>
+				<property type="1" namespace="openapps_org_crawling_1_0" localname="anonymous" mandatory="false" unique="false" hidden="false" label="Anonymous"></property>
+				<property type="2" namespace="openapps_org_crawling_1_0" localname="error_count" mandatory="false" unique="false" hidden="false" label="Error Count"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_crawling_1_0" localname="seeds">
+					<target namespace="openapps_org_crawling_1_0" localname="seed"></target>
+				</association>
+				<association namespace="openapps_org_crawling_1_0" localname="searches">
+					<target namespace="openapps_org_crawling_1_0" localname="search"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_crawling_1_0" localname="seed" search-index="false" entity-index="true">
+			<description>OpenApps Crawling Seed</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="protocol" mandatory="false" unique="false" hidden="false" label="Protocol"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="domain" mandatory="false" unique="false" hidden="false" label="Domain"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="path" mandatory="false" unique="false" hidden="false" label="Path"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="query" mandatory="false" unique="false" hidden="false" label="Query"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="icon" mandatory="false" unique="false" hidden="false" label="Icon"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="summary" mandatory="false" unique="false" hidden="false" label="Summary"></property>
+				<property type="3" namespace="openapps_org_crawling_1_0" localname="timestamp" mandatory="false" unique="false" hidden="false" label="Timestamp"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="content_type" mandatory="false" unique="false" hidden="false" label="Content Type"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="message" mandatory="false" unique="false" hidden="false" label="Message"></property>
+				<property type="2" namespace="openapps_org_crawling_1_0" localname="hops" mandatory="false" unique="false" hidden="false" label="Hops"></property>
+				<property type="2" namespace="openapps_org_crawling_1_0" localname="max_results" mandatory="false" unique="false" hidden="false" label="Maximum Result Count"></property>
+				<property type="2" namespace="openapps_org_crawling_1_0" localname="status" mandatory="false" unique="false" hidden="false" label="Status"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="seeded" mandatory="false" unique="false" hidden="false" label="Crawled"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="extracted" mandatory="false" unique="false" hidden="false" label="Extracted"></property>
+				<property type="1" namespace="openapps_org_crawling_1_0" localname="loaded" mandatory="false" unique="false" hidden="false" label="Loaded"></property>
+				<property type="1" namespace="openapps_org_crawling_1_0" localname="anonymous" mandatory="false" unique="false" hidden="false" label="Anonymous"></property>
+				<property type="3" namespace="openapps_org_crawling_1_0" localname="last_crawl" mandatory="false" unique="false" hidden="false" label="Last Crawl"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_crawling_1_0" localname="documents">
+					<target namespace="openapps_org_crawling_1_0" localname="document"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_crawling_1_0" localname="document" search-index="true" entity-index="true">
+			<description>OpenApps Document</description>
+			<properties>
+				<property type="5" namespace="openapps_org_system_1_0" localname="protocol" mandatory="false" unique="false" hidden="false" label="Protocol"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="domain" mandatory="false" unique="false" hidden="false" label="Domain"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="path" mandatory="false" unique="false" hidden="false" label="Path"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="file" mandatory="false" unique="false" hidden="false" label="File"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="query" mandatory="false" unique="false" hidden="false" label="Query"></property>
+				<property type="3" namespace="openapps_org_crawling_1_0" localname="image" mandatory="false" unique="false" hidden="false" label="Image"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="title" mandatory="false" unique="false" hidden="false" label="Title"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="summary" mandatory="false" unique="false" hidden="false" label="Summary"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="content" mandatory="false" unique="false" hidden="false" label="Content"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="author" mandatory="false" unique="false" hidden="false" label="Author"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="journal" mandatory="false" unique="false" hidden="false" label="Journal"></property>
+				<property type="3" namespace="openapps_org_crawling_1_0" localname="timestamp" mandatory="false" unique="false" hidden="false" label="Timestamp"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="display_date" mandatory="false" unique="false" hidden="false" label="Display Date"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="content_type" mandatory="false" unique="false" hidden="false" label="Content Type"></property>				
+				<property type="2" namespace="openapps_org_crawling_1_0" localname="rating" mandatory="false" unique="false" hidden="false" label="Rating"></property>
+				<property type="1" namespace="openapps_org_crawling_1_0" localname="loaded" mandatory="false" unique="false" hidden="false" label="Loaded"></property>
+				<property type="1" namespace="openapps_org_crawling_1_0" localname="viewed" mandatory="false" unique="false" hidden="false" label="Viewed"></property>
+				<property type="1" namespace="openapps_org_crawling_1_0" localname="flagged" mandatory="false" unique="false" hidden="false" label="Flagged"></property>
+			</properties>
+			<associations>				
+				<association namespace="openapps_org_content_1_0" localname="contents">
+					<target namespace="openapps_org_content_1_0" localname="content"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_crawling_1_0" localname="snapshot" search-index="false" entity-index="true">
+			<description>OpenApps Document</description>
+			<properties>
+				<property type="2" namespace="openapps_org_crawling_1_0" localname="version" mandatory="false" unique="false" hidden="false" label="Version"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="protocol" mandatory="false" unique="false" hidden="false" label="Protocol"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="domain" mandatory="false" unique="false" hidden="false" label="Domain"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="path" mandatory="false" unique="false" hidden="false" label="Path"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="query" mandatory="false" unique="false" hidden="false" label="Query"></property>
+				<property type="3" namespace="openapps_org_crawling_1_0" localname="image" mandatory="false" unique="false" hidden="false" label="Image"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="title" mandatory="false" unique="false" hidden="false" label="Title"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="summary" mandatory="false" unique="false" hidden="false" label="Summary"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="content" mandatory="false" unique="false" hidden="false" label="Content"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="author" mandatory="false" unique="false" hidden="false" label="Author"></property>
+				<property type="3" namespace="openapps_org_crawling_1_0" localname="timestamp" mandatory="false" unique="false" hidden="false" label="Timestamp"></property>
+				<property type="5" namespace="openapps_org_crawling_1_0" localname="content_type" mandatory="false" unique="false" hidden="false" label="Content Type"></property>
+			</properties>
+			<associations>				
+				<association namespace="openapps_org_content_1_0" localname="contents">
+					<target namespace="openapps_org_content_1_0" localname="content"></target>
+				</association>
+			</associations>
+		</model>
+		<model namespace="openapps_org_realestate_1_0" localname="property" search-index="false" entity-index="true">
+			<parent namespace="openapps_org_crawling_1_0" localname="document"></parent>
+			<description>Real Estate Property</description>
+			<properties>
+				<property type="5" namespace="openapps_org_realestate_1_0" localname="mls_id" mandatory="false" unique="false" hidden="false" label="MLS ID"></property>
+				<property type="2" namespace="openapps_org_realestate_1_0" localname="list_price" mandatory="false" unique="false" hidden="false" label="List Price"></property>
+				<property type="4" namespace="openapps_org_realestate_1_0" localname="lot_size" mandatory="false" unique="false" hidden="false" label="Lot Size"></property>
+				<property type="2" namespace="openapps_org_realestate_1_0" localname="home_size" mandatory="false" unique="false" hidden="false" label="Home Size"></property>
+			</properties>
+		</model>
+		<model namespace="openapps_org_crawling_1_0" localname="search" search-index="false" entity-index="true">
+			<description>OpenApps Search Term</description>
+			<properties></properties>
+		</model>
+		<model namespace="openapps_org_content_1_0" localname="content" search-index="false" entity-index="true">
+			<description>OpenApps Content</description>
+			<properties>
+				<property type="3" namespace="openapps_org_content_1_0" localname="timestamp" mandatory="false" unique="false" hidden="false" label="Timestamp"></property>
+				<property type="5" namespace="openapps_org_content_1_0" localname="content_type" mandatory="false" unique="false" hidden="false" label="Content Type"></property>
+			</properties>
+		</model>
+		<model namespace="openapps_org_system_1_0" localname="user" search-index="false" entity-index="true">
+			<description>User</description>
+			<properties>
+				<property type="1" namespace="openapps_org_system_1_0" localname="active" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="1" namespace="openapps_org_system_1_0" localname="terms" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="organization" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="last_name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="first_name" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="email" mandatory="false" unique="false" hidden="false" label="false"></property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="password" mandatory="false" unique="false" hidden="false" label="false">
+					<format>0</format>
+				</property>
+				<property type="5" namespace="openapps_org_system_1_0" localname="username" mandatory="false" unique="false" hidden="false" label="false"></property>
+			</properties>
+			<associations>
+				<association namespace="openapps_org_crawling_1_0" localname="documents">
+					<target namespace="openapps_org_crawling_1_0" localname="document"></target>
+					<properties>
+						<property type="1" namespace="openapps_org_system_1_0" localname="deleted"></property>
+						<property type="1" namespace="openapps_org_system_1_0" localname="viewed"></property>
+					</properties>
+				</association>
+			</associations>
+		</model>
+	</models>
+	<model namespace="openapps_org_system_1_0" localname="group" search-index="false" entity-index="true">
+		<description>Group</description>
+		<properties>
+			<property type="5" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+			<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+		</properties>
+		<associations>
+			<association namespace="openapps_org_system_1_0" localname="roles">
+				<target namespace="openapps_org_system_1_0" localname="role"></target>
+			</association>
+			<association namespace="openapps_org_system_1_0" localname="groups">
+				<target namespace="openapps_org_system_1_0" localname="group"></target>
+			</association>
+		</associations>
+	</model>
+	<model namespace="openapps_org_system_1_0" localname="role" search-index="false" entity-index="true">
+		<description>Role</description>
+		<properties>
+			<property type="5" namespace="openapps_org_system_1_0" localname="description" mandatory="false" unique="false" hidden="false" label="false"></property>
+			<property type="5" namespace="openapps_org_system_1_0" localname="name" mandatory="false" unique="false" hidden="false" label="false"></property>
+		</properties>
+		<associations>
+			<association namespace="openapps_org_system_1_0" localname="roles">
+				<target namespace="openapps_org_system_1_0" localname="role"></target>
+			</association>
+		</associations>
+	</model>
+</dictionary>
