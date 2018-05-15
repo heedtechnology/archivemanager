@@ -3,12 +3,17 @@ $(function(){
 	$('#collection-name').texteditor({
 		 toolbar:['bold','italic','strikethrough','underline','-','formatblock','fontname','fontsize']
 	});
+
+	$('#collection-item-name').texteditor({
+  		 toolbar:['bold','italic','strikethrough','underline','-','formatblock','fontname','fontsize']
+  	});
+
 	$('#collection-scopeNote').texteditor({
 		 toolbar:['bold','italic','strikethrough','underline','-','insertorderedlist','insertunorderedlist','-','formatblock','fontname','fontsize']
 	});
 	$('#collection-bioNote').texteditor({
 		 toolbar:['bold','italic','strikethrough','underline','-','insertorderedlist','insertunorderedlist','-','formatblock','fontname','fontsize']
-	});	 
+	});
 	$('#collection-owner').textbox({
          icons: [{
              iconCls:'icon-edit',
@@ -26,17 +31,29 @@ $(function(){
     //collection category form
     $('#collection-category-name').texteditor({
 		 toolbar:['bold','italic','strikethrough','underline','-','insertorderedlist','insertunorderedlist','-','formatblock','fontname','fontsize']
-	});	 
+	});
     $('#collection-category-description').texteditor({
 		 toolbar:['bold','italic','strikethrough','underline','-','insertorderedlist','insertunorderedlist','-','formatblock','fontname','fontsize']
 	});
+
     $('#collection-category-summary').texteditor({
 		 toolbar:['bold','italic','strikethrough','underline','-','insertorderedlist','insertunorderedlist','-','formatblock','fontname','fontsize']
 	});
-    
+
+  $('#contentTypeDropDown').combobox({
+      url:'/service/archivemanager/entity/content_type.json',
+      method:'get',
+      valueField:'id',
+      textField:'text'
+  });
+
 	$('#mainLayout').layout();
 	$('#collection-heading').layout();
 	$('#mainLayout').layout('resize',{height:1700});
+	$('#abstractNoteEditor').texteditor({
+  		 toolbar:['bold','italic','strikethrough','underline','-','formatblock','fontname','fontsize'],
+  		 name: 'abstractNote'
+  	});
 });
 
 function selectDigitalObject(index,row) {
@@ -71,7 +88,7 @@ function treeSelect(node) {
 		contentType : false,
 		processData : false
 	});
-	ajaxReq.done(function(entity) {		
+	ajaxReq.done(function(entity) {
 		if(entity.contentType == 'collection') {
 			$('#collection-id').html(entity.id);
 			$('#collection-language').combobox('setValue', entity.language);
@@ -96,11 +113,12 @@ function treeSelect(node) {
 			$('#collection-category-id').html(entity.id);
 			$('#collection-category-name').texteditor('setValue', entity.name);
 			$('#collection-category-description').texteditor('setValue', entity.description);
-			$('#collection-category-description').texteditor('setValue', entity.description);
+			$('#contentType').val(entity.contentType);
 			$('#application-body').tabs('select', 'collection-category-form');
 		} else {
 			$('#collection-item-id').html(entity.id);
 			$('#collection-item-name').texteditor('setValue', entity.name);
+			addPropertyDiv();
 			$('#application-body').tabs('select', 'collection-item-form');
 		}
 	});
@@ -114,4 +132,89 @@ function treeFormat(node){
 		 //s += '&nbsp;<span style=\'color:blue\'>(' + node.children.length + ')</span>';
 	 //}
 	 return s;
+}
+
+function showAddNodeDialog(type){
+
+  if ( type == 'category') {
+    $('#divContentType').hide();
+    $('#contentTypeDropDown').combobox('setValue','Category');
+  } else {
+    $('#divContentType').show();
+  }
+
+  var contentType = $('#contentType').val();
+  var node = $('#collectionTree').tree('getSelected');
+  var parentNode = $('#collectionTree').tree('getParent',node.target);
+//  if(node){
+//    var s = node.text;
+//    alert(s);
+//    if(parentNode){
+//      var t = parentNode.text;
+//      alert(t);
+//    }
+//  }
+  $('#nodeAddDlg').dialog('open').dialog('center').dialog('setTitle','Add ');
+}
+
+function addToCollection(){
+  var node = $('#collectionTree').tree('getSelected');
+  var contentType = $('#contentTypeDropDown').val();
+  $('#source').val(node.id);
+  $('#assoc_qname').val('openapps_org_repository_1_0_categories');
+  $('#entity_qname').val('openapps_org_repository_1_0_category');
+
+//    $.ajax({
+//      type: 'POST',
+//      url: '/service/entity/association/add.json',
+//      data: $('#nodeAddForm').serialize(),
+//      success: function (result) {
+//              if (result.response.status != 0 ){
+//              	$.messager.show({
+//              		title: 'Error',
+//                      msg: result.errorMsg
+//                  });
+//              } else {
+//                $.messager.show({
+//                  title: 'Success',
+//                    msg: name + ' created successfully',
+//                    timeout: 1000,
+//                    showType: 'fade',
+//                  style:{
+//                      right:'',
+//                      bottom:''
+//                  }
+//                });
+//              	$('#addNodeDialog').dialog('close');        // close the dialog
+//                $('#collectionTree').tree('reload', node.target); //Reload tree node
+//              }
+//      }
+//    });
+   //$('#collectionTree').tree('reload', node.target);
+}
+
+function goHome(){
+    var urlParams = new URLSearchParams(window.location.search);
+    var tabIndex = urlParams.get('tab');
+    var rowIndex = urlParams.get('row');
+    window.location.replace('/apps/manager/home?tab='+tabIndex+'&row='+rowIndex);
+}
+
+function menuHandler(item){
+
+}
+
+function showContextMenu(e,node){
+                    e.preventDefault();
+                    $(this).tree('select',node.target);
+                    $('#mm').menu('show',{
+                        left: e.pageX,
+                        top: e.pageY
+                    });
+                    }
+
+function addPropertyDiv(){
+
+	$("<input id=\"collection-bulk-begin-date\" class=\"easyui-textbox\" label=\"Bulk Begin Date:\" labelPosition=\"top\" style=\"width:100%;\" />").appendTo("#lastrow");
+
 }

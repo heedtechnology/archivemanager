@@ -13,6 +13,7 @@ td{padding:5px;}
 .loader {position: fixed;left: 0px;top: 0px;width: 100%;height: 100%;z-index: 9999;background:100% 100% no-repeat rgb(249,249,249);opacity:1.0;}
 
 .icon-collection{background:url('../../images/apps/icons/collection.png') no-repeat center center;}
+.icon-file{background:url('../../images/apps/icons/file.png') no-repeat center center;}
 
 /*easyui overrides*/
 .panel-tool{width:96%;}

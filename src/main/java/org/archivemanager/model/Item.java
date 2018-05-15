@@ -3,6 +3,7 @@ package org.archivemanager.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 
 public class Item extends Result {
@@ -23,6 +24,7 @@ public class Item extends Result {
 	private List<PathNode> path = new ArrayList<PathNode>();
 	private List<DigitalObject> digitalObjects = new ArrayList<DigitalObject>();
 	private List<WebLink> weblinks = new ArrayList<WebLink>();
+	private Map<String,String> propertiesMap = new TreeMap<>();
 	
 		
 	public Item(long id, String title, String description, String contentType) {
@@ -135,7 +137,9 @@ public class Item extends Result {
 	public void setData(Map<String,String> data) {
 		if(data.containsKey("collectionId")) setCollectionId(data.get("collectionId"));
 		if(data.containsKey("collectionName")) setCollectionName(data.get("collectionName"));
+		this.propertiesMap.putAll(data);
 	}
+	public Map<String,String> getData(){ return this.propertiesMap; }
 	public String getNativeContent() {
 		return nativeContent;
 	}

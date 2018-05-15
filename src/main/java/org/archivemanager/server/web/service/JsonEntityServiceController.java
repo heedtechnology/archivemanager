@@ -33,11 +33,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/service/entity")
 public class JsonEntityServiceController extends WebserviceSupport {
 	private final static Logger log = Logger.getLogger(JsonEntityServiceController.class.getName());
-		
+
 	private Map<Long, List<Long>> cache = new HashMap<Long, List<Long>>();
 	public static final QName OPENAPPS_ENTITIES = new QName(SystemModel.OPENAPPS_SYSTEM_NAMESPACE, "entities");
-	
-	
+
+
 	@ResponseBody
 	@RequestMapping(value="/get.json", method = RequestMethod.GET)
 	public RestResponse<Object> fetchEntity(HttpServletRequest request, HttpServletResponse response,
@@ -46,12 +46,12 @@ public class JsonEntityServiceController extends WebserviceSupport {
 		String targetsStr = request.getParameter("targets");
 		String view = request.getParameter("view");
 		String uid = request.getParameter("uid");
-		
+
 		boolean sources = (sourcesStr != null && sourcesStr.equals("true")) ? true : false;
 		boolean targets = (targetsStr != null && targetsStr.equals("true")) ? true : false;
-		
+
 		prepareResponse(response);
-		
+
 		return getEntity(id, uid, view, sources, targets);
 	}
 	@ResponseBody
@@ -60,21 +60,21 @@ public class JsonEntityServiceController extends WebserviceSupport {
 		String sourcesStr = request.getParameter("sources");
 		String targetsStr = request.getParameter("targets");
 		String view = request.getParameter("view");
-		
+
 		boolean sources = (sourcesStr != null && sourcesStr.equals("true")) ? true : false;
 		boolean targets = (targetsStr != null && targetsStr.equals("true")) ? true : false;
-		
+
 		prepareResponse(response);
-		
+
 		return getEntity(id, null, view, sources, targets);
 	}
 	@ResponseBody
 	@RequestMapping(value="/add.json", method = RequestMethod.POST)
 	public RestResponse<Object> addEntity(HttpServletRequest request, HttpServletResponse response,	@RequestParam("qname") String entityQname) throws Exception {
 		QName qname = QName.createQualifiedName(entityQname);
-		
-		prepareResponse(response);	
-		
+
+		prepareResponse(response);
+
 		RestResponse<Object> data = new RestResponse<Object>();
 		try {
 			Entity entity = getEntity(request, qname);
@@ -101,7 +101,7 @@ public class JsonEntityServiceController extends WebserviceSupport {
 	@ResponseBody
 	@RequestMapping(value="/addEntity.json", method = RequestMethod.POST)
 	public RestResponse<Object> addEntityRestRequest(@RequestBody RestRequest<Entity> restRequest, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		prepareResponse(response);			
+		prepareResponse(response);
 		RestResponse<Object> data = new RestResponse<Object>();
 		try {
 			Entity entity = restRequest.getData().get(0);
@@ -128,9 +128,9 @@ public class JsonEntityServiceController extends WebserviceSupport {
 	@RequestMapping(value="/update.json", method = RequestMethod.POST)
 	public RestResponse<Object> updateEntity(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("id") Long id) throws Exception {
-		
+
 		prepareResponse(response);
-		
+
 		RestResponse<Object> data = new RestResponse<Object>();
 		try {
 			Entity entity = getEntityService().getEntity(id);
@@ -138,7 +138,7 @@ public class JsonEntityServiceController extends WebserviceSupport {
 			String printTargets = request.getParameter("targets");
 			String printSources = request.getParameter("sources");
 			boolean sources = printSources != null ? Boolean.valueOf(printSources) : true;
-			boolean targets = printTargets != null ? Boolean.valueOf(printTargets) : false;			
+			boolean targets = printTargets != null ? Boolean.valueOf(printTargets) : false;
 			Entity newEntity = getEntity(request, entity.getQName());
 			for(Property prop : newEntity.getProperties()) {
 				QName q = prop.getQName();
@@ -152,9 +152,9 @@ public class JsonEntityServiceController extends WebserviceSupport {
 					entity.setUser(newEntity.getUser());
 				}
 			}
-			getEntityService().updateEntity(entity);						
+			getEntityService().updateEntity(entity);
 			FormatInstructions instr = new FormatInstructions(false, sources, targets);
-			instr.setFormat(FormatInstructions.FORMAT_JSON);					
+			instr.setFormat(FormatInstructions.FORMAT_JSON);
 			data.getResponse().addData(getEntityService().export(instr, entity));
 			data.getResponse().setStatus(0);
 		} catch(Exception e) {
@@ -167,30 +167,32 @@ public class JsonEntityServiceController extends WebserviceSupport {
 	@ResponseBody
 	@RequestMapping(value="/remove.json", method = RequestMethod.POST)
 	public RestResponse<Object> removeEntity(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") Long id) throws Exception {
-				
+
 		prepareResponse(response);
-		
+
 		RestResponse<Object> data = new RestResponse<Object>();
 		try {
 			Entity entity = getEntityService().getEntity(id);
 			getEntityService().removeEntity(null, id);
-			
+			getSearchService().remove(id);
 			Map<String,Object> record = new HashMap<String,Object>();
 			record.put("id", entity.getId());
 			record.put("uid", entity.getUid());
 			data.getResponse().addData(record);
-			
+			data.getResponse().setStatus(0);
 		} catch(Exception e) {
 			e.printStackTrace();
+			data.getResponse().setStatus(-1);
+			data.getResponse().addMessage(e.getMessage());
 		}
 		return data;
 	}
 	@ResponseBody
 	@RequestMapping(value="/index.json", method = RequestMethod.GET)
 	public RestResponse<Object> indexQName(HttpServletRequest request, HttpServletResponse response, @RequestParam("qname") String qname) throws Exception {
-		QName q = QName.createQualifiedName(qname);		
-		prepareResponse(response);		
-		RestResponse<Object> data = new RestResponse<Object>();			
+		QName q = QName.createQualifiedName(qname);
+		prepareResponse(response);
+		RestResponse<Object> data = new RestResponse<Object>();
 		Job job = getSearchService().update(q);
 		if(job != null) {
 			Map<String,Object> statusData = new HashMap<String,Object>();
@@ -203,20 +205,20 @@ public class JsonEntityServiceController extends WebserviceSupport {
 		}
 		return data;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value="/get/children.json", method = RequestMethod.GET)
 	public RestResponse<Object> getEntities(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") Long id) throws Exception {
 		String printTargets = request.getParameter("targets");
 		String printSources = request.getParameter("sources");
 		boolean sources = printSources != null ? Boolean.valueOf(printSources) : true;
-		boolean targets = printTargets != null ? Boolean.valueOf(printTargets) : false;				
-		prepareResponse(response);		
-		RestResponse<Object> data = new RestResponse<Object>();		
+		boolean targets = printTargets != null ? Boolean.valueOf(printTargets) : false;
+		prepareResponse(response);
+		RestResponse<Object> data = new RestResponse<Object>();
 		try {
 			Entity entity = getEntityService().getEntity(id);
 			List<Association> assocs = entity.getSourceAssociations();
-			
+
 			for(Association assoc : assocs) {
 				Entity target = getEntityService().getEntity(assoc.getTarget());
 				FormatInstructions instructions = new FormatInstructions(false, sources, targets);
@@ -228,19 +230,19 @@ public class JsonEntityServiceController extends WebserviceSupport {
 		}
 		return data;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value="/association/add.json", method = RequestMethod.POST)
-	public RestResponse<Object> associationAdd(HttpServletRequest request, HttpServletResponse response, 
+	public RestResponse<Object> associationAdd(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("assoc_qname") String assoc_qname,
 			@RequestParam(required=false) String entity_qname,
-			@RequestParam("source") String source, 
+			@RequestParam("source") String source,
 			@RequestParam(required=false) String target,
 			@RequestParam(required=false) boolean targets) throws Exception {
 		QName assocQname = QName.createQualifiedName(assoc_qname);
 		QName entityQname = QName.createQualifiedName(entity_qname);
 		prepareResponse(response);
-		RestResponse<Object> data = new RestResponse<Object>();		
+		RestResponse<Object> data = new RestResponse<Object>();
 		try {
 			FormatInstructions instructions = new FormatInstructions(false, true, true);
 			instructions.setFormat(FormatInstructions.FORMAT_JSON);
@@ -248,7 +250,7 @@ public class JsonEntityServiceController extends WebserviceSupport {
 				Entity entity = getEntity(request, entityQname);
 				if(entity.getId() == null || entity.getId() == 0) {
 					if(NumberUtility.isLong(source)) {
-						getEntityService().addEntity(Long.valueOf(source), null, assocQname, null, entity);					
+						getEntityService().addEntity(Long.valueOf(source), null, assocQname, null, entity);
 						Entity sourceEntity = getEntityService().getEntity(Long.valueOf(source));
 						data.getResponse().addData(getEntityService().export(instructions, sourceEntity));
 					}
@@ -258,12 +260,12 @@ public class JsonEntityServiceController extends WebserviceSupport {
 				getEntityService().addAssociation(assoc);
 				Entity sourceEntity = NumberUtility.isLong(source) ?  getEntityService().getEntity(Long.valueOf(source)) : getEntityService().getEntity(source);
 				Entity targetEntity = NumberUtility.isLong(target) ?  getEntityService().getEntity(Long.valueOf(target)) : getEntityService().getEntity(target);
-				
+
 				if(targets) data.getResponse().addData(getEntityService().export(instructions, targetEntity));
 				else data.getResponse().addData(getEntityService().export(instructions, sourceEntity));
-			}			
+			}
 			return data;
-			
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -271,9 +273,9 @@ public class JsonEntityServiceController extends WebserviceSupport {
 	}
 	@ResponseBody
 	@RequestMapping(value="/association/switch.json", method = RequestMethod.POST)
-	public RestResponse<Object> switchAssociation(HttpServletRequest request, HttpServletResponse response, 
+	public RestResponse<Object> switchAssociation(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("id") Long id, @RequestParam("source") Long sourceEntityId, @RequestParam("target") Long targetEntityId) throws Exception {
-		RestResponse<Object> data = new RestResponse<Object>();		
+		RestResponse<Object> data = new RestResponse<Object>();
 		try {
 			Association assoc = getEntityService().getAssociation(id);
 			Entity target = getEntityService().getEntity(targetEntityId);
@@ -299,9 +301,9 @@ public class JsonEntityServiceController extends WebserviceSupport {
 	@RequestMapping(value="/association/remove.json", method = RequestMethod.POST)
 	public RestResponse<Object> removeAssociation(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") Long id,
 			@RequestParam(required=false) String ticket) throws Exception {
-		RestResponse<Object> data = new RestResponse<Object>();		
+		RestResponse<Object> data = new RestResponse<Object>();
 		try {
-			getEntityService().removeAssociation(id);			
+			getEntityService().removeAssociation(id);
 			Map<String,Object> record = new HashMap<String,Object>();
 			record.put("id", id);
 			data.getResponse().addData(record);
@@ -317,18 +319,18 @@ public class JsonEntityServiceController extends WebserviceSupport {
 		try {
 			Entity entity = getEntityService().getEntity(id);
 			getEntityService().removeEntity(null, id);
-			
+
 			Map<String,Object> record = new HashMap<String,Object>();
 			record.put("id", entity.getId());
 			record.put("uid", entity.getUid());
 			data.getResponse().addData(record);
-			
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return data;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value="/node/browse.json", method = RequestMethod.GET)
 	public RestResponse<Object> fetchJson(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -336,13 +338,13 @@ public class JsonEntityServiceController extends WebserviceSupport {
 		String startStr = request.getParameter("_startRow");
 		String endStr = request.getParameter("_endRow");
 		String mode = request.getParameter("mode");
-		
+
 		int start = Integer.valueOf(startStr);
 		int end = Integer.valueOf(endStr);
-		
+
 		return browse(parent,  mode, start, end);
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value="/node/get.json", method = RequestMethod.GET)
 	public RestResponse<Object> getEntityJSON(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") Long id) throws Exception {
@@ -353,7 +355,7 @@ public class JsonEntityServiceController extends WebserviceSupport {
 	public RestResponse<Object> removeNode(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") Long id) throws Exception {
 		return removeNode(id);
 	}
-	
+
 	protected void response(RestResponse<Object> data, int status, String message) {
 		data.getResponse().setStatus(status);
 		if(status == -1) {
@@ -373,7 +375,7 @@ public class JsonEntityServiceController extends WebserviceSupport {
 				instr.setFormat(FormatInstructions.FORMAT_JSON);
 				instr.setPrintSources(sources);
 				instr.setPrintTargets(targets);
-				if(view != null) instr.setView(view);		
+				if(view != null) instr.setView(view);
 				data.getResponse().addData(getEntityService().export(instr, entity));
 			}
 			data.getResponse().setStatus(0);
@@ -426,14 +428,14 @@ public class JsonEntityServiceController extends WebserviceSupport {
 					}
 					index++;
 					if(index == end) break;
-				}			
+				}
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return data;
 	}
-	
+
 	protected RestResponse<Object> getNode(long id) {
 		RestResponse<Object> data = new RestResponse<Object>();
 		try {
@@ -473,7 +475,7 @@ public class JsonEntityServiceController extends WebserviceSupport {
 				nodeData.put(property.getQName().toString(), String.valueOf(property.getValue()));
 			}
 			if(sources) {
-				List<Map<String, Object>> sourceData = new ArrayList<Map<String, Object>>();			
+				List<Map<String, Object>> sourceData = new ArrayList<Map<String, Object>>();
 				for(Association relationship : entity.getSourceAssociations()) {
 					Map<String, Object> source = new HashMap<String, Object>();
 					source.put("id", relationship.getId());
@@ -489,7 +491,7 @@ public class JsonEntityServiceController extends WebserviceSupport {
 				nodeData.put("outgoing", sourceData);
 			}
 			if(targets) {
-				List<Map<String, Object>> sourceData = new ArrayList<Map<String, Object>>();			
+				List<Map<String, Object>> sourceData = new ArrayList<Map<String, Object>>();
 				for(Association relationship : entity.getTargetAssociations()) {
 					Map<String, Object> source = new HashMap<String, Object>();
 					source.put("id", relationship.getId());
@@ -506,7 +508,7 @@ public class JsonEntityServiceController extends WebserviceSupport {
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
-		} 
+		}
 		return nodeData;
 	}
 	/*
@@ -523,7 +525,7 @@ public class JsonEntityServiceController extends WebserviceSupport {
 				for(Relationship relation : getEntityService().getRelationships(modelsRelation.getEndNode(), Direction.OUTGOING)) {
 					String relQname = getEntityService().hasNodeProperty(relation.getEndNode(), "qname") ? (String)getEntityService().getNodeProperty(relation.getEndNode(), "qname") : "";
 					if(relQname.equals(qname.toString()))
-						return relation.getEndNode();				
+						return relation.getEndNode();
 				}
 			}
 		} catch(Exception e) {
