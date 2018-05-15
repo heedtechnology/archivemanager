@@ -1,7 +1,9 @@
 package org.archivemanager.util;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.archivemanager.model.Audio;
 import org.archivemanager.model.Category;
@@ -214,6 +216,11 @@ public class RepositoryModelEntityBinder {
 			if(item.getName() == null) item.setName(entity.getPropertyValue(RepositoryModel.DATE_EXPRESSION));
 			item.setDateExpression(entity.getPropertyValue(RepositoryModel.DATE_EXPRESSION));
 		}
+
+		Map<String,String> entityPropMap = new HashMap<>();
+		entity.getPropertyMap().forEach((key, object) -> entityPropMap.put(key,(String)object));
+		item.setData(entityPropMap);
+
 		List<Entity> path = getComponentPath(entity);
 		if(path.size() > 0) {
 			for(int i=0; i < path.size(); i++) {

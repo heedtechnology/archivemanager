@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,6 +31,7 @@ import org.heed.openapps.entity.InvalidEntityException;
 import org.heed.openapps.entity.InvalidPropertyException;
 import org.heed.openapps.entity.Property;
 import org.heed.openapps.entity.data.FormatInstructions;
+import org.heed.openapps.property.PropertyService;
 import org.neo4j.driver.v1.AuthTokens;
 import org.neo4j.driver.v1.Driver;
 import org.neo4j.driver.v1.GraphDatabase;
@@ -38,26 +40,33 @@ import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Value;
 import org.neo4j.driver.v1.types.Node;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 public class Neo4jEntityService implements EntityService {
+
+	@Autowired
+	private PropertyService propertyService;
 	private static final long serialVersionUID = 7870373534164732513L;
 	private final static Logger log = Logger.getLogger(Neo4jEntityService.class.getName());
 	private CacheService cacheService;
 	private DataDictionaryService dictionaryService;
 	private Driver driver;
-	
+
 	private Map<String, List<ImportProcessor>> importers = new HashMap<String, List<ImportProcessor>>();
 	private Map<String, ExportProcessor> exporters = new HashMap<String, ExportProcessor>();
 	private Map<String, EntityPersistenceListener> persistenceListeners = new HashMap<String, EntityPersistenceListener>();
-	
-	
-	public Neo4jEntityService(String serverName, DataDictionaryService dictionaryService, CacheService cacheService) {
-		driver = GraphDatabase.driver( "bolt://"+serverName+":7687", AuthTokens.basic("neo4j", "Heed$123"));
+
+
+	public Neo4jEntityService(String serverName, DataDictionaryService dictionaryService, CacheService cacheService, PropertyService propertyService) {
+		this.propertyService = propertyService;
+		driver = GraphDatabase.driver( "bolt://"+serverName+":7687", AuthTokens.basic(propertyService.getPropertyValue("neo4j.user"),
+				propertyService.getPropertyValue("neo4j.pass")));
 		this.dictionaryService = dictionaryService;
 		this.cacheService = cacheService;
 	}
-	
+
 	public void shutdown() {
 		driver.close();
 	}
@@ -69,45 +78,45 @@ public class Neo4jEntityService implements EntityService {
 		try {
 			org.neo4j.driver.v1.types.Node n = null;
 			while(result.hasNext()) {
-			    Record record = result.next();
-			    n = record.get("n1").asNode();
-			    if(!ids.contains(n.id())) {
-				    Entity entity = getEntity(n.id());
-				    entities.add(entity);
-				    ids.add(n.id());
-			    }
+				Record record = result.next();
+				n = record.get("n1").asNode();
+				if(!ids.contains(n.id())) {
+					Entity entity = getEntity(n.id());
+					entities.add(entity);
+					ids.add(n.id());
+				}
 			}
 		} catch(Exception e) {
 			log.log(Level.SEVERE, "", e);
 		} finally {
 			session.close();
-		}	
+		}
 		return entities;
 	}
-	
+
 	public Entity getEntity(long id) throws InvalidEntityException {
 		Entity entity = null;//(Entity)cacheService.get("node", String.valueOf(id));
-		if(entity == null) {			
+		if(entity == null) {
 			Session session = driver.session();
 			StatementResult result = session.run("MATCH (n1)-[r]-(n2) WHERE ID(n1)="+id+" return n1,r,n2;");
 			try {
 				org.neo4j.driver.v1.types.Node n = null;
 				while(result.hasNext()) {
-				    Record record = result.next();
-				    if(entity == null) {
-					    n = record.get("n1").asNode();
-					    if(n.id() == id)
-					    	entity = getEntity(n);
-				    }
-				    if(entity != null) getEntityRelationship(entity, record);
+					Record record = result.next();
+					if(entity == null) {
+						n = record.get("n1").asNode();
+						if(n.id() == id)
+							entity = getEntity(n);
+					}
+					if(entity != null) getEntityRelationship(entity, record);
 				}
 				if(entity == null) {
 					StatementResult result2 = session.run("MATCH (n1) WHERE ID(n1)="+id+" return n1;");
 					while(result2.hasNext()) {
-					    Record record = result2.next();
-					    n = record.get("n1").asNode();
-					    if(n.id() == id)
-					    	entity = getEntity(n);
+						Record record = result2.next();
+						n = record.get("n1").asNode();
+						if(n.id() == id)
+							entity = getEntity(n);
 					}
 				}
 			} catch(Exception e) {
@@ -127,104 +136,116 @@ public class Neo4jEntityService implements EntityService {
 		StatementResult result = session.run("MATCH (n) WHERE n.uid='"+uid+"' return n;");
 		org.neo4j.driver.v1.types.Node n = null;
 		while(result.hasNext()) {
-		    Record record = result.next();
-		    if(n == null) {
-		    	n = record.get("n1").asNode();
-		    	return getEntity(n.id());
-		    }
+			Record record = result.next();
+			if(n == null) {
+				n = record.get("n1").asNode();
+				return getEntity(n.id());
+			}
 		}
 		return null;
 	}
 	protected void getEntityRelationship(Entity entity, Record record) throws Exception {
 		Node n = record.get("n1").asNode();
 		org.neo4j.driver.v1.types.Relationship r = record.get("r").asRelationship();
-	    if(r.startNodeId() == n.id()) {
-	    	Association association = new AssociationImpl(QName.createQualifiedName(r.type()), r.startNodeId(), r.endNodeId());
-		    association.setId(r.id());
-		    for(String key : r.keys()) {
-		    	Value val = r.get(key);
-		    	association.addProperty(QName.createQualifiedName(key), val.asObject());
-		    	
-		    }
-		    org.neo4j.driver.v1.types.Node targetNode = record.get("n2").asNode();
-		    Entity targetEntity = getEntity(targetNode);
-		    association.setTargetEntity(targetEntity);
-		    association.setTargetName(targetEntity.getQName());
-		    association.setSourceName(entity.getQName());
-    		entity.getSourceAssociations().add(association);
-	    } else {
-	    	Association association = new AssociationImpl(QName.createQualifiedName(r.type()), r.startNodeId(), r.endNodeId());
-		    association.setId(r.id());
-		    for(String key : r.keys()) {
-		    	Value val = r.get(key);
-		    	association.addProperty(QName.createQualifiedName(key), val.asObject());
-		    }
-		    org.neo4j.driver.v1.types.Node sourceNode = record.get("n2").asNode();
-		    Entity sourceEntity = getEntity(sourceNode);
-		    association.setSourceEntity(sourceEntity);
-		    association.setSourceName(sourceEntity.getQName());
-		    association.setTargetName(entity.getQName());
-    		entity.getTargetAssociations().add(association);
-	    }
+		if(r.startNodeId() == n.id()) {
+			Association association = new AssociationImpl(QName.createQualifiedName(r.type()), r.startNodeId(), r.endNodeId());
+			association.setId(r.id());
+			for(String key : r.keys()) {
+				Value val = r.get(key);
+				association.addProperty(QName.createQualifiedName(key), val.asObject());
+
+			}
+			org.neo4j.driver.v1.types.Node targetNode = record.get("n2").asNode();
+			Entity targetEntity = getEntity(targetNode);
+			association.setTargetEntity(targetEntity);
+			association.setTargetName(targetEntity.getQName());
+			association.setSourceName(entity.getQName());
+			entity.getSourceAssociations().add(association);
+		} else {
+			Association association = new AssociationImpl(QName.createQualifiedName(r.type()), r.startNodeId(), r.endNodeId());
+			association.setId(r.id());
+			for(String key : r.keys()) {
+				Value val = r.get(key);
+				association.addProperty(QName.createQualifiedName(key), val.asObject());
+			}
+			org.neo4j.driver.v1.types.Node sourceNode = record.get("n2").asNode();
+			Entity sourceEntity = getEntity(sourceNode);
+			association.setSourceEntity(sourceEntity);
+			association.setSourceName(sourceEntity.getQName());
+			association.setTargetName(entity.getQName());
+			entity.getTargetAssociations().add(association);
+		}
 	}
 	protected Entity getEntity(org.neo4j.driver.v1.types.Node n) throws Exception {
 		DataDictionary dictionary = dictionaryService.getSystemDictionary();
 		Value qnameValue = n.get("qname");
 		QName qname = QName.createQualifiedName(qnameValue.asString());
 		Model model = dictionary.getModel(qname);
-	    Entity node = new EntityImpl(n.id(), qname);	    
-	    for(String key : n.keys()) {
+		Entity node = new EntityImpl(n.id(), qname);
+//		for ( ModelField field : model.getFields()){
+//			field.
+//		}
+
+
+		for(String key : n.keys()) {
 			Value val = n.get(key);
 			if(key.equals("uid") || key.equals("uuid")) node.setUid(val.asString());
-	    	else if(key.equals(SystemModel.NAME.toString())) node.setName(val.asString());
-	    	else if(key.equals("description")) node.addProperty(SystemModel.DESCRIPTION, val.asString());
-	    	else if(key.equals("qname")) node.setQName(QName.createQualifiedName(val.asString()));
-	    	else if(key.equals("accessed")) node.setAccessed(val.asLong());
-	    	else if(key.equals("created")) node.setCreated(val.asLong());
-	    	else if(key.equals("creator")) node.setCreator(val.asLong());		
-	    	else if(key.equals("modified")) node.setModified(val.asLong());
-	    	else if(key.equals("modifier")) node.setModifier(val.asLong());
-	    	else if(key.equals("xid")) node.setXid(val.asLong());
-	    	else if(key.equals("user")) node.setUser(val.asLong());
-	    	else if(key.equals("index")) node.addProperty(new QName(SystemModel.OPENAPPS_SYSTEM_NAMESPACE, "index"), val.asObject());
-	    	else if(key.equals("deleted")) node.setDeleted(val.asBoolean());
-	    	else {
-	    		try {
-		    		QName q = QName.createQualifiedName(key);
-		    		ModelField field = model.getField(q);
-		    		node.addProperty(field.getPropertyType(), q, val.asObject());
-	    		} catch(Exception e) {
-	    			node.addProperty(key, val.asObject());
-	    		}
-	    	}
+			else if(key.equals(SystemModel.NAME.toString())) node.setName(val.asString());
+			else if(key.equals("description")) node.addProperty(SystemModel.DESCRIPTION, val.asString());
+			else if(key.equals("qname")) node.setQName(QName.createQualifiedName(val.asString()));
+			else if(key.equals("accessed")) node.setAccessed(val.asLong());
+			else if(key.equals("created")) node.setCreated(val.asLong());
+			else if(key.equals("creator")) node.setCreator(val.asLong());
+			else if(key.equals("modified")) node.setModified(val.asLong());
+			else if(key.equals("modifier")) node.setModifier(val.asLong());
+			else if(key.equals("xid")) node.setXid(val.asLong());
+			else if(key.equals("user")) node.setUser(val.asLong());
+			else if(key.equals("index")) node.addProperty(new QName(SystemModel.OPENAPPS_SYSTEM_NAMESPACE, "index"), val.asObject());
+			else if(key.equals("deleted")) node.setDeleted(val.asBoolean());
+			else {
+				try {
+					QName q = QName.createQualifiedName(key);
+					ModelField field = model.getField(q);
+					node.addProperty(field.getPropertyType(), q, val.asObject());
+				} catch(Exception e) {
+					node.addProperty(key, val.asObject());
+				}
+			}
 		}
-	    return node;
+
+		for(ModelField field : model.getFields() ){
+			if (Objects.isNull(node.getProperty(field.getQName()))){
+				node.addProperty(field.getPropertyType(),field.getQName(),null);
+			}
+		}
+		List<ModelField> modelFields = model.getFields();
+		return node;
 	}
-	
+
 	public Association getAssociation(long id) throws InvalidAssociationException {
-		Association association = null;			
+		Association association = null;
 		Session session = driver.session();
 		StatementResult result = session.run("MATCH (n1)-[r]->(n2) WHERE id(r) = "+id+" return r;");
 		try {
 			while(result.hasNext()) {
-			    Record record = result.next();
-			    org.neo4j.driver.v1.types.Relationship r = record.get("r").asRelationship();
-			    association = new AssociationImpl(QName.createQualifiedName(r.type()), r.startNodeId(), r.endNodeId());
-			    association.setId(r.id());
-			    for(String key : r.keys()) {
-			    	Value val = r.get(key);
-			    	association.addProperty(QName.createQualifiedName(key), val.asObject());
-			    	
-			    }
-			    org.neo4j.driver.v1.types.Node sourceNode = record.get("n1").asNode();
-			    org.neo4j.driver.v1.types.Node targetNode = record.get("n2").asNode();
-			    Entity sourceEntity = getEntity(sourceNode);
-			    Entity targetEntity = getEntity(targetNode);
-			    association.setSourceEntity(sourceEntity);
-			    association.setSourceName(sourceEntity.getQName());
-			    association.setTargetEntity(targetEntity);
-			    association.setTargetName(targetEntity.getQName());
-			    break;
+				Record record = result.next();
+				org.neo4j.driver.v1.types.Relationship r = record.get("r").asRelationship();
+				association = new AssociationImpl(QName.createQualifiedName(r.type()), r.startNodeId(), r.endNodeId());
+				association.setId(r.id());
+				for(String key : r.keys()) {
+					Value val = r.get(key);
+					association.addProperty(QName.createQualifiedName(key), val.asObject());
+
+				}
+				org.neo4j.driver.v1.types.Node sourceNode = record.get("n1").asNode();
+				org.neo4j.driver.v1.types.Node targetNode = record.get("n2").asNode();
+				Entity sourceEntity = getEntity(sourceNode);
+				Entity targetEntity = getEntity(targetNode);
+				association.setSourceEntity(sourceEntity);
+				association.setSourceName(sourceEntity.getQName());
+				association.setTargetEntity(targetEntity);
+				association.setTargetName(targetEntity.getQName());
+				break;
 			}
 		} catch(Exception e) {
 			log.log(Level.SEVERE, "", e);
@@ -233,32 +254,32 @@ public class Neo4jEntityService implements EntityService {
 		}
 		return association;
 	}
-	
+
 	public Association getAssociation(QName qname, long source, long target) throws InvalidAssociationException {
-		Association association = null;			
+		Association association = null;
 		Session session = driver.session();
 		String query = "MATCH (n1)-[r]->(n2) WHERE id(n1) = "+source+" and id(n2) = "+target+" and r.qname = '"+qname.toString()+"' return n1,r,n2;";
 		StatementResult result = session.run(query);
 		try {
 			while(result.hasNext()) {
-			    Record record = result.next();
-			    org.neo4j.driver.v1.types.Relationship r = record.get("r").asRelationship();
-			    association = new AssociationImpl(QName.createQualifiedName(r.type()), r.startNodeId(), r.endNodeId());
-			    association.setId(r.id());
-			    for(String key : r.keys()) {
-			    	Value val = r.get(key);
-			    	association.addProperty(QName.createQualifiedName(key), val.asObject());
-			    	
-			    }
-			    org.neo4j.driver.v1.types.Node sourceNode = record.get("n1").asNode();
-			    org.neo4j.driver.v1.types.Node targetNode = record.get("n2").asNode();
-			    Entity sourceEntity = getEntity(sourceNode);
-			    Entity targetEntity = getEntity(targetNode);
-			    association.setSourceEntity(sourceEntity);
-			    association.setSourceName(sourceEntity.getQName());
-			    association.setTargetEntity(targetEntity);
-			    association.setTargetName(targetEntity.getQName());
-			    break;
+				Record record = result.next();
+				org.neo4j.driver.v1.types.Relationship r = record.get("r").asRelationship();
+				association = new AssociationImpl(QName.createQualifiedName(r.type()), r.startNodeId(), r.endNodeId());
+				association.setId(r.id());
+				for(String key : r.keys()) {
+					Value val = r.get(key);
+					association.addProperty(QName.createQualifiedName(key), val.asObject());
+
+				}
+				org.neo4j.driver.v1.types.Node sourceNode = record.get("n1").asNode();
+				org.neo4j.driver.v1.types.Node targetNode = record.get("n2").asNode();
+				Entity sourceEntity = getEntity(sourceNode);
+				Entity targetEntity = getEntity(targetNode);
+				association.setSourceEntity(sourceEntity);
+				association.setSourceName(sourceEntity.getQName());
+				association.setTargetEntity(targetEntity);
+				association.setTargetName(targetEntity.getQName());
+				break;
 			}
 		} catch(Exception e) {
 			log.log(Level.SEVERE, "", e);
@@ -267,7 +288,7 @@ public class Neo4jEntityService implements EntityService {
 		}
 		return association;
 	}
-	
+
 	public Long addAssociation(Association association) throws InvalidAssociationException {
 		if((association.getSource() == null && association.getSourceEntity() == null) || (association.getTarget() == null && association.getTargetEntity() == null))
 			return null;
@@ -276,28 +297,30 @@ public class Neo4jEntityService implements EntityService {
 		if(startListener == null) startListener = persistenceListeners.get("default");
 		EntityPersistenceListener endListener = persistenceListeners.get(association.getTargetName().toString());
 		if(endListener == null) endListener = persistenceListeners.get("default");
-		
+
 		Session session = driver.session();
 		String query = "MATCH (n1),(n2) WHERE id(n1) = "+association.getSource()+" and id(n2) = "+association.getTarget();
-		query += " CREATE (n1)-[r:"+association.getQName().toString()+" $map]->(n2) return r;";
-		
+		query += " CREATE (n1)-[r:"+association.getQName().toString()+"]->(n2) return r;";
+
 		startListener.onBeforeAssociationAdd(association);
 		endListener.onBeforeAssociationAdd(association);
-		
+
 		StatementResult result = session.run(query, toMap(association,dictionary));
 		try	{
 			while(result.hasNext()) {
-			    Record record = result.next();
-			    org.neo4j.driver.v1.types.Relationship r = record.get("r").asRelationship();
-			    association.setId(r.id());
+				Record record = result.next();
+				org.neo4j.driver.v1.types.Relationship r = record.get("r").asRelationship();
+				association.setId(r.id());
 			}
 		} catch(Exception e) {
 			throw new InvalidAssociationException("", e);
 		} finally {
 			session.close();
-        }
-		startListener.onAfterAssociationAdd(association);			
+		}
+		startListener.onAfterAssociationAdd(association);
 		endListener.onAfterAssociationAdd(association);
+
+		cacheService.put("node", String.valueOf(association.getSource()), association.getSourceEntity());
 		return association.getId();
 	}
 
@@ -312,9 +335,9 @@ public class Neo4jEntityService implements EntityService {
 				if(i % 10 == 0) System.out.println(i+" of "+entities.size()+" nodes migrated");
 			}
 			i = 0;
-			for(Entity entity : entities) {	    		
+			for(Entity entity : entities) {
 				List<Association> sourceAssociations = entity.getSourceAssociations();
-				for(Association assoc : sourceAssociations) {		    				
+				for(Association assoc : sourceAssociations) {
 					try	{
 						//String qname = assoc.getQName().toString();
 						Long sourceid = entity.getId();
@@ -332,7 +355,7 @@ public class Neo4jEntityService implements EntityService {
 					}
 				}
 				List<Association> targetAssociations = entity.getTargetAssociations();
-				for(Association assoc : targetAssociations) {		    				
+				for(Association assoc : targetAssociations) {
 					try	{
 						//String qname = assoc.getQName().toString();
 						Long sourceid = assoc.getSource();
@@ -356,7 +379,7 @@ public class Neo4jEntityService implements EntityService {
 			throw new InvalidEntityException("", e);
 		}
 	}
-	
+
 	public Long addEntity(Entity entity) throws InvalidEntityException {
 		try	{
 			DataDictionary dictionary = dictionaryService.getDataDictionary(entity.getDictionary());
@@ -364,15 +387,15 @@ public class Neo4jEntityService implements EntityService {
 			EntityPersistenceListener listener = persistenceListeners.get(entity.getQName().toString());
 			if(listener == null) listener = persistenceListeners.get("default");
 			if(listener != null) listener.onBeforeAdd(entity);
-			
+
 			Session session = driver.session();
 			Map<String,Object> map = toMap(entity, dictionary);
 			StatementResult result = session.run("CREATE (n $map) return n;", map);
 			org.neo4j.driver.v1.types.Node n = null;
 			while(result.hasNext()) {
-			    Record record = result.next();
-			    n = record.get("n").asNode();
-			    return n.id();
+				Record record = result.next();
+				n = record.get("n").asNode();
+				return n.id();
 			}
 			/*
 			List<Association> sourceAssociations = entity.getSourceAssociations();
@@ -393,10 +416,10 @@ public class Neo4jEntityService implements EntityService {
 			if(listener != null) {
 				listener.onAfterAdd(entity);
 			}
-			cacheService.put("entityCache", String.valueOf(entity.getId()), entity);			
+			cacheService.put("entityCache", String.valueOf(entity.getId()), entity);
 		} catch(Exception e) {
 			e.printStackTrace();
-			throw new InvalidEntityException("entity model not found for qname:"+entity.getQName().toString(), e);			
+			throw new InvalidEntityException("entity model not found for qname:"+entity.getQName().toString(), e);
 		}
 		return entity.getId();
 	}
@@ -408,12 +431,13 @@ public class Neo4jEntityService implements EntityService {
 		properties.put("uid", entity.getUid());
 		properties.put("accessed", entity.getAccessed());
 		properties.put("created", entity.getCreated());
-		properties.put("creator", entity.getCreator());		
+		properties.put("creator", entity.getCreator());
 		properties.put("modified", entity.getModified());
 		properties.put("modifier", entity.getModifier());
 		properties.put("xid", entity.getXid());
 		properties.put("user", entity.getUser());
 		properties.put("deleted", entity.getDeleted());
+		properties.put("qname", entity.getQName().toString());
 		properties.put(SystemModel.NAME.toString(), entity.getName());
 		try {
 			List<ModelField> fields = dictionary.getModelFields(entity.getQName());
@@ -424,8 +448,8 @@ public class Neo4jEntityService implements EntityService {
 						field = f;
 						break;
 					}
-				}						
-				if(field != null) {							
+				}
+				if(field != null) {
 					if(property.getValue() != null) {
 						properties.put(property.getQName().toString(), property.getValue());
 					}
@@ -441,7 +465,7 @@ public class Neo4jEntityService implements EntityService {
 	protected Map<String,Object> toMap(Association association, DataDictionary dictionary) {
 		Map<String,Object> map = new HashMap<String,Object>();
 		try {
-			ModelRelation model = dictionary.getModelRelation(association.getSourceName(), association.getTargetName());
+			ModelRelation model = dictionary.getModelRelation(association.getSourceName(), association.getQName());
 			List<ModelField> fields = model.getFields();
 			for(Property property : association.getProperties()) {
 				ModelField field = null;
@@ -450,8 +474,8 @@ public class Neo4jEntityService implements EntityService {
 						field = f;
 						break;
 					}
-				}						
-				if(field != null) {							
+				}
+				if(field != null) {
 					if(property.getValue() != null) {
 						map.put(property.getQName().toString(), property.getValue());
 					}
@@ -461,61 +485,74 @@ public class Neo4jEntityService implements EntityService {
 			}
 		} catch(DataDictionaryException e) {
 			log.log(Level.SEVERE, "", e);
-		}		
+		}
 		return map;
 	}
-	
+
 	public Long addEntity(Long source, Long target, QName association, List<Property> properties, Entity entity) throws InvalidEntityException {
 		try	{
-			addEntity(entity);
+			entity.setId(addEntity(entity));
 			Association assoc = null;
 			if(source != null) assoc = getAssociation(association, source, entity.getId());
 			else if(target != null) assoc = getAssociation(association, entity.getId(), target);
+
+			if ( source != null && assoc == null && target == null ) {
+				assoc = new AssociationImpl(association, source, entity.getId());
+				Entity sourceEntity = getEntity(source);
+				assoc.setSourceEntity(sourceEntity);
+				assoc.setSourceName(sourceEntity.getQName());
+				assoc.setTargetEntity(entity);
+				assoc.setTargetName(entity.getQName());
+
+			} else {
+				throw new InvalidEntityException("invalid association source:"+source+" target:"+target);
+			}
+
 			if(assoc != null) {
-				if(properties != null) {
-					for(Property property : properties) {
+				if (properties != null) {
+					for (Property property : properties) {
 						assoc.getProperties().add(property);
 					}
 				}
 				addAssociation(assoc);
-				return assoc.getId();
-			} else {
-				throw new InvalidEntityException("invalid association source:"+source+" target:"+target);
-			}			
+			}
+			return assoc.getId();
 		} catch(InvalidAssociationException e1) {
 			e1.printStackTrace();
-		} 
-		return null;
+		}
+
+		cacheService.put("entityCache", String.valueOf(entity.getId()), entity);
+		return entity.getId();
 	}
-	
+
 	public void updateAssociation(Association association) throws InvalidAssociationException {
 		try	{
 			//Node startNode = association.getSource() != null ? nodeService.getNode(association.getSource()) : nodeService.getNode(association.getSourceEntity().getId());
 			//Node endNode = association.getTarget() != null ? nodeService.getNode(association.getTarget()) : nodeService.getNode(association.getTargetEntity().getId());
 			Entity sourceEntity = getEntity(association.getSource());
 			Entity targetEntity = getEntity(association.getTarget());
-			
+
 			association.setSourceName(sourceEntity.getQName());
 			association.setTargetName(targetEntity.getQName());
-						
+
 			EntityPersistenceListener startListener = persistenceListeners.get(association.getSourceName().toString());
 			if(startListener == null) startListener = persistenceListeners.get("default");
 			EntityPersistenceListener endListener = persistenceListeners.get(association.getTargetName().toString());
 			if(endListener == null) endListener = persistenceListeners.get("default");
-			
+
 			startListener.onBeforeAssociationUpdate(association);
 			endListener.onBeforeAssociationUpdate(association);
-			
+
 			removeAssociation(association.getId());
 			addAssociation(association);
-			
+
 			startListener.onAfterAssociationUpdate(association);
 			endListener.onAfterAssociationUpdate(association);
 		} catch(Exception e) {
 			throw new InvalidAssociationException("", e);
 		}
 	}
-	
+
 	public void updateEntity(Entity entity) throws InvalidEntityException {
 		try	{
 			DataDictionary dictionary = dictionaryService.getDataDictionary(entity.getDictionary());
@@ -531,9 +568,9 @@ public class Neo4jEntityService implements EntityService {
 				StatementResult result = session.run("MATCH (n) WHERE ID(n) = "+entity.getId()+" SET n=$map return n;", map);
 				org.neo4j.driver.v1.types.Node n = null;
 				while(result.hasNext()) {
-				    Record record = result.next();
-				    n = record.get("n").asNode();
-				    log.log(Level.INFO, "updated node:"+n.id());
+					Record record = result.next();
+					n = record.get("n").asNode();
+					log.log(Level.INFO, "updated node:"+n.id());
 				}
 				for(Association assoc : entity.getSourceAssociations()) {
 					if(assoc.getId() == null) {
@@ -556,7 +593,7 @@ public class Neo4jEntityService implements EntityService {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void cascadeProperty(QName qname, Long id, QName association, QName propertyName, Serializable propertyValue) throws InvalidEntityException, InvalidPropertyException {
 		try	{
 			Entity entity = getEntity(id);
@@ -571,7 +608,7 @@ public class Neo4jEntityService implements EntityService {
 			throw new InvalidEntityException("", e);
 		}
 	}
-	
+
 	public void removeAssociation(long id) throws InvalidAssociationException {
 		Session session = driver.session();
 		try	{
@@ -579,21 +616,21 @@ public class Neo4jEntityService implements EntityService {
 			Entity source = association.getSourceEntity() != null ? association.getSourceEntity() : getEntity(association.getSource());
 			Entity target = association.getTargetEntity() != null ? association.getTargetEntity() : getEntity(association.getTarget());
 			association.setSourceName(source.getQName());
-			association.setTargetName(target.getQName());			
-			
+			association.setTargetName(target.getQName());
+
 			EntityPersistenceListener startListener = persistenceListeners.get(association.getSourceName().toString());
 			if(startListener == null) startListener = persistenceListeners.get("default");
 			EntityPersistenceListener endListener = persistenceListeners.get(association.getTargetName().toString());
 			if(endListener == null) endListener = persistenceListeners.get("default");
 			startListener.onBeforeAssociationDelete(association);
 			endListener.onBeforeAssociationDelete(association);
-						
+
 			StatementResult result = session.run("MATCH [r] WHERE ID(r) = "+association.getId()+" DELETE r;");
 			while(result.hasNext()) {
-			    Record record = result.next();
-			    org.neo4j.driver.v1.types.Relationship r = record.get("r").asRelationship();
-			    log.log(Level.INFO, "deleted association:"+r.id());
-			}			
+				Record record = result.next();
+				org.neo4j.driver.v1.types.Relationship r = record.get("r").asRelationship();
+				log.log(Level.INFO, "deleted association:"+r.id());
+			}
 			startListener.onAfterAssociationDelete(association);
 			endListener.onAfterAssociationDelete(association);
 			//cacheService.remove("entityCache", String.valueOf(association.getSource()));
@@ -604,11 +641,11 @@ public class Neo4jEntityService implements EntityService {
 			session.close();
 		}
 	}
-	
+
 	public void removeEntity(QName qname, long id) throws InvalidEntityException {
 		Session session = driver.session();
 		try	{
-			/** Cascade the delete to entities marked so in the data dictionary 
+			/** Cascade the delete to entities marked so in the data dictionary
 			 *  regardless, delete them from the cache so they are reloaded on next request. **/
 			Entity entity = getEntity(id);
 			if(entity != null) {
@@ -616,17 +653,17 @@ public class Neo4jEntityService implements EntityService {
 				if(dictionary != null) {
 					EntityPersistenceListener listener = persistenceListeners.get(entity.getQName().toString());
 					if(listener != null) listener.onBeforeDelete(entity);
-					
+
 					List<QName> cascades = new ArrayList<QName>();
 					Model model = dictionary.getModel(entity.getQName());
-					while(model != null) {						
+					while(model != null) {
 						for(ModelRelation relation : model.getSourceRelations()) {
 							if(relation.isCascade()) {
 								cascades.add(relation.getQName());
 							}
 						}
 						model = model.getParent();
-					}					
+					}
 					if(cascades.size() > 0) {
 						List<Long> processedIds = new ArrayList<Long>();
 						for(Association assoc : entity.getSourceAssociations()) {
@@ -642,14 +679,14 @@ public class Neo4jEntityService implements EntityService {
 					for(Association assoc : entity.getTargetAssociations()) {
 						removeAssociation(assoc.getId());
 					}
-					
+
 					StatementResult result = session.run("MATCH (n) WHERE ID(n) = "+entity.getId()+" DELETE n;");
 					while(result.hasNext()) {
-					    Record record = result.next();
-					    org.neo4j.driver.v1.types.Node n = record.get("r").asNode();
-					    log.log(Level.INFO, "deleted entity:"+n.id());
+						Record record = result.next();
+						org.neo4j.driver.v1.types.Node n = record.get("r").asNode();
+						log.log(Level.INFO, "deleted entity:"+n.id());
 					}
-					
+
 					log.log(Level.INFO,"removing node:"+entity.getId());
 					if(listener != null) listener.onAfterDelete(entity);
 				}
@@ -660,17 +697,17 @@ public class Neo4jEntityService implements EntityService {
 			session.close();
 		}
 	}
-	
+
 	public Object export(FormatInstructions instructions, Entity entity) throws InvalidEntityException {
 		ExportProcessor defaultProcessor = getExportProcessor("default");
-		ExportProcessor processor = getExportProcessor(entity.getQName().toString());		
+		ExportProcessor processor = getExportProcessor(entity.getQName().toString());
 		if(processor != null) {
 			return processor.export(instructions, entity);
 		} else {
 			return defaultProcessor.export(instructions, entity);
 		}
 	}
-	
+
 	public Object export(FormatInstructions instructions, Association association)	throws InvalidEntityException {
 		ExportProcessor defaultProcessor = getExportProcessor("default");
 		ExportProcessor processor = getExportProcessor(association.getTargetName().toString());
@@ -692,7 +729,7 @@ public class Neo4jEntityService implements EntityService {
 	public void registerExportProcessor(String name, ExportProcessor processor) {
 		exporters.put(name, processor);
 	}
-	
+
 	public List<ImportProcessor> getImportProcessors(String name) {
 		List<ImportProcessor> processors = new ArrayList<ImportProcessor>();
 		for(String key : importers.keySet()) {
@@ -703,13 +740,13 @@ public class Neo4jEntityService implements EntityService {
 		}
 		return processors;
 	}
-	
+
 	public ExportProcessor getExportProcessor(String name) {
 		ExportProcessor processor = exporters.get(name);
 		if(processor != null) return processor;
 		else return exporters.get("default");
 	}
-	
+
 	public EntityPersistenceListener getEntityPersistenceListener(String name) {
 		EntityPersistenceListener listener = persistenceListeners.get(name);
 		if(listener == null ) listener = persistenceListeners.get("default");
@@ -730,9 +767,9 @@ public class Neo4jEntityService implements EntityService {
 	public void setPersistenceListeners(Map<String, EntityPersistenceListener> persistenceListeners) {
 		this.persistenceListeners = persistenceListeners;
 	}
-	
+
 	public void registerEntityPersistenceListener(String name, EntityPersistenceListener component) {
 		persistenceListeners.put(name, component);
 	}
-					
+
 }
