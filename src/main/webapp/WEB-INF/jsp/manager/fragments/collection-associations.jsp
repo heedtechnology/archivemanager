@@ -2,7 +2,7 @@
     <c:if test="${am:hasProperty(collection,'corporations')}">
         <div id="collection-corporations" title="Corporations">
             <div id="collection-corporations-toolbar">
-                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="javascript:alert('add')"></a>
+                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="loadAndOpen('openapps_org_classification_1_0_corporation')"></a>
                 <a href="javascript:void(0)" class="icon-remove" style="margin:0 5px;" onclick="javascript:alert('edit')"></a>
                 <a href="javascript:void(0)" class="icon-help" style="float:right;margin:0 5px;" onclick="javascript:alert('help')"></a>
             </div>
@@ -18,7 +18,7 @@
     <c:if test="${am:hasProperty(collection,'digitalObjects')}">
         <div id="collection-digital-objects" title="Digital Objects">
             <div id="collection-digital-objects-toolbar">
-                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="javascript:alert('add')"></a>
+                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="loadAndOpen('openapps_org_repository_1_0_digital_objects')"></a>
                 <a href="javascript:void(0)" class="icon-remove" style="margin:0 5px;" onclick="javascript:alert('edit')"></a>
                 <a href="javascript:void(0)" class="icon-help" style="float:right;margin:0 5px;" onclick="javascript:alert('help')"></a>
             </div>
@@ -34,7 +34,7 @@
     <c:if test="${am:hasProperty(collection,'notes')}">
         <div id="collection-notes" title="Notes">
             <div id="collection-notes-toolbar">
-                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="javascript:alert('add')"></a>
+                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="loadAndOpen('openapps_org_system_1_0_notes')"></a>
                 <a href="javascript:void(0)" class="icon-remove" style="margin:0 5px;" onclick="javascript:alert('edit')"></a>
                 <a href="javascript:void(0)" class="icon-help" style="float:right;margin:0 5px;" onclick="javascript:alert('help')"></a>
             </div>
@@ -50,7 +50,7 @@
     <c:if test="${am:hasProperty(collection,'people')}">
         <div id="collection-people" title="People">
             <div id="collection-people-toolbar">
-                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="javascript:alert('add')"></a>
+                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="loadAndOpen('openapps_org_classification_1_0_person')"></a>
                 <a href="javascript:void(0)" class="icon-remove" style="margin:0 5px;" onclick="javascript:alert('edit')"></a>
                 <a href="javascript:void(0)" class="icon-help" style="float:right;margin:0 5px;" onclick="javascript:alert('help')"></a>
             </div>
@@ -66,7 +66,7 @@
     <c:if test="${am:hasProperty(collection,'permissions')}">
         <div id="collection-permissions" title="Permissions">
             <div id="collection-permissions-toolbar">
-                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="javascript:alert('add')"></a>
+                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="loadAndOpen('openapps_org_system_1_0_permissions')"></a>
                 <a href="javascript:void(0)" class="icon-remove" style="margin:0 5px;" onclick="javascript:alert('edit')"></a>
                 <a href="javascript:void(0)" class="icon-help" style="float:right;margin:0 5px;" onclick="javascript:alert('help')"></a>
             </div>
@@ -82,7 +82,7 @@
     <c:if test="${am:hasProperty(collection,'subjects')}">
         <div id="collection-subjects" title="Subjects">
             <div id="collection-subjects-toolbar">
-                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="javascript:alert('add')"></a>
+                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="loadAndOpen('openapps_org_classification_1_0_subject')"></a>
                 <a href="javascript:void(0)" class="icon-remove" style="margin:0 5px;" onclick="javascript:alert('edit')"></a>
                 <a href="javascript:void(0)" class="icon-help" style="float:right;margin:0 5px;" onclick="javascript:alert('help')"></a>
             </div>
@@ -98,7 +98,7 @@
     <c:if test="${am:hasProperty(collection,'weblinks')}">
         <div id="collection-web_links" title="Web Links" data-options="selected:true">
             <div id="collection-weblinks-toolbar">
-                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="javascript:alert('add')"></a>
+                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="loadAndOpen('openapps_org_content_1_0_web_links')"></a>
                 <a href="javascript:void(0)" class="icon-remove" style="margin:0 5px;" onclick="javascript:alert('edit')"></a>
                 <a href="javascript:void(0)" class="icon-help" style="float:right;margin:0 5px;" onclick="javascript:alert('help')"></a>
             </div>

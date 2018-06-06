@@ -13,9 +13,11 @@
 		<link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/color.css">
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="/css/apps/archivemanager-apps.css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
 		<script type="text/javascript" src="https://www.jeasyui.com/easyui/easyloader.js"></script>
+		<script type="text/javascript" src="https://www.jeasyui.com/easyui/datagrid-scrollview.js"></script>
+		<script type="text/javascript" src="/js/apps/utilities.js"></script>
 		<script src="/js/apps/archivemanager-apps.js"></script>
 	</head>
 	<body>
