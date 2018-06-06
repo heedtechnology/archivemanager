@@ -5,9 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObjectBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.archivemanager.model.ContentType;
 import org.heed.openapps.QName;
 import org.heed.openapps.SystemModel;
 import org.heed.openapps.User;
@@ -37,6 +41,27 @@ public class JsonEntityServiceController extends WebserviceSupport {
 	private Map<Long, List<Long>> cache = new HashMap<Long, List<Long>>();
 	public static final QName OPENAPPS_ENTITIES = new QName(SystemModel.OPENAPPS_SYSTEM_NAMESPACE, "entities");
 
+	@ResponseBody
+	@RequestMapping(value = "/named_entities/get.json", method = RequestMethod.GET)
+	public RestResponse<Object> fetchNamedEntities(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam String qname) throws Exception {
+
+		QName qName = QName.createQualifiedName(qname);
+		prepareResponse(response);
+		RestResponse<Object> data = new RestResponse<Object>();
+
+		List<Entity> entities = getEntityService().getEntities(qName);
+
+		JsonArrayBuilder builder = Json.createArrayBuilder();
+		int i = 0;
+		for ( Entity c : entities ){
+			JsonObjectBuilder object = Json.createObjectBuilder();
+			builder.add(object.add("name", c.getName())).build();
+		}
+
+		String jsonArray = builder.build().toString();
+		return data;
+	}
 
 	@ResponseBody
 	@RequestMapping(value="/get.json", method = RequestMethod.GET)
