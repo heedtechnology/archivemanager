@@ -7,8 +7,8 @@
                 <a href="javascript:void(0)" class="icon-help" style="float:right;margin:0 5px;" onclick="javascript:alert('help')"></a>
             </div>
             <div class="easyui-panel" title=" " style="width:100%;height:100%;padding:5px;" data-options="tools:'#collection-corporations-toolbar'">
-                <ul class="easyui-datalist" style="width:100%;height:100%;" data-options="showHeader:false,lines:true,checkbox:true,nowrap:false,singleSelect:false,emptyMsg:'no corporations'">
-                    <c:forEach items="${corporations.corporations}" var="corporation" varStatus="rstatus">
+                <ul id="coll_assoc_dl_corp" class="easyui-datalist" style="width:100%;height:100%;" data-options="showHeader:false,lines:true,checkbox:true,nowrap:false,singleSelect:false,emptyMsg:'no corporations'">
+                    <c:forEach items="${collection.corporations}" var="corporation" varStatus="rstatus">
                         <li id="${corporation.id}">${corporation.name}</li>
                     </c:forEach>
                 </ul>
@@ -18,7 +18,7 @@
     <c:if test="${am:hasProperty(collection,'digitalObjects')}">
         <div id="collection-digital-objects" title="Digital Objects">
             <div id="collection-digital-objects-toolbar">
-                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="loadAndOpen('openapps_org_repository_1_0_digital_objects')"></a>
+                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="loadAndOpen('openapps_org_content_1_0_file')"></a>
                 <a href="javascript:void(0)" class="icon-remove" style="margin:0 5px;" onclick="javascript:alert('edit')"></a>
                 <a href="javascript:void(0)" class="icon-help" style="float:right;margin:0 5px;" onclick="javascript:alert('help')"></a>
             </div>
@@ -39,7 +39,7 @@
                 <a href="javascript:void(0)" class="icon-help" style="float:right;margin:0 5px;" onclick="javascript:alert('help')"></a>
             </div>
             <div class="easyui-panel" title=" " style="width:100%;height:100%;padding:5px;" data-options="tools:'#collection-notes-toolbar'">
-                <ul class="easyui-datalist" style="width:100%;height:100%;" data-options="showHeader:false,lines:true,checkbox:true,nowrap:false,singleSelect:false,emptyMsg:'no permissions'">
+                <ul class="easyui-datalist" style="width:100%;height:100%;" data-options="showHeader:false,lines:true,checkbox:true,nowrap:false,singleSelect:false,emptyMsg:'no notes'">
                     <c:forEach items="${collection.notes}" var="note" varStatus="rstatus">
                         <li id="${note.id}">${note.type}</li>
                     </c:forEach>

@@ -1155,7 +1155,7 @@
 			</associations>
 		</model>
 		<model namespace="openapps_org_repository_1_0" localname="repository_object">
-			<description>AM Component</description>
+			<description>AM Component</description>ƒ
 			<properties>
 				<property type="1" namespace="openapps_org_repository_1_0" localname="isPublic" mandatory="false" unique="false" hidden="false" label="false"></property>
 				<property type="1" namespace="openapps_org_repository_1_0" localname="internal" mandatory="false" unique="false" hidden="false" label="false"></property>
