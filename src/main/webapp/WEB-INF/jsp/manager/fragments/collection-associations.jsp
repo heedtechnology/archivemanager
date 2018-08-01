@@ -25,7 +25,7 @@
             <div class="easyui-panel" title=" " style="width:100%;height:100%;padding:5px;" data-options="tools:'#collection-digital-objects-toolbar'">
                 <ul class="easyui-datalist" style="width:100%;height:100%;" data-options="showHeader:false,lines:true,checkbox:true,nowrap:false,singleSelect:false,emptyMsg:'no digital objects'">
                     <c:forEach items="${collection.digitalObjects}" var="digitalObject" varStatus="rstatus">
-                        <li id="${digitalObject.id}">${digitalObject.type}</li>
+                        <li id="${digitalObject.id}">${digitalObject.title}</li>
                     </c:forEach>
                 </ul>
             </div>

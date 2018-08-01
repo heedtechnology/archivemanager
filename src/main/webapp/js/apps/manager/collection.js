@@ -352,10 +352,6 @@
                               bottom: ''
                           }
                       });
-                      $('#coll_assoc_dl_corp').datalist('appendRow',{
-                        id: 123456,
-                        name: 'haddy'
-                      });
                   }
               }
           });

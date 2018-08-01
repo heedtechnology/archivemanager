@@ -48,7 +48,7 @@ function getAssocQName(title){
                   assoc_qname = 'openapps_org_classification_1_0_named_entities';
                   break;
               case 'Digital Objects':
-                  assoc_qname = 'openapps_org_repository_1_0_digital_objects';
+                  assoc_qname = 'openapps_org_content_1_0_files';
                   break;
               case 'Notes':
                   assoc_qname = 'openapps_org_system_1_0_notes';
@@ -76,22 +76,22 @@ function getTargetQName(title){
                   assoc_qname = 'openapps_org_classification_1_0_corporation';
                   break;
               case 'Digital Objects':
-                  assoc_qname = 'openapps_org_repository_1_0_digital_objects';
+                  assoc_qname = 'openapps_org_content_1_0_file';
                   break;
               case 'Notes':
-                  assoc_qname = 'openapps_org_system_1_0_notes';
+                  assoc_qname = 'openapps_org_system_1_0_note';
                   break;
               case 'People':
-                  assoc_qname = 'openapps_org_classification_1_0_named_entities';
+                  assoc_qname = 'openapps_org_classification_1_0_person';
                   break;
               case 'Permissions':
-                  assoc_qname = 'openapps_org_system_1_0_permissions';
+                  assoc_qname = 'openapps_org_system_1_0_permission';
                   break;
               case 'Subjects':
-                  assoc_qname = 'openapps_org_classification_1_0_subjects';
+                  assoc_qname = 'openapps_org_classification_1_0_subject';
                   break;
               case 'Web Links':
-                  assoc_qname = 'openapps_org_content_1_0_web_links';
+                  assoc_qname = 'openapps_org_content_1_0_web_link';
                   break;
           }
   return assoc_qname;
