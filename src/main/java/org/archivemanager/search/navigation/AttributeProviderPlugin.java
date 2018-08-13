@@ -49,7 +49,7 @@ public abstract class AttributeProviderPlugin implements SearchPlugin {
 	}
 	@Override
 	public void response(SearchRequest request, SearchResponse response) {
-		if(request.isAttributes()) {
+		if(request.hasAttributes()) {
 			List<SearchAttribute> result = new ArrayList<SearchAttribute>();
 			for(SearchAttribute attribute : attributes) {
 				SearchAttribute att = new SearchAttribute(attribute.getName());

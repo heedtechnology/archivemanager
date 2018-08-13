@@ -38,8 +38,9 @@ import org.heed.openapps.reporting.ReportingService;
 import org.heed.openapps.scheduling.SchedulingService;
 import org.heed.openapps.security.SecurityService;
 import org.heed.openapps.util.NumberUtility;
-import org.heed.openapps.search.EntityQuery;
-import org.heed.openapps.search.EntityResultSet;
+import org.heed.openapps.search.SearchRequest;
+import org.heed.openapps.search.SearchResponse;
+import org.heed.openapps.search.SearchResult;
 import org.heed.openapps.search.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -79,22 +80,21 @@ public abstract class WebserviceSupport {
   protected void getUser(User user) throws Exception {
     Long nodeId = (Long) cacheService.get("openapps.security.users", String.valueOf(user.getXid()));
     if (nodeId == null) {
-      EntityQuery query = new EntityQuery(SystemModel.USER);
-      query.setType(EntityQuery.TYPE_LUCENE_TEXT);
-      query.setXid(user.getXid());
-      EntityResultSet userEntities = searchService.search(query);
+      SearchRequest query = new SearchRequest(SystemModel.USER);
+      query.addParameter("xid", String.valueOf(user.getXid()));
+      SearchResponse userEntities = searchService.search(query);
       Entity userEntity = null;
       if (userEntities != null && userEntities.getResults().size() > 0) {
         if (userEntities.getResults().size() > 1) {
-          for (Entity u : userEntities.getResults()) {
+          for (SearchResult u : userEntities.getResults()) {
             if (userEntity == null) {
-              userEntity = u;
+              userEntity = u.getEntity();
             } else {
               entityService.removeEntity(null, u.getId());
             }
           }
         } else {
-          userEntity = userEntities.getResults().get(0);
+          userEntity = userEntities.getResults().get(0).getEntity();
         }
         nodeId = userEntity.getId();
         cacheService

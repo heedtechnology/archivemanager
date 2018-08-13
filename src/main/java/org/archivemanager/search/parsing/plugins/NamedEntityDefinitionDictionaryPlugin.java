@@ -20,12 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.heed.openapps.dictionary.ClassificationModel;
-import org.heed.openapps.entity.Entity;
 import org.heed.openapps.search.SearchService;
 import org.heed.openapps.search.Definition;
 import org.heed.openapps.search.DictionaryPlugin;
-import org.heed.openapps.search.EntityQuery;
-import org.heed.openapps.search.EntityResultSet;
+import org.heed.openapps.search.SearchRequest;
+import org.heed.openapps.search.SearchResponse;
+import org.heed.openapps.search.SearchResult;
 import org.heed.openapps.search.dictionary.NamedEntityDefinition;
 
 
@@ -36,9 +36,9 @@ public class NamedEntityDefinitionDictionaryPlugin implements DictionaryPlugin {
 	public List<Definition> getDefinitions() {
 		List<Definition> defs = new ArrayList<Definition>();
 		try {
-			EntityResultSet names = searchService.search(new EntityQuery(ClassificationModel.NAMED_ENTITY, null, "name", true));
+			SearchResponse names = searchService.search(new SearchRequest(ClassificationModel.NAMED_ENTITY, null, "name", true));
 			if(names != null) {
-			for(Entity name : names.getResults()) {
+			for(SearchResult name : names.getResults()) {
 				Long id = name.getId();
 				String search_values = name.getProperty(ClassificationModel.NAMED_ENTITY_SEARCH_VALUES).toString();
 				if(search_values != null && !search_values.equals("")) {

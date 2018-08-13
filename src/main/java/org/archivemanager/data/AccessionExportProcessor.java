@@ -62,4 +62,10 @@ public class AccessionExportProcessor implements ExportProcessor {
 		else return toXml(association, instructions.printSources(), instructions.printTargets());
 		
 	}
+
+	@Override
+	public Object export(FormatInstructions instructions, List<Entity> entities) throws InvalidEntityException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

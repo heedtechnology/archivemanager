@@ -1,20 +1,18 @@
-<%@ include file="../fragments/apps_header.jsp" %>
-<link rel="stylesheet" type="text/css" href="/css/apps/easyui/jquery-texteditor.css">
-<script type="text/javascript" src="/js/apps/easyui/jquery.texteditor.js"></script>
-<script type="text/javascript" src="/js/apps/manager/home.js"></script>
-<script type="text/javascript" src="/js/apps/utilities.js"></script>
+<%@ include file="../fragments/site_header.jsp" %>
+<script type="text/javascript" src="/js/manager/home.js"></script>
 <input type="hidden" id="qname" value="openapps_org_repository_1_0_repository"/>
 <div id="tt"></div>
 <style>
    #cc .combo-panel{height:75px;}
+   .tabs{padding-left:0px;}
 </style>
 <table id="dg" title="Collection Manager" class="easyui-datagrid" toolbar="#toolbar" pagination="true"
    rownumbers="true" fitColumns="true" singleSelect="true" pageSize="20" url="/service/search/entity.json">
    <thead>
       <tr>
-         <th field="id" width="5">ID</th>
+         <th field="id" width="8">ID</th>
          <th field="name" width="50">Name</th>
-         <th field="abstractNote" width="50">Description</th>
+         <th field="abstractNote" width="100">Description</th>
       </tr>
    </thead>
 </table>
@@ -28,4 +26,4 @@
    </div>
 </div>
 <%@ include file="./fragments/home-add-dialog.jsp" %>
-<%@ include file="../fragments/apps_footer.jsp" %>
+<%@ include file="../fragments/site_footer.jsp" %>

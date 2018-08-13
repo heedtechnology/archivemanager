@@ -5,8 +5,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
 import java.util.logging.Logger;
 
 import javax.json.Json;
@@ -15,7 +13,6 @@ import javax.json.JsonObjectBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.archivemanager.model.ContentType;
 import org.heed.openapps.QName;
 import org.heed.openapps.SystemModel;
 import org.heed.openapps.User;
@@ -23,10 +20,12 @@ import org.heed.openapps.data.RestRequest;
 import org.heed.openapps.data.RestResponse;
 import org.heed.openapps.entity.Association;
 import org.heed.openapps.entity.Entity;
-import org.heed.openapps.entity.EntityImpl;
 import org.heed.openapps.entity.Property;
 import org.heed.openapps.entity.data.FormatInstructions;
 import org.heed.openapps.scheduling.Job;
+import org.heed.openapps.search.SearchRequest;
+import org.heed.openapps.search.SearchResponse;
+import org.heed.openapps.search.SearchResult;
 import org.heed.openapps.util.NumberUtility;
 import org.heed.openapps.util.WebUtility;
 import org.springframework.stereotype.Controller;
@@ -57,14 +56,15 @@ public class JsonEntityServiceController extends WebserviceSupport {
     QName qName = QName.createQualifiedName(qname);
     prepareResponse(response);
     RestResponse<Object> data = new RestResponse<Object>();
-
-    List<Entity> entities = getEntityService().getEntities(qName);
-
+    
+    SearchRequest query  = new SearchRequest(qName);
+    SearchResponse results = getSearchService().search(query);
+    
     JsonArrayBuilder builder = Json.createArrayBuilder();
     int i = 0;
-    for (Entity c : entities) {
+    for (SearchResult c : results.getResults()) {
       JsonObjectBuilder object = Json.createObjectBuilder();
-      builder.add(object.add("name", c.getName())).build();
+      builder.add(object.add("name", c.getEntity().getName())).build();
     }
 
     String jsonArray = builder.build().toString();

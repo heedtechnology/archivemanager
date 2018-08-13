@@ -12,8 +12,8 @@ import org.heed.openapps.entity.AssociationImpl;
 import org.heed.openapps.entity.Entity;
 import org.heed.openapps.entity.EntityImpl;
 import org.heed.openapps.entity.data.FileImportProcessor;
-import org.heed.openapps.search.EntityQuery;
-import org.heed.openapps.search.EntityResultSet;
+import org.heed.openapps.search.SearchRequest;
+import org.heed.openapps.search.SearchResponse;
 import org.heed.openapps.search.SearchService;
 import org.heed.openapps.util.IOUtility;
 import org.jsoup.Jsoup;
@@ -96,10 +96,10 @@ public class FilemakerXMLAccessionImportProcessor extends FileImportProcessor {
 		return in.trim();
 	}
 	protected void getCollection(Entity entity, String collectionName) throws Exception {
-		EntityQuery query = new EntityQuery(RepositoryModel.COLLECTION, "name", collectionName, null, true);
-		EntityResultSet result = searchService.search(query);
+		SearchRequest query = new SearchRequest(RepositoryModel.COLLECTION, "name", collectionName, null, true);
+		SearchResponse result = searchService.search(query);
 		if(result.getResults().size() > 0) {
-			Entity collection = result.getResults().get(0);
+			Entity collection = result.getResults().get(0).getEntity();
 			collection.addProperty(SystemModel.TITLE, collectionName);
 			Association assoc = new AssociationImpl(RepositoryModel.ACCESSIONS, collection.getId(), 0);
 			assoc.setSourceEntity(collection);
@@ -148,10 +148,10 @@ public class FilemakerXMLAccessionImportProcessor extends FileImportProcessor {
 				try {
 					if(currField == 0) {
 						collectionTitle = data.toString();
-						EntityQuery query = new EntityQuery(RepositoryModel.COLLECTION, "name", data.toString(), null, true);
-						EntityResultSet result = searchService.search(query);
+						SearchRequest query = new SearchRequest(RepositoryModel.COLLECTION, "name", data.toString(), null, true);
+						SearchResponse result = searchService.search(query);
 						if(result.getResults().size() > 0) {
-							Entity collection = result.getResults().get(0);
+							Entity collection = result.getResults().get(0).getEntity();
 							collection.addProperty(SystemModel.TITLE, data.toString());
 							Association assoc = new AssociationImpl(RepositoryModel.ACCESSIONS, collection.getId(), 0);
 							assoc.setSourceEntity(collection);

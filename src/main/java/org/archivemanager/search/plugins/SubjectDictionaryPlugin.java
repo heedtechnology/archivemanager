@@ -20,12 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.heed.openapps.dictionary.ClassificationModel;
-import org.heed.openapps.entity.Entity;
 import org.heed.openapps.search.SearchService;
 import org.heed.openapps.search.Definition;
 import org.heed.openapps.search.DictionaryPlugin;
-import org.heed.openapps.search.EntityQuery;
-import org.heed.openapps.search.EntityResultSet;
+import org.heed.openapps.search.SearchRequest;
+import org.heed.openapps.search.SearchResponse;
+import org.heed.openapps.search.SearchResult;
 import org.heed.openapps.search.dictionary.SubjectDefinition;
 
 
@@ -36,10 +36,10 @@ public class SubjectDictionaryPlugin implements DictionaryPlugin {
 	public List<Definition> getDefinitions() {
 		List<Definition> defs = new ArrayList<Definition>();
 		try {
-			EntityResultSet subjects = searchService.search(new EntityQuery(ClassificationModel.SUBJECT, null, "name", true));
+			SearchResponse subjects = searchService.search(new SearchRequest(ClassificationModel.SUBJECT, null, "name", true));
 			if(subjects != null) {
-				for(Entity subject : subjects.getResults()) {
-					SubjectDefinition def = new SubjectDefinition(subject.getName(), String.valueOf(subject.getId()));
+				for(SearchResult subject : subjects.getResults()) {
+					SubjectDefinition def = new SubjectDefinition(subject.getEntity().getName(), String.valueOf(subject.getId()));
 					defs.add(def);
 					/*
 					String search_values = name.getProperty(ClassificationModel.SUBJECT_SEARCH_VALUES).toString();

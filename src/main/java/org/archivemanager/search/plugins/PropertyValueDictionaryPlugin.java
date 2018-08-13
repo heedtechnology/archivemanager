@@ -24,11 +24,11 @@ import org.heed.openapps.dictionary.DataDictionary;
 import org.heed.openapps.dictionary.Model;
 import org.heed.openapps.dictionary.ModelField;
 import org.heed.openapps.dictionary.ModelFieldValue;
-import org.heed.openapps.entity.Entity;
 import org.heed.openapps.search.Definition;
 import org.heed.openapps.search.DictionaryPlugin;
-import org.heed.openapps.search.EntityQuery;
-import org.heed.openapps.search.EntityResultSet;
+import org.heed.openapps.search.SearchRequest;
+import org.heed.openapps.search.SearchResponse;
+import org.heed.openapps.search.SearchResult;
 import org.heed.openapps.search.SearchService;
 import org.heed.openapps.search.dictionary.PropertyValueDefinition;
 
@@ -58,11 +58,11 @@ public class PropertyValueDictionaryPlugin implements DictionaryPlugin {
 					
 				}
 			} else {
-				EntityQuery eQuery = new EntityQuery(entityQname);
-				EntityResultSet results = searchService.search(eQuery);
+				SearchRequest eQuery = new SearchRequest(entityQname);
+				SearchResponse results = searchService.search(eQuery);
 				List<String> values = new ArrayList<String>();
-				for(Entity result : results.getResults()) {
-					String value = result.getPropertyValue(propertyQname);
+				for(SearchResult result : results.getResults()) {
+					String value = result.getEntity().getPropertyValue(propertyQname);
 					if(!values.contains(value))
 						values.add(value);
 				}

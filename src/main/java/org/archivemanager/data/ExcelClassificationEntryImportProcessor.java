@@ -21,8 +21,8 @@ import org.heed.openapps.entity.AssociationImpl;
 import org.heed.openapps.entity.Entity;
 import org.heed.openapps.entity.EntityImpl;
 import org.heed.openapps.entity.data.FileImportProcessor;
-import org.heed.openapps.search.EntityQuery;
-import org.heed.openapps.search.EntityResultSet;
+import org.heed.openapps.search.SearchRequest;
+import org.heed.openapps.search.SearchResponse;
 import org.heed.openapps.search.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -72,16 +72,16 @@ public class ExcelClassificationEntryImportProcessor extends FileImportProcessor
 				try {
 					if(!names.containsKey(name)) {
 						String queryStr = name;//.replace(",", "");
-						EntityQuery query = new EntityQuery(ClassificationModel.PERSON, queryStr);
+						SearchRequest query = new SearchRequest(ClassificationModel.PERSON, queryStr);
 						query.setFields(new String[] {"openapps_org_system_1_0_name"});
-						EntityResultSet result = searchService.search(query);
+						SearchResponse result = searchService.search(query);
 						if(result.getResultSize() == 0) {
-							query = new EntityQuery(ClassificationModel.CORPORATION, name);
+							query = new SearchRequest(ClassificationModel.CORPORATION, name);
 							query.setFields(new String[] {"openapps_org_system_1_0_name"});
 							result = searchService.search(query);
 						}
 						if(result.getResultSize() > 0) {
-							names.put(name, result.getResults().get(0));
+							names.put(name, result.getResults().get(0).getEntity());
 							log.info("found "+queryStr);
 						} else {
 							names.put(name, null);

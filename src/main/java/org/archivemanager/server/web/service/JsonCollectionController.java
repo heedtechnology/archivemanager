@@ -1,11 +1,9 @@
 package org.archivemanager.server.web.service;
-import com.fasterxml.jackson.jaxrs.json.annotation.JSONP;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.io.StringWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -18,7 +16,6 @@ import javax.json.JsonObjectBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jdk.nashorn.internal.parser.JSONParser;
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.FileUploadException;
@@ -57,19 +54,18 @@ import org.heed.openapps.entity.Property;
 import org.heed.openapps.entity.ValidationResult;
 import org.heed.openapps.entity.data.FileImportProcessor;
 import org.heed.openapps.entity.data.FormatInstructions;
-import org.heed.openapps.search.EntityQuery;
-import org.heed.openapps.search.EntityResultSet;
+import org.heed.openapps.search.SearchRequest;
+import org.heed.openapps.search.SearchResponse;
+import org.heed.openapps.search.SearchResult;
 import org.heed.openapps.util.JSONUtility;
 import org.heed.openapps.util.NumberUtility;
 import org.heed.openapps.entity.EntitySorter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -140,16 +136,20 @@ public class JsonCollectionController extends WebserviceSupport {
 		if(parent == null || parent.equals("null")) parent = collectionId;
 		if(parent == null || parent.equals("null")) {
 			String query = req.getParameter("query");
-			EntityQuery eQuery = (query != null) ? new EntityQuery(RepositoryModel.COLLECTION, query, "openapps_org_system_1_0_name", true) : new EntityQuery(RepositoryModel.COLLECTION, null, "openapps_org_system_1_0_name", true);
+			SearchRequest eQuery = (query != null) ? new SearchRequest(RepositoryModel.COLLECTION, query, "openapps_org_system_1_0_name", true) : new SearchRequest(RepositoryModel.COLLECTION, null, "openapps_org_system_1_0_name", true);
 			int startRow = (req.getParameter("_startRow") != null) ? Integer.valueOf(req.getParameter("_startRow")) : 0;
 			int endRow = (req.getParameter("_endRow") != null) ? Integer.valueOf(req.getParameter("_endRow")) : 75;
 			eQuery.setStartRow(startRow);
 			eQuery.setEndRow(endRow);
 			eQuery.setFields(new String[] {"openapps_org_system_1_0_name"});
-			EntityResultSet collections = getSearchService().search(eQuery);
+			SearchResponse collections = getSearchService().search(eQuery);
 			FormatInstructions instructions = new FormatInstructions(false, false, false);
 			instructions.setFormat(FormatInstructions.FORMAT_JSON);
-			List<Entity> entities = collections.getResults();
+			List<Entity> entities = new ArrayList<Entity>();
+			SearchResponse results = getSearchService().search(eQuery);
+			for(SearchResult result : results.getResults()) {
+				entities.add(result.getEntity());
+			}
 
 			EntitySorter entitySorter = new EntitySorter(new Sort(Sort.STRING, SystemModel.NAME.toString(), true));
 
@@ -207,16 +207,15 @@ public class JsonCollectionController extends WebserviceSupport {
 					data.getResponse().getData().add(getNodeData(String.valueOf(targetEntity.getId()), parent, targetEntity.getName(), targetEntity.getQName().toString(), targetEntity.getQName().getLocalName()));
 					data.getResponse().setTotalRows(1);
 				} else {
-					EntityQuery eQuery = (query != null) ? new EntityQuery(RepositoryModel.COLLECTION, query, "openapps_org_system_1_0_name_e", false) : new EntityQuery(RepositoryModel.COLLECTION, null, "openapps_org_system_1_0_name_e", true);
-					eQuery.setType(EntityQuery.TYPE_LUCENE_TEXT);
+					SearchRequest eQuery = (query != null) ? new SearchRequest(RepositoryModel.COLLECTION, query, "openapps_org_system_1_0_name_e", false) : new SearchRequest(RepositoryModel.COLLECTION, null, "openapps_org_system_1_0_name_e", true);
 					eQuery.setStartRow(startRow);
 					eQuery.setEndRow(endRow);
 					eQuery.setFields(new String[]{"openapps_org_system_1_0_name"});
 					//if(user != null && !user.isAdministrator()) eQuery.setUser(user.getId());
-					EntityResultSet collections = getSearchService().search(eQuery);
+					SearchResponse collections = getSearchService().search(eQuery);
 					if(collections != null) {
-						for(Entity collection : collections.getResults()) {
-							data.getResponse().getData().add(getNodeData(String.valueOf(collection.getId()), "null", collection.getName(), "openapps_org_repository_1_0_collection", "collection"));
+						for(SearchResult collection : collections.getResults()) {
+							data.getResponse().getData().add(getNodeData(String.valueOf(collection.getId()), "null", collection.getEntity().getName(), "openapps_org_repository_1_0_collection", "collection"));
 						}
 						data.getResponse().setTotalRows(collections.getResultSize());
 					}
@@ -301,13 +300,11 @@ public class JsonCollectionController extends WebserviceSupport {
 					Crawler crawler = new CrawlerImpl(crawlerEntity);
 					String pathParm = crawler.getPath() + getPath(path) + "/" + entity.getName();
 
-					EntityQuery query = new EntityQuery(CrawlingModel.DOCUMENT);
-					query.setType(EntityQuery.TYPE_LUCENE_TEXT);
-					//query.getProperties().add(new Property(CrawlingModel.CRAWLERS, crawler.getId()));
+					SearchRequest query = new SearchRequest(CrawlingModel.DOCUMENT);
 					query.getProperties().add(new Property(SystemModel.PATH, "\""+pathParm+"\""));
-					EntityResultSet documents = getSearchService().search(query);
-					for(Entity document : documents.getResults()) {
-						out.write("{\"id\":"+document.getId()+", \"label\":\""+document.getName()+"\", \"path\":\""+document.getPropertyValue(SystemModel.PATH)+"\"},");
+					SearchResponse documents = getSearchService().search(query);
+					for(SearchResult document : documents.getResults()) {
+						out.write("{\"id\":"+document.getId()+", \"label\":\""+document.getEntity().getName()+"\", \"path\":\""+document.getEntity().getPropertyValue(SystemModel.PATH)+"\"},");
 					}
 				}
 			}
@@ -584,7 +581,8 @@ public class JsonCollectionController extends WebserviceSupport {
 	public RestResponse<Object> documents(HttpServletRequest req, HttpServletResponse res, @RequestParam("id") Long id) throws Exception {
 		RestResponse<Object> data = new RestResponse<Object>();
 		Crawler crawler = getCrawlingService().getCrawler(id);
-		Sort sort = new Sort(Sort.STRING, SystemModel.PATH.toString(), true);
+		Sort[] sort = new Sort[1];
+		sort[0] = new Sort(Sort.STRING, SystemModel.PATH.toString(), true);
 		int startRow = (req.getParameter("_startRow") != null) ? Integer.valueOf(req.getParameter("_startRow")) : 0;
 		int endRow = (req.getParameter("_endRow") != null) ? Integer.valueOf(req.getParameter("_endRow")) : 20;
 

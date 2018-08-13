@@ -20,8 +20,8 @@ import org.heed.openapps.entity.AssociationImpl;
 import org.heed.openapps.entity.Entity;
 import org.heed.openapps.entity.EntityImpl;
 import org.heed.openapps.entity.data.FileImportProcessor;
-import org.heed.openapps.search.EntityQuery;
-import org.heed.openapps.search.EntityResultSet;
+import org.heed.openapps.search.SearchRequest;
+import org.heed.openapps.search.SearchResponse;
 import org.heed.openapps.search.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.xml.sax.Attributes;
@@ -231,10 +231,10 @@ public class ExcelLocationImportProcessor extends FileImportProcessor {
 						
 					} else if(currField == 7) {
 						collectionTitle = data.toString();
-						EntityQuery query = new EntityQuery(RepositoryModel.COLLECTION, "name", data.toString(), null, true);
-						EntityResultSet result = searchService.search(query);
+						SearchRequest query = new SearchRequest(RepositoryModel.COLLECTION, "name", data.toString(), null, true);
+						SearchResponse result = searchService.search(query);
 						if(result.getResults().size() > 0) {
-							Entity collection = result.getResults().get(0);
+							Entity collection = result.getResults().get(0).getEntity();
 							collection.addProperty(SystemModel.TITLE, data.toString());
 							Association assoc = new AssociationImpl(RepositoryModel.LOCATIONS, collection.getId(), 0);
 							assoc.setSourceEntity(collection);

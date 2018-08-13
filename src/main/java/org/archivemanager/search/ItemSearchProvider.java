@@ -2,15 +2,13 @@ package org.archivemanager.search;
 
 import org.heed.openapps.SystemModel;
 import org.archivemanager.RepositoryModel;
-import org.heed.openapps.entity.Entity;
 import org.heed.openapps.entity.EntityService;
 import org.heed.openapps.entity.Property;
 import org.heed.openapps.search.Clause;
-import org.heed.openapps.search.EntityQuery;
-import org.heed.openapps.search.EntityResultSet;
 import org.heed.openapps.search.SearchPlugin;
 import org.heed.openapps.search.SearchRequest;
 import org.heed.openapps.search.SearchResponse;
+import org.heed.openapps.search.SearchResult;
 import org.heed.openapps.search.SearchService;
 
 
@@ -27,19 +25,19 @@ public class ItemSearchProvider  implements SearchPlugin {
 	@Override
 	public void request(SearchRequest request) {
 		if(request.getContext() != null && request.getContext().length() > 0 && request.getQname().equals(RepositoryModel.ITEM) && !request.getContext().equals("archive")) {			
-			EntityQuery sQuery = new EntityQuery(RepositoryModel.COLLECTION, "code:"+request.getContext());
-			sQuery.setFetchAttributes(false);
+			SearchRequest sQuery = new SearchRequest(RepositoryModel.COLLECTION, "code:"+request.getContext());
+			sQuery.setAttributes(false);
 			sQuery.setStartRow(0);
 			sQuery.setEndRow(100);
 			
-			EntityResultSet collectionResults = searchService.search(sQuery);
+			SearchResponse collectionResults = searchService.search(sQuery);
 			if(collectionResults.getResults().size() == 1) {
-				Entity collection = collectionResults.getResults().get(0);
+				SearchResult collection = collectionResults.getResults().get(0);
 				request.addParameter("path", String.valueOf(collection.getId()));
 			} else {
 				Clause clause = new Clause();
 				clause.setOperator(Clause.OPERATOR_OR);
-				for(Entity collection : collectionResults.getResults()) {
+				for(SearchResult collection : collectionResults.getResults()) {
 					clause.addProperty(new Property(SystemModel.PATH, String.valueOf(collection.getId())));
 				}
 				request.addClause(clause);

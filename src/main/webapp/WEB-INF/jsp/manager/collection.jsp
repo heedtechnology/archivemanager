@@ -1,11 +1,9 @@
 <%@ taglib uri="http://jsptagutils" prefix="am"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="../fragments/apps_header.jsp" %>
-<link rel="stylesheet" type="text/css" href="/css/apps/easyui/jquery-texteditor.css">
-<link rel="stylesheet" type="text/css" href="/css/apps/manager/collection.css">
+<%@ include file="../fragments/site_header.jsp" %>
+<link rel="stylesheet" type="text/css" href="/css/manager/collection.css">
 
-<script type="text/javascript" src="/js/apps/manager/collection.js"></script>
-<script type="text/javascript" src="/js/apps/easyui/jquery.texteditor.js"></script>
+<script type="text/javascript" src="/js/manager/collection.js"></script>
 <style>
 	#cc .combo-panel{height:75px;}
 </style>
@@ -42,4 +40,4 @@
 <%@ include file="fragments/note-dialog.jsp" %>
 <%@ include file="fragments/node-add-dialog.jsp" %>
 <%@ include file="fragments/collection-context-menu.jsp" %>
-<%@ include file="../fragments/apps_footer.jsp" %>
+<%@ include file="../fragments/site_footer.jsp" %>

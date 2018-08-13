@@ -31,8 +31,9 @@ import org.heed.openapps.data.RestResponse;
 import org.heed.openapps.entity.Association;
 import org.heed.openapps.entity.AssociationImpl;
 import org.heed.openapps.entity.Entity;
-import org.heed.openapps.search.EntityQuery;
-import org.heed.openapps.search.EntityResultSet;
+import org.heed.openapps.search.SearchRequest;
+import org.heed.openapps.search.SearchResponse;
+import org.heed.openapps.search.SearchResult;
 import org.heed.openapps.util.FileUtility;
 import org.heed.openapps.util.IOUtility;
 import org.heed.openapps.util.WebUtility;
@@ -97,11 +98,11 @@ public class JsonContentController extends WebserviceSupport {
 						crawler = new CrawlerImpl(getEntityService().getEntity(crawlerAssoc.getSource()));
 					}
 				} else {
-					EntityQuery query = new EntityQuery(CrawlingModel.CRAWLER);
-					EntityResultSet results = getSearchService().search(query);
+					SearchRequest entityQuery = new SearchRequest(CrawlingModel.CRAWLER);
+					SearchResponse results = getSearchService().search(entityQuery);	
 					System.out.println(results.getResults().size() + " crawlers found");
-					for(Entity crawlerEntity : results.getResults()) {
-						Crawler c = new CrawlerImpl(crawlerEntity);
+					for(SearchResult crawlerEntity : results.getResults()) {
+						Crawler c = new CrawlerImpl(crawlerEntity.getEntity());
 						if(document.getPath().startsWith(c.getPath())) {
 							crawler = c;
 						}

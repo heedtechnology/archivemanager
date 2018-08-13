@@ -36,24 +36,29 @@ public class DefaultEntityIndexer implements EntityIndexer {
 			String id = String.valueOf(entity.getId());
 			if(id != null) {			
 				DataDictionary dictionary = dictionaryService.getDataDictionary(entity.getDictionary());
-				data.getFields().add(new IndexField(Property.LONG, "id", entity.getId(), false));
+				//data.getFields().add(new IndexField(Property.LONG, "id", entity.getId(), false));
 				data.getFields().add(new IndexField(Property.STRING, "uuid", entity.getUid(), false));
 				
 				Property name = entity.getProperty(SystemModel.NAME.toString());
 				if(name != null) {
 					data.getFields().add(new IndexField(Property.STRING, SystemModel.NAME.toString(), name.getValue(), true));
-					data.getFields().add(new IndexField(Property.STRING, SystemModel.NAME.toString()+"_e", name.getValue(), false));
+					//data.getFields().add(new IndexField(Property.STRING, SystemModel.NAME.toString()+"_e", name.getValue(), false));
 					appendFreeText(freeText, (String)name.getValue());
 				} else if(entity.getName() != null) {
 					data.getFields().add(new IndexField(Property.STRING, SystemModel.NAME.toString(), entity.getName(), true));
-					data.getFields().add(new IndexField(Property.STRING, SystemModel.NAME.toString()+"_e", entity.getName(), false));
+					//data.getFields().add(new IndexField(Property.STRING, SystemModel.NAME.toString()+"_e", entity.getName(), false));
 					appendFreeText(freeText, entity.getName());
 				}
 				try {
 					List<QName> qnames = dictionary.getQNames(entity.getQName());
-					for(QName qname : qnames) {
-	        			data.getFields().add(new IndexField(Property.STRING, "qname", qname.toString().trim(), false));
-	        		}	        		
+					if(qnames.size() > 1) {
+						String[] array = new String[qnames.size()];
+						for(int i=0; i < qnames.size(); i++) {
+		        			array[i] = qnames.get(i).toString();
+		        		}
+						data.getFields().add(new IndexField(Property.STRING, "qname", array, false));
+					} else data.getFields().add(new IndexField(Property.STRING, "qname", qnames.get(0).toString(), false));
+					
 				} catch(Exception e) {
 					throw new InvalidEntityException("", e);
 				}
@@ -112,10 +117,12 @@ public class DefaultEntityIndexer implements EntityIndexer {
 						//log.info("added source association for id:"+assoc.getTarget()+" qname:"+assoc.getQName().toString());
 						Entity assoc_entity = entityService.getEntity(assoc.getTarget());
 						if(assoc_entity.getName() != null)
-							data.getFacets().add(new IndexFacet(assoc.getQName(), assoc_entity.getName()));
+							data.getFacets().add(new IndexFacet(assoc.getQName(), assoc_entity.getName(), assoc.getTarget()));
 						associations.add(assoc.getTarget());
 					}
 				}
+				Long[] source_ids = associations.toArray(new Long[associations.size()]);
+				data.getFields().add(new IndexField(Property.LONG, SystemModel.SOURCE_ASSOC.getLocalName(), source_ids, true));
 				associations.clear();
 				for(Association assoc : entity.getTargetAssociations()) {
 					if(associations.contains(assoc.getSource())) {
@@ -124,10 +131,12 @@ public class DefaultEntityIndexer implements EntityIndexer {
 						//log.info("added target association for id:"+assoc.getSource()+" qname:"+assoc.getQName().toString());
 						Entity assoc_entity = entityService.getEntity(assoc.getSource());
 						if(assoc_entity.getName() != null)
-							data.getFacets().add(new IndexFacet(assoc.getQName(), assoc_entity.getName()));
+							data.getFacets().add(new IndexFacet(assoc.getQName(), assoc_entity.getName(), assoc.getSource()));
 						associations.add(assoc.getSource());
 					}
-				}				
+				}
+				Long[] target_ids = associations.toArray(new Long[associations.size()]);
+				data.getFields().add(new IndexField(Property.LONG, SystemModel.TARGET_ASSOC.getLocalName(), target_ids, true));
 				/** Access Control List **/
 				List<Association> permissionAssocs = entity.getSourceAssociations(SystemModel.PERMISSIONS);
 				if(permissionAssocs != null && permissionAssocs.size() > 0) {
@@ -179,6 +188,7 @@ public class DefaultEntityIndexer implements EntityIndexer {
 		return in;
 	}	
 	protected void appendFreeText(StringBuffer freeText, String text) {
+		if(text == null) return;
 		String cleanText = text.replace(",", "").replace("\"", "").replace(";", "").replace(".", "").replace(":", "");
 		String[] parts = cleanText.split(" ");
 		for(String part : parts) {

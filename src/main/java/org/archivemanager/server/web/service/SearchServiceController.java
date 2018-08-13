@@ -15,8 +15,9 @@ import org.heed.openapps.QName;
 import org.heed.openapps.User;
 import org.heed.openapps.entity.Entity;
 import org.heed.openapps.entity.data.FormatInstructions;
-import org.heed.openapps.search.EntityQuery;
-import org.heed.openapps.search.EntityResultSet;
+import org.heed.openapps.search.SearchRequest;
+import org.heed.openapps.search.SearchResponse;
+import org.heed.openapps.search.SearchResult;
 import org.heed.openapps.security.GuestUser;
 import org.heed.openapps.util.NumberUtility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,18 +42,18 @@ public class SearchServiceController extends WebserviceSupport {
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RestResponse<Result> data = new RestResponse<Result>();
 		if(qname == null) qname = RepositoryModel.COLLECTION;
-		EntityQuery entityQuery = new EntityQuery(qname, query);
+		SearchRequest entityQuery = new SearchRequest(qname, query);
 		entityQuery.setStartRow((page * rows)-rows);
 		entityQuery.setEndRow(page * rows);
 		//entityQuery.setFields(new String[] {"freetext"});
-		EntityResultSet results = getSearchService().search(entityQuery);		
+		SearchResponse results = getSearchService().search(entityQuery);		
 		if(results != null) {
 			data.setStartRow(results.getStartRow());
 			if(results.getResultSize() >= results.getEndRow()) data.setEndRow(results.getEndRow());
 			else data.setEndRow(results.getResultSize());
 			data.setTotal(results.getResultSize());
-			for(Entity entity : results.getResults()) {
-				data.addRow(binder.getResult(entity, true));
+			for(SearchResult entity : results.getResults()) {
+				data.addRow(binder.getResult(entity.getEntity(), true));
 			}
 		}
 		
@@ -60,7 +61,7 @@ public class SearchServiceController extends WebserviceSupport {
 	}
 	@ResponseBody
 	@RequestMapping(value="/entityQuery.json", method = RequestMethod.POST)
-	public RestResponse<Entity> search(@RequestBody EntityQuery query, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public RestResponse<Entity> search(@RequestBody SearchRequest query, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		//EntityQuery query = new EntityQuery();
@@ -85,12 +86,12 @@ public class SearchServiceController extends WebserviceSupport {
 		RestResponse<Entity> data = new RestResponse<Entity>();
 		long startTime = System.currentTimeMillis();
 		
-		EntityResultSet results = null;
+		SearchResponse results = null;
 		List<Entity> entities = new ArrayList<Entity>();
 		if(query != null && !query.equals("null")) {
-			if(NumberUtility.isLong(query.getQueryString())) {
+			if(NumberUtility.isLong(query.getQuery())) {
 				try {
-					Entity entity = getEntityService().getEntity(Long.valueOf(query.getQueryString()));
+					Entity entity = getEntityService().getEntity(Long.valueOf(query.getQuery()));
 					if(entity != null) {
 						entities.add(entity);
 						data.setStartRow(0);
@@ -107,9 +108,9 @@ public class SearchServiceController extends WebserviceSupport {
 				query.setStartRow(0);
 				query.setEndRow(10000);
 				results = getSearchService().search(query);
-				for(Entity entity : results.getResults()) {
-					if(entity.getTargetAssociations().size() == 0)
-						list.add(entity);
+				for(SearchResult entity : results.getResults()) {
+					if(entity.getEntity().getTargetAssociations().size() == 0)
+						list.add(entity.getEntity());
 				}
 				for(int i=query.getStartRow(); i < query.getEndRow(); i++) {
 					if(list.size() > i) entities.add(list.get(i));
@@ -119,16 +120,16 @@ public class SearchServiceController extends WebserviceSupport {
 				else data.setEndRow(list.size());
 				data.setTotal(list.size());
 			} else {
-				//EntityQuery eQuery = (query != null && !query.equals("null")) ? new EntityQuery(query.getEntityQnames(), query, sort, false) : new EntityQuery(query.getEntityQnames(), null, sort, false);			
-				//query.setType(EntityQuery.TYPE_LUCENE_TEXT);
-					
 				results = getSearchService().search(query);
-				entities = results.getResults();
-				log.info("search for '"+query.getQueryString()+"' returned "+results.getResultSize()+" results parsed to:"+results.getExplanation());
+				for(SearchResult entity : results.getResults()) {
+					entities.add(entity.getEntity());
+				}
 			}
 		} else {
 			results = getSearchService().search(query);
-			entities = results.getResults();
+			for(SearchResult entity : results.getResults()) {
+				entities.add(entity.getEntity());
+			}
 		}		
 		FormatInstructions instr = new FormatInstructions();
 		instr.setFormat(FormatInstructions.FORMAT_JSON);
@@ -149,11 +150,11 @@ public class SearchServiceController extends WebserviceSupport {
 			else data.setEndRow(results.getResultSize());
 			data.setTotal(results.getResultSize());
 		}		
-		if(query.getEntityQnames().length > 1)	
-			data.addMessage((entities.size()+" "+query.getEntityQnames()[0].getLocalName()+" fetched"));
+		if(query.getQnames().size() > 1)	
+			data.addMessage((entities.size()+" "+query.getQnames().get(0).getLocalName()+" fetched"));
 		else {
 			String msg = "";
-			for(QName q : query.getEntityQnames())
+			for(QName q : query.getQnames())
 				msg += q.toString()+" ";
 			data.addMessage((entities.size()+" "+msg.trim()+" fetched"));
 		}

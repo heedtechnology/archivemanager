@@ -23,11 +23,11 @@ import java.util.Map;
 
 import org.archivemanager.RepositoryModel;
 import org.heed.openapps.SystemModel;
-import org.heed.openapps.entity.Entity;
 import org.heed.openapps.search.Definition;
 import org.heed.openapps.search.DictionaryPlugin;
-import org.heed.openapps.search.EntityQuery;
-import org.heed.openapps.search.EntityResultSet;
+import org.heed.openapps.search.SearchRequest;
+import org.heed.openapps.search.SearchResponse;
+import org.heed.openapps.search.SearchResult;
 import org.heed.openapps.search.SearchService;
 import org.heed.openapps.search.dictionary.CategoryDefinition;
 import org.heed.openapps.util.StringUtility;
@@ -53,14 +53,14 @@ public class CategoryDefinitionDictionaryPlugin implements DictionaryPlugin {
 		else if(level.equals("subseries")) query.add(subseriesQuery, Occur.MUST);
 		else if(level.equals("file")) query.add(subseriesQuery, Occur.MUST);
 		*/
-		EntityQuery query = new EntityQuery(RepositoryModel.CATEGORY, null, "name", true);
+		SearchRequest query = new SearchRequest(RepositoryModel.CATEGORY, null, "name", true);
 		query.setEndRow(0);
 		try {
-			EntityResultSet categoryDocs = searchService.search(query);
+			SearchResponse categoryDocs = searchService.search(query);
 			System.out.println(categoryDocs.getResults().size()+" categories loading...");
 			Map<String,List<String>> categories = new HashMap<String,List<String>>();
-			for(Entity category : categoryDocs.getResults()) {
-				String title = category.getPropertyValue(SystemModel.NAME);
+			for(SearchResult category : categoryDocs.getResults()) {
+				String title = category.getEntity().getPropertyValue(SystemModel.NAME);
 				if(title != null && title.length() >= minLength) {
 					title = StringUtility.removeTags(title).toLowerCase().replace("\"", "");
 					//String value = title.replace(",", "").replace("-", "").replace("+", "").replace(".", "").replace("(", "").replace(")", "");

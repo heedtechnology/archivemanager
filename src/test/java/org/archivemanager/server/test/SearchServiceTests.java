@@ -3,7 +3,6 @@ package org.archivemanager.server.test;
 import org.heed.openapps.QName;
 import org.heed.openapps.data.RestResponse;
 import org.archivemanager.RepositoryModel;
-import org.heed.openapps.search.EntityQuery;
 import org.junit.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -18,7 +17,7 @@ import static org.junit.Assert.*;
 
 public class SearchServiceTests extends TestSupport {
 
-
+/*
 	@SuppressWarnings("rawtypes")
 	@Test
 	public void textSearch() throws Exception {
@@ -64,5 +63,5 @@ public class SearchServiceTests extends TestSupport {
 		String json = mapper.writeValueAsString(query);
 		System.out.print(json);
 	}
-
+*/
 }
