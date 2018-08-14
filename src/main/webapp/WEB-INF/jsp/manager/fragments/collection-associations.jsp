@@ -31,22 +31,6 @@
             </div>
         </div>
     </c:if>
-    <c:if test="${am:hasProperty(collection,'notes')}">
-        <div id="collection-notes" title="Notes">
-            <div id="collection-notes-toolbar">
-                <a href="javascript:void(0)" class="icon-add" style="margin:0 5px;" onclick="loadAndOpen('openapps_org_system_1_0_notes')"></a>
-                <a href="javascript:void(0)" class="icon-remove" style="margin:0 5px;" onclick="javascript:alert('edit')"></a>
-                <a href="javascript:void(0)" class="icon-help" style="float:right;margin:0 5px;" onclick="javascript:alert('help')"></a>
-            </div>
-            <div class="easyui-panel" title=" " style="width:100%;height:100%;padding:5px;" data-options="tools:'#collection-notes-toolbar'">
-                <ul class="easyui-datalist" style="width:100%;height:100%;" data-options="showHeader:false,lines:true,checkbox:true,nowrap:false,singleSelect:false,emptyMsg:'no notes'">
-                    <c:forEach items="${collection.notes}" var="note" varStatus="rstatus">
-                        <li id="${note.id}">${note.type}</li>
-                    </c:forEach>
-                </ul>
-            </div>
-        </div>
-    </c:if>
     <c:if test="${am:hasProperty(collection,'people')}">
         <div id="collection-people" title="People">
             <div id="collection-people-toolbar">

@@ -3,7 +3,12 @@
 <%@ include file="../fragments/site_header.jsp" %>
 <link rel="stylesheet" type="text/css" href="/css/manager/collection.css">
 
-<script type="text/javascript" src="/js/manager/collection.js"></script>
+
+<script type="text/javascript" src="/js/apps/utilities.js"></script>
+<script type="text/javascript" src="/js/apps/manager/collection.js"></script>
+<script type="text/javascript" src="/js/apps/manager/easyui_overrides.js"></script>
+<script type="text/javascript" src="/js/apps/easyui/jquery.texteditor.js"></script>
+
 <style>
 	#cc .combo-panel{height:75px;}
 </style>
@@ -22,7 +27,7 @@
 	    </ul>
     </div>
 
-    <div id="application-body" class="easyui-tabs" title=" " data-options="region:'center'">
+    <div id="application-body" class="easyui-tabs" title=" " style="height:100%" data-options="region:'center'">
     	<%@ include file="fragments/collection-form.jsp" %>
     	<%@ include file="fragments/collection-category-form.jsp" %>
 		<%@ include file="fragments/collection-item-form.jsp" %>
