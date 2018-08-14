@@ -41,57 +41,51 @@
 
 		</div>
 	</div>
-	<div class="form-row">
-		<input id="collection-comment" class="easyui-textbox" label="Comments:" labelPosition="top" multiline="true" style="width:100%;height:200px">
-    </div>
+
     <div class="form-row">
    		<input id="collection-url" class="easyui-textbox" label="URL:" labelPosition="top" style="width:100%;" />
    	</div>
+   	   		<div class="form-row" style="margin-top:15px;">
+       			<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">Save</a>
+       		</div>
    	<div class="form-row-col1">
    		<div class="form-row">
    			<input id="collection-code" class="easyui-textbox" label="Code:" labelPosition="top" style="width:100%;" />
    		</div>
    		<div class="form-row">
-   			<input id="collection-accession-date" class="easyui-textbox" label="Accession Date:" labelPosition="top" style="width:100%;" />
+   			<input id="collection-accession-date" class="easyui-textbox" label="Accession Date:"
+            data-options="formatter:customDateFormatter,parser:customDateParser" labelPosition="top" style="width:100%;" />
    		</div>
    		<div class="form-row">
-   			<input id="collection-begin-date" class="easyui-textbox" label="Begin Date:" labelPosition="top" style="width:100%;" />
+   			<input id="collection-begin-date" class="easyui-textbox" label="Begin Date:"
+            data-options="formatter:customDateFormatter,parser:customDateParser" labelPosition="top" style="width:100%;" />
    		</div>
    		<div class="form-row">
-   			<input id="collection-bulk-begin-date" class="easyui-textbox" label="Bulk Begin Date:" labelPosition="top" style="width:100%;" />
-   		</div>
-   		<div class="form-row">
-   			<div style="width:60%;margin-right:25px;float:left;">
-   				<input id="collection-extent-units" class="easyui-textbox" label="Extent Units:" labelPosition="top" style="width:100%;" />
-   			</div>
-   			<div style="width:30%;float:left;">
-   				<input id="collection-extent-value" class="easyui-numberbox" label="Extent Value" labelPosition="top" style="width:100%;">
-   			</div>
+   			<input id="collection-bulk-begin-date" class="easyui-textbox" label="Bulk Begin Date:"
+            data-options="formatter:customDateFormatter,parser:customDateParser" labelPosition="top" style="width:100%;" />
    		</div>
    		<div id="lastrow" class="form-row">
 
    		</div>
-   		<div class="form-row" style="margin-top:15px;">
-   			<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">Save</a>
-   		</div>
+
    	</div>
    	<div class="form-row-col2">
    		<div class="form-row">
    			<input id="collection-identifier" class="easyui-textbox" label="Identifier:" labelPosition="top" style="width:100%;" />
    		</div>
    		<div class="form-row">
-   			<input id="collection-date-expression" class="easyui-textbox" label="Date Expression:" labelPosition="top" style="width:100%;" />
+   			<input id="collection-date-expression" class="easyui-textbox" label="Date Expression:"
+            data-options="formatter:customDateFormatter,parser:customDateParser" labelPosition="top" style="width:100%;" />
    		</div>
    		<div class="form-row">
-   			<input id="collection-end-date" class="easyui-textbox" label="End Date:" labelPosition="top" style="width:100%;" />
+   			<input id="collection-end-date" class="easyui-textbox" label="End Date:"
+            data-options="formatter:customDateFormatter,parser:customDateParser" labelPosition="top" style="width:100%;" />
    		</div>
    		<div class="form-row">
-   			<input id="collection-bulk-end-date" class="easyui-textbox" label="Bulk End Date:" labelPosition="top" style="width:100%;" />
+   			<input id="collection-bulk-end-date" class="easyui-textbox" label="Bulk End Date:"
+            data-options="formatter:customDateFormatter,parser:customDateParser" labelPosition="top" style="width:100%;" />
    		</div>
    		<div class="form-row" style="min-height:35px;">
-   			<label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:10px;">Restrictions:</label>
-   			<input id="collection-restrictions" type="checkbox" style="float:left;" />
-
    			<label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-left:50px;margin-right:10px;">Internal:</label>
    			<input id="collection-internal" type="checkbox" style="float:left;" />
    		</div>
@@ -103,7 +97,8 @@
          			<input id="collection-identifier" class="easyui-textbox" label="Identifier:" labelPosition="top" style="width:100%;" />
          		</div>
          		<div class="form-row">
-         			<input id="collection-date-expression" class="easyui-textbox" label="Date Expression:" labelPosition="top" style="width:100%;" />
+         			<input id="collection-date-expression" class="easyui-textbox" label="Date Expression:"
+            data-options="formatter:customDateFormatter,parser:customDateParser" labelPosition="top" style="width:100%;" />
          		</div>
    	</div>
 </div>

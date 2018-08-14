@@ -14,6 +14,9 @@
       $('#collection-bioNote').texteditor({
           toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
       });
+      $('#collection-notes').texteditor({
+          toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
+      });
       $('#collection-owner').textbox({
           icons: [{
               iconCls: 'icon-edit',
@@ -39,6 +42,15 @@
       $('#collection-category-summary').texteditor({
           toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
       });
+
+      $('#collection-category-notes').texteditor({
+          toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
+      });
+
+      $('#collection-subject-datalist').datalist({
+          data: [
+            {}
+          ]})
 
       $('#contentTypeDropDown').combobox({
           url: '/service/archivemanager/entity/content_type.json',
@@ -289,12 +301,12 @@
       var count = $('#selectedItems').datagrid('getData').total;
       var name = $('#assocCreateDlgName').textbox('getText');
       if (count == 0) {
-          $('#selectedItems').datagrid({data:[{ id: 'New', name: name  }]});
+          $('#selectedItems').datagrid({ data: [{ id: 'New', name: name }] });
       } else {
-              $('#selectedItems').datagrid('appendRow', {
-                  id: 'New',
-                  name: name
-              });
+          $('#selectedItems').datagrid('appendRow', {
+              id: 'New',
+              name: name
+          });
       }
       $('#assocCreateDlg').dialog('close');
   }
@@ -323,9 +335,9 @@
           var targetIds = '';
           for (i = 0; i < associationsToAdd.rows.length; i++) {
               if (i == associationsToAdd.rows.length - 1)
-                  targetIds += associationsToAdd.rows[i].id + ':' +associationsToAdd.rows[i].name ;
+                  targetIds += associationsToAdd.rows[i].id + ':' + associationsToAdd.rows[i].name;
               else
-                  targetIds += associationsToAdd.rows[i].id + ':' +associationsToAdd.rows[i].name + '~~';
+                  targetIds += associationsToAdd.rows[i].id + ':' + associationsToAdd.rows[i].name + '~~';
           }
 
           var rootNode = $('#collectionTree').tree('getRoot');
