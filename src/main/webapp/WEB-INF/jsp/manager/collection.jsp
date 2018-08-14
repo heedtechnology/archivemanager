@@ -3,7 +3,6 @@
 <%@ include file="../fragments/site_header.jsp" %>
 <link rel="stylesheet" type="text/css" href="/css/manager/collection.css">
 
-
 <script type="text/javascript" src="/js/apps/utilities.js"></script>
 <script type="text/javascript" src="/js/apps/manager/collection.js"></script>
 <script type="text/javascript" src="/js/apps/manager/easyui_overrides.js"></script>
