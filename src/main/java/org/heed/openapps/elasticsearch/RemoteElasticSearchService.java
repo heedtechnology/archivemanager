@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import org.apache.lucene.search.SortField.Type;
 import org.heed.openapps.QName;
 import org.heed.openapps.data.Sort;
+import org.heed.openapps.dictionary.ClassificationModel;
 import org.heed.openapps.dictionary.DataDictionaryService;
 import org.heed.openapps.dictionary.Model;
 import org.heed.openapps.entity.Entity;
@@ -18,13 +19,21 @@ import org.heed.openapps.entity.EntityService;
 import org.heed.openapps.entity.InvalidEntityException;
 import org.heed.openapps.entity.indexing.EntityIndexer;
 import org.heed.openapps.entity.indexing.IndexEntity;
+import org.elasticsearch.action.search.ClearScrollRequest;
+import org.elasticsearch.action.search.SearchScrollRequest;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.SearchHits;
+import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.bucket.terms.Terms;
+import org.elasticsearch.search.aggregations.bucket.terms.Terms.Bucket;
+import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.heed.openapps.scheduling.Job;
 import org.heed.openapps.scheduling.SchedulingService;
+import org.heed.openapps.search.SearchAttribute;
+import org.heed.openapps.search.SearchAttributeValue;
 import org.heed.openapps.search.SearchPlugin;
 import org.heed.openapps.search.SearchRequest;
 import org.heed.openapps.search.SearchResponse;
@@ -44,7 +53,8 @@ public class RemoteElasticSearchService implements SearchService {
 	@Autowired private IndexingService indexingService;
 	@Autowired private QueryParser searchParser;
 	@Autowired private RestHighLevelClient client;
-		
+	
+	protected Map<String,String> labels = getContentTypeLabels();
 	protected List<SearchPlugin> plugins = new ArrayList<SearchPlugin>();
 	private Map<String, EntityIndexer> indexers = new HashMap<String, EntityIndexer>();
 	
@@ -65,9 +75,10 @@ public class RemoteElasticSearchService implements SearchService {
 		int size = query.getEndRow() - query.getStartRow();
 		
 		org.elasticsearch.action.search.SearchRequest searchRequest = new org.elasticsearch.action.search.SearchRequest("nodes");
+		searchRequest.scroll(TimeValue.timeValueSeconds(1000));
 		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();		
 		searchSourceBuilder.size(size);
-		searchSourceBuilder.from(start);
+		//searchSourceBuilder.from(start);
 		/*
 		if(query.getSorts() != null && query.getSorts().size() > 0) {
 	    	for(int i=0; i < query.getSorts().size(); i++) {
@@ -79,40 +90,109 @@ public class RemoteElasticSearchService implements SearchService {
 			SortOrder order = SortOrder.DESC;
 			searchSourceBuilder.sort(new FieldSortBuilder(SystemModel.NAME.toString()).order(order));
 		}
-		if(query.hasAttributes()) {								
-			TermsAggregationBuilder aggregation = AggregationBuilders.terms("qname").field("qname");
-			searchSourceBuilder.aggregation(aggregation);
-		}
 		*/
+		if(query.hasAttributes()) {								
+			TermsAggregationBuilder qnameAggregation = AggregationBuilders.terms("qname").field("qname");
+			qnameAggregation.size(10);			
+			searchSourceBuilder.aggregation(qnameAggregation);
+			TermsAggregationBuilder sourceAggregation = AggregationBuilders.terms("source_assoc").field("source_assoc");
+			sourceAggregation.size(50);
+			searchSourceBuilder.aggregation(sourceAggregation);
+		}
+		
 		try {
 			query = searchParser.parse(query);
 			QueryBuilder queryBuilder = (QueryBuilder)query.getNativeQuery();
 			searchSourceBuilder.query(queryBuilder);			
 			searchRequest.source(searchSourceBuilder);
-			
+						
 			org.elasticsearch.action.search.SearchResponse searchResponse = client.search(searchRequest);
 			response.setSearchId(searchResponse.getScrollId());
-			SearchHits hits = searchResponse.getHits();
-						
-			if(hits != null) {
-				for(SearchHit hit : hits.getHits()) {
-					try {
-						String id = hit.getId();
+			
+			boolean moreResultsExist = true;
+		    int resultCount = 0;
+		    while(moreResultsExist) {
+		        String scrollId = searchResponse.getScrollId();
+		        for (SearchHit hit : searchResponse.getHits()) {
+		        	if(resultCount >= start && resultCount <= end) {
+			        	String id = hit.getId();
 						if(id != null) {
 							Entity entity = entityService.getEntity(Long.valueOf(id));
 							response.getResults().add(new SearchResult(entity));
-						} else log.log(Level.SEVERE, "no entity returned for id:"+id);
+						} else log.log(Level.SEVERE, "no entity returned for id:"+id);			            
+		        	}
+		        	resultCount++;
+		        }
+		        if(resultCount >= searchResponse.getHits().getTotalHits() || resultCount >= end) {
+		            moreResultsExist = false;
+		            ClearScrollRequest request = new ClearScrollRequest();
+		            request.addScrollId(scrollId);
+		            client.clearScroll(request);
+		            
+		            response.setResultSize((int)searchResponse.getHits().getTotalHits());
+					response.setStartRow(start);
+					response.setEndRow(end);
+					for(SearchPlugin plugin : plugins) {
+						plugin.response(query, response);
+					}					
+		            break;
+		        }
+		        SearchScrollRequest scrollRequest = new SearchScrollRequest(scrollId);
+		        scrollRequest.scroll(TimeValue.timeValueSeconds(1000));
+		        searchResponse = client.searchScroll(scrollRequest);
+		    }
+		    if(query.hasAttributes() && searchResponse.getAggregations() != null) {
+			    SearchAttribute qnameAttribute = new SearchAttribute("Content Type");			    
+			    Terms qnameAggregation = searchResponse.getAggregations().get("qname");
+			    for(Bucket bucket : qnameAggregation.getBuckets()) {
+			    	if(bucket.getDocCount() != response.getResultSize()) {			    		
+			    		QName qname = new QName(bucket.getKeyAsString());
+			    		SearchAttributeValue value = new SearchAttributeValue(labels.get(qname.getLocalName()));
+						//value.setAttribute(qnameAttribute);
+			    		value.setQuery("qname:"+qname.toString());
+						value.setCount((int)bucket.getDocCount());
+						qnameAttribute.getValues().add(value);					
+			    	}
+			    }
+			    if(qnameAttribute.getValues().size() > 0) response.getAttributes().add(qnameAttribute);
+			    
+			    SearchAttribute personAttribute = new SearchAttribute("Personal Entities");
+				SearchAttribute corporateAttribute = new SearchAttribute("Corporate Entities");
+				SearchAttribute subjAttribute = new SearchAttribute("Subjects");
+				Terms sourceAggregation = searchResponse.getAggregations().get("source_assoc");
+				for(Bucket bucket : sourceAggregation.getBuckets()) {
+					try {
+						long entityId = Long.valueOf(bucket.getKeyAsString());
+						Entity entity = entityService.getEntity(entityId, false, false);
+						if(entity != null) {
+							SearchAttributeValue value = new SearchAttributeValue(entity.getName());
+							String name = entity.getName();
+							if(name != null) {
+								value.setCount((int)bucket.getDocCount());
+								value.setName(name);
+								if(entity.getQName().equals(ClassificationModel.SUBJECT)) {
+									//value.setAttribute(subjAttribute);
+									value.setQuery("subj:"+entity.getId());
+									subjAttribute.getValues().add(value);
+								} else if(entity.getQName().equals(ClassificationModel.PERSON)) {
+									//value.setAttribute(personAttribute);
+									value.setQuery("name:"+entity.getId());
+									personAttribute.getValues().add(value);
+								} else if(entity.getQName().equals(ClassificationModel.CORPORATION)) {
+									//value.setAttribute(corporateAttribute);
+									value.setQuery("name:"+entity.getId());
+									corporateAttribute.getValues().add(value);
+								}
+							}
+						}
 					} catch(Exception e) {
-						log.log(Level.SEVERE, "", e);
+						//log.error("no entity found for source reference:"+facet.getValue());
 					}
 				}
-				response.setResultSize((int)hits.getTotalHits());
-				response.setStartRow(start);
-				response.setEndRow(end);
-				for(SearchPlugin plugin : plugins) {
-					plugin.response(query, response);
-				}				
-			}
+				if(personAttribute.getValues().size() > 0) response.getAttributes().add(personAttribute);
+				if(corporateAttribute.getValues().size() > 0) response.getAttributes().add(corporateAttribute);
+				if(subjAttribute.getValues().size() > 0) response.getAttributes().add(subjAttribute);
+		    }
 		} catch(Exception e) {
 			log.log(Level.SEVERE, "", e);
 		}
@@ -271,7 +351,7 @@ public class RemoteElasticSearchService implements SearchService {
 		//indexingService.remove(id);
 	}
 	
-	protected Map<String,String> getLabels() {
+	protected Map<String,String> getContentTypeLabels() {
 		Map<String,String> labels = new HashMap<String,String>();
 		labels.put("manuscript", "Manuscript");
 		labels.put("correspondence", "Correspondence");

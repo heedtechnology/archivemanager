@@ -6,7 +6,6 @@
 <script type="text/javascript" src="/js/apps/utilities.js"></script>
 <script type="text/javascript" src="/js/apps/manager/collection.js"></script>
 <script type="text/javascript" src="/js/apps/manager/easyui_overrides.js"></script>
-<script type="text/javascript" src="/js/apps/easyui/jquery.texteditor.js"></script>
 
 <style>
 	#cc .combo-panel{height:75px;}

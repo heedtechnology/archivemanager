@@ -223,6 +223,25 @@ public class RemoteNeo4jEntityService implements EntityService {
 		}
 		return entity;
 	}
+	@Override
+	public Entity getEntity(long id, boolean sources, boolean targets) throws InvalidEntityException {
+		Entity entity = null;
+		Session session = driver.session();
+		StatementResult result = session.run("MATCH (n1) WHERE ID(n1)="+id+" return n1;");
+		try {
+			org.neo4j.driver.v1.types.Node n = null;
+			while(result.hasNext()) {
+				Record record = result.next();
+				n = record.get("n1").asNode();
+				entity = getEntity(n);
+			}			
+		} catch(Exception e) {
+			log.log(Level.SEVERE, "", e);
+		} finally {
+			//session.close();
+		}
+		return entity;
+	}
 	public Entity getEntity(QName qname, long id) throws InvalidEntityException {
 		return getEntity(id);
 	}
@@ -900,5 +919,4 @@ public class RemoteNeo4jEntityService implements EntityService {
 	public void setDictionaryService(DataDictionaryService dictionaryService) {
 		this.dictionaryService = dictionaryService;
 	}
-
 }

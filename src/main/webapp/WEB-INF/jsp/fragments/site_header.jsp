@@ -4,7 +4,7 @@
 		<link rel="stylesheet" type="text/css" href="/easyui/themes/material/easyui.css"/>
 		<link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css"/>
 		<link rel="stylesheet" type="text/css" href="/easyui/themes/color.css"/>
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="/css/archivemanager.css"/>
 		<style>
 			#cc .combo-panel{height:75px;}
@@ -28,9 +28,9 @@
 						</div>
 						<div style="float:right;">
 							<div id="header-links">							
-								<a style="float:right;width:50px;text-align:center;margin:5px;" th:href="@{/logout}"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>logout</a>
-								<a style="float:right;width:50px;text-align:center;margin:5px;" href="/apps/user/profile"><i class="fa fa-address-card-o fa-2x" aria-hidden="true"></i>profile</a>
-								<a style="float:right;width:47px;text-align:center;margin:5px;" href="/"><i class="fa fa-home fa-2x" aria-hidden="true"></i>home </a>
+								<a style="float:right;width:50px;text-align:center;margin:5px;" th:href="@{/logout}"><i class="fas fa-sign-out-alt fa-2x" aria-hidden="true"></i>logout</a>
+								<a style="float:right;width:50px;text-align:center;margin:5px;" href="/apps/user/profile"><i class="fas fa-address-card fa-2x" aria-hidden="true"></i>profile</a>
+								<a style="float:right;width:47px;text-align:center;margin:5px;" href="/"><i class="fas fa-home fa-2x" aria-hidden="true"></i>home </a>
 							</div>
 						</div>					
 					</div>

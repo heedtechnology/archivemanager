@@ -150,3 +150,6 @@
       window.location.replace('/apps/manager/home?tab=' + tabIndex + '&row=' + rowIndex);
       $('#tt').tabs('select', tabIndex);
   }
+  function endsWith(str, suffix) {
+	    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+  }

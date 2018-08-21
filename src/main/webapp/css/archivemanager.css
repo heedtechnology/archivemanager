@@ -8,6 +8,7 @@ input{vertical-align:middle;}
 .loader {position: fixed;left: 0px;top: 0px;width: 100%;height: 100%;z-index: 9999;background:100% 100% no-repeat rgb(249,249,249);opacity:1.0;}
 .navbar-header{width:100%;float:left;}
 .form-group{float:left;width:100%;}
+.form-control{margin-bottom:8px;}
 .processor-select{margin-top:25px;margin-left:5px;}
 .spinner{width:40px;margin-top:22px;margin-left:5px;float:left;display:none;}
 .title{font-weight:bold;margin-top:10px;}
@@ -35,6 +36,7 @@ input{vertical-align:middle;}
 .datagrid-header .datagrid-cell{line-height:normal;height:auto;}
 .datagrid-cell{white-space: normal;}
 .datagrid-empty{position:absolute;left:0;padding-top: 100px;width:100%;textAlign:center;font-weight:bold;}
+.datagrid-ftable{width:100%;}
 .pagination-info {margin:0 18px;line-height:38px;}
 .l-btn-plain, .l-btn-disabled, .l-btn-disabled:active, .textbox-button { box-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.05);}
 .l-btn-plain {background:#fafafa;}
@@ -55,3 +57,6 @@ input{vertical-align:middle;}
 
 .icon-collection{background:url('../../images/apps/icons/collection.png') no-repeat center center;}
 .icon-file{background:url('../../images/apps/icons/file.png') no-repeat center center;}
+
+/*font-awesome icons*/
+.fa-li{width:100%;text-align:left;line-height: 1em;}

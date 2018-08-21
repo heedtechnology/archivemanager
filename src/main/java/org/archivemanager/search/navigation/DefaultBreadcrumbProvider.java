@@ -49,7 +49,7 @@ public class DefaultBreadcrumbProvider extends BreadcrumbProviderPlugin {
 	}
 	public void response(SearchRequest request, SearchResponse response) {
 		List<SearchNode> nodes = new ArrayList<SearchNode>();
-		
+		nodes.add(new SearchNode(null, "All Results", ""));
 		List<Token> tokens = tokenizer.tokenize(request.getQuery());
 		String query2 = "";
 		for(int i=0; i < tokens.size(); i++) {
@@ -61,11 +61,11 @@ public class DefaultBreadcrumbProvider extends BreadcrumbProviderPlugin {
 					query2 += token.getName()+":"+token.getValue();
 					try {
 						Entity entity = getEntityService().getEntity(Long.valueOf(token.getValue()));
-						node.setLabel(entity.getPropertyValue(SystemModel.NAME));
+						node.setLabel(entity.getName());
 					} catch(Exception e) {
 						log.error("breadcrumb not found for : " + token.getValue());
 					}
-				} else if(token.getName().equals("localName")) {
+				} else if(token.getName().equals("qname")) {
 					query2 += token.getName()+":"+token.getValue();
 					String label = labels.get(token.getValue());
 					if(label == null) label = token.getValue();
@@ -124,23 +124,23 @@ public class DefaultBreadcrumbProvider extends BreadcrumbProviderPlugin {
 	}
 	protected Map<String,String> getLabels() {
 		Map<String,String> labels = new HashMap<String,String>();
-		labels.put("manuscript", "Manuscript");
-		labels.put("correspondence", "Correspondence");
-		labels.put("printed_material", "Printed Material");
-		labels.put("audio", "Audio");
-		labels.put("professional", "Professional Material");
-		labels.put("memorabilia", "Memorabilia");
-		labels.put("journals", "Journals");
-		labels.put("scrapbooks", "Scrapbooks");
-		labels.put("financial", "Financial");
-		labels.put("legal", "Legal Material");
-		labels.put("artwork", "Artwork");
-		labels.put("photographs", "Photographs");
-		labels.put("notebooks", "Notebooks");
-		labels.put("medical", "Medical");
-		labels.put("research", "Research");
-		labels.put("miscellaneous", "Miscellaneous");
-		labels.put("video", "Video");
+		labels.put("openapps_org_repository_1_0_manuscript", "Manuscript");
+		labels.put("openapps_org_repository_1_0_correspondence", "Correspondence");
+		labels.put("openapps_org_repository_1_0_printed_material", "Printed Material");
+		labels.put("openapps_org_repository_1_0_audio", "Audio");
+		labels.put("openapps_org_repository_1_0_professional", "Professional Material");
+		labels.put("openapps_org_repository_1_0_memorabilia", "Memorabilia");
+		labels.put("openapps_org_repository_1_0_journals", "Journals");
+		labels.put("openapps_org_repository_1_0_scrapbooks", "Scrapbooks");
+		labels.put("openapps_org_repository_1_0_financial", "Financial");
+		labels.put("openapps_org_repository_1_0_legal", "Legal Material");
+		labels.put("openapps_org_repository_1_0_artwork", "Artwork");
+		labels.put("openapps_org_repository_1_0_photographs", "Photographs");
+		labels.put("openapps_org_repository_1_0_notebooks", "Notebooks");
+		labels.put("openapps_org_repository_1_0_medical", "Medical");
+		labels.put("openapps_org_repository_1_0_research", "Research");
+		labels.put("openapps_org_repository_1_0_miscellaneous", "Miscellaneous");
+		labels.put("openapps_org_repository_1_0_video", "Video");
 		return labels;
 	}
 	public void setTokenizer(QueryTokenizer tokenizer) {

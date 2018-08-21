@@ -11,9 +11,11 @@ import org.archivemanager.search.ArchiveManagerDictionary;
 import org.archivemanager.search.indexing.DefaultEntityIndexer;
 import org.archivemanager.search.indexing.NotableFigureEntryIndexer;
 import org.archivemanager.search.indexing.RepositoryEntityIndexer;
+import org.archivemanager.search.navigation.DefaultBreadcrumbProvider;
 import org.archivemanager.search.parsing.BaseTokenizer;
 import org.archivemanager.server.config.PropertyConfiguration;
 import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.heed.openapps.cache.CacheService;
 import org.heed.openapps.content.DigitalObjectService;
@@ -47,6 +49,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 
 @SpringBootApplication
 @EnableConfigurationProperties({PropertyConfiguration.class})
@@ -74,9 +79,9 @@ public class ArchiveManagerServer {
 		tokenizer.setDictionary(dictionary);
 		tokenizer.initialize();
 		return tokenizer;
-	}
+	}	
 	@Bean
-	public SearchService getSearchService(DataDictionaryService dictionaryService, EntityService entityService) {
+	public SearchService getSearchService(QueryTokenizer tokenizer, DataDictionaryService dictionaryService, EntityService entityService) {
 		//InMemoryElasticSearchService service = new InMemoryElasticSearchService();
 		RemoteElasticSearchService service = new RemoteElasticSearchService();
 		Map<String,EntityIndexer> indexers = new HashMap<String,EntityIndexer>();		
@@ -115,7 +120,24 @@ public class ArchiveManagerServer {
 		indexers.put("openapps_org_classification_1_0_entry", notableFigureEntryIndexer);
 		
 		service.setIndexers(indexers);
+		
+		DefaultBreadcrumbProvider breadcrumbPlugin = new DefaultBreadcrumbProvider();
+		breadcrumbPlugin.setEntityService(entityService);
+		breadcrumbPlugin.setTokenizer(tokenizer);
+		service.getPlugins().add(breadcrumbPlugin);
+		
 		return service;
+	}
+	@Bean
+	public RestClient getElasticSearchRestClient() {
+		RestClientBuilder builder = RestClient.builder(new HttpHost("localhost", 9200, "http"));
+		builder.setFailureListener(new RestClient.FailureListener() {
+		    @Override
+		    public void onFailure(HttpHost host) {
+		        
+		    }
+		});
+		return builder.build();
 	}
 	@Bean
 	public RestHighLevelClient getElasticsearchClient() {
@@ -242,6 +264,12 @@ public class ArchiveManagerServer {
 		SubjectExportProcessor processor = new SubjectExportProcessor();
 		
 		return processor;
+	}
+	@Bean
+	public ObjectMapper getObjectMapper() {
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+		return mapper;
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(ArchiveManagerServer.class, args);
