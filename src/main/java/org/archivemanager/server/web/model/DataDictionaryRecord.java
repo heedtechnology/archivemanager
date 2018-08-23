@@ -9,6 +9,7 @@ public class DataDictionaryRecord {
 	private Long id;
 	private String uid;
 	private String name;
+	private String qname;
 	private String description;
 	private String inheritance;
 	private boolean isPublic;
@@ -21,6 +22,12 @@ public class DataDictionaryRecord {
 		this.id = d.getId();
 		this.name = d.getName();
 	}
+	public DataDictionaryRecord(org.heed.openapps.dictionary.Model m) {
+		this.id = m.getId();
+		this.name = m.getName();
+		this.qname = m.getQName().toString();
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -38,6 +45,12 @@ public class DataDictionaryRecord {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}	
+	public String getQname() {
+		return qname;
+	}
+	public void setQname(String qname) {
+		this.qname = qname;
 	}
 	public String getDescription() {
 		return description;

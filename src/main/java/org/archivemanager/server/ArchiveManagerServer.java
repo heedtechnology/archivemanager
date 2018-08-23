@@ -14,6 +14,7 @@ import org.archivemanager.search.indexing.RepositoryEntityIndexer;
 import org.archivemanager.search.navigation.DefaultBreadcrumbProvider;
 import org.archivemanager.search.parsing.BaseTokenizer;
 import org.archivemanager.server.config.PropertyConfiguration;
+import org.archivemanager.server.web.model.JacksonQNameModule;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
@@ -269,6 +270,7 @@ public class ArchiveManagerServer {
 	public ObjectMapper getObjectMapper() {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+		mapper.registerModule(new JacksonQNameModule());
 		return mapper;
 	}
 	public static void main(String[] args) {

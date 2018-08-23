@@ -13,7 +13,6 @@
 		<script src="/easyui/jquery.min.js"></script>
 		<script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
 		<script type="text/javascript" src="/easyui/easyloader.js"></script>
-		<script type="text/javascript" src="/easyui/plugins/jquery.texteditor.js"></script>
 		<script type="text/javascript" src="https://www.jeasyui.com/easyui/datagrid-scrollview.js"></script>
 		<script type="text/javascript" src="/js/archivemanager.js"></script>		
 	</head>

@@ -38,22 +38,17 @@ public class JsonDictionaryServiceController extends WebserviceSupport {
 	}
 	@ResponseBody
 	@RequestMapping(value="/model/fetch.json", method = RequestMethod.GET)
-	public RestResponse<Object> fetchModel(@RequestParam("qname") QName qname, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RestResponse<Object> data = new RestResponse<Object>();
+	public Model fetchModel(@RequestParam("qname") QName qname, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Model modelNode = null;
 		if(qname != null) {
 			try {
 				modelNode = getDictionaryService().getSystemDictionary().getModel(qname);
+				return modelNode;
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
 		}	
-		if(modelNode != null) {
-			data.getResponse().addData(modelToJson(modelNode));
-		}		
-		data.getResponse().setEndRow(data.getResponse().getData().size());
-		data.getResponse().setTotalRows(data.getResponse().getData().size());
-		return data;
+		return modelNode;
 	}
 	@ResponseBody
 	@RequestMapping(value="/model/add.json", method = RequestMethod.POST)

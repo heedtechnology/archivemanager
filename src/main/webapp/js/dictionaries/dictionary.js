@@ -13,6 +13,67 @@ function doSearch() {
 		query: $('#search_type').val()
 	});
 }
+function doEditModel(qname) {
+	var record = $('#dg').datagrid('getSelected');
+	$.ajax({
+        type: "GET",
+        url: '/service/dictionary/model/fetch.json?qname='+record.qname,
+        success: function(data) {
+        	var html = '<div id="attribute-accordian" class="easyui-accordion">';
+        	html += '<ul id="field-list" class="easyui-datalist attribute-list" title="Fields ('+data.fields.length+')" style="width:297px;">';
+			for(i=0; i < data.fields.length; i++) {
+				var attribute = data.fields[i];
+				html += '<li value="'+attribute.qname+'">'+attribute.name+'</li>';
+			}
+			html += '</ul>';
+			html += '<ul id="source-list" class="easyui-datalist attribute-list" title="Source Associations ('+data.sourceRelations.length+')"" style="width:297px;">';
+			for(i=0; i < data.sourceRelations.length; i++) {
+				var attribute = data.sourceRelations[i];
+				html += '<li value="'+attribute.qname+'">'+attribute.name+'</li>';
+			}
+			html += '</ul>';
+			html += '<ul id="target-list" class="easyui-datalist attribute-list" title="Target Associations ('+data.targetRelations.length+')"" style="width:297px;">';
+			for(i=0; i < data.targetRelations.length; i++) {
+				var attribute = data.targetRelations[i];
+				html += '<li value="'+attribute.qname+'">'+attribute.name+'</li>';
+			}
+			html += '</ul>';
+			
+			html += '</div>';
+			$('#model-list').empty();
+			$('#model-list').append(html);
+			
+			$('#field-list').datalist({
+		        lines: true,
+		        onClickRow:function(index,row) {		        	
+		        	$('#model-detail').detatch();
+		        	$('#model-detail').append($('#field-form'));
+		        }
+		    });
+			$('#source-list').datalist({
+		        lines: true,
+		        onClickRow:function(index,row) {		        	
+		        	$('#model-detail').detatch();
+		        	$('#model-detail').append($('#association-form'));
+		        }
+		    });
+			$('#target-list').datalist({
+		        lines: true,
+		        onClickRow:function(index,row) {		        	
+		        	$('#model-detail').detatch();
+		        	$('#model-detail').append($('#association-form'));
+		        }
+		    });
+		    $('#attribute-accordian').accordion({
+		        animate:true
+		    });
+		    $('#model-window').dialog({
+		        title:data.name
+		    });
+		    $('#model-window').dialog('open');
+        }
+	});	
+}
 function doSaveModel(){
 	$.ajax({
 		type: "POST",

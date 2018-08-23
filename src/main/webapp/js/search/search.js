@@ -29,7 +29,7 @@ $(function(){
 				var html = '<div id="attribute-accordian" class="easyui-accordion">';
 				for(i=0; i < data.attributes.length; i++) {
 					var attribute = data.attributes[i];
-					html += '<ul class="attribute-list" class="easyui-datalist" title="'+attribute.name+'" style="width:297px;">';
+					html += '<ul class="easyui-datalist attribute-list" title="'+attribute.name+'" style="width:297px;">';
 					for(j=0; j < attribute.values.length; j++) {
 						var value = attribute.values[j];
 						html += '<li value="'+value.query+'">'+value.name+' ('+value.count+')</li>';

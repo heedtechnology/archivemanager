@@ -23,7 +23,7 @@
       	<a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch();">Search</a>
    	</div>
 </div>
-<div id="detail-window" title="Item Detail" class="easyui-dialog" model="true" closed="true">
+<div id="detail-window" title="Item Detail" class="easyui-dialog" closed="true">
 	<div class="collection-detail">
 		<div id="collection-detail-left" class="detail-panel">
 			<div id="detail-name-row" class="detail-row">
