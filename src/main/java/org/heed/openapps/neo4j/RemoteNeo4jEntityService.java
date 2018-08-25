@@ -188,9 +188,10 @@ public class RemoteNeo4jEntityService implements EntityService {
 		}
 		return entities;
 	}
-	
 	public Entity getEntity(long id) throws InvalidEntityException {
-		Entity entity = (Entity)cacheService.get("node", String.valueOf(id));
+		/* TODO commented out due to problems with caches when adding associations. Sourcenode is not being added to cache with updated assocs */
+		//Entity entity = entity = (Entity) cacheService.get("node", String.valueOf(id));
+		Entity entity = null;
 		if(entity == null) {
 			Session session = driver.session();
 			StatementResult result = session.run("MATCH (n1)-[r]-(n2) WHERE ID(n1)="+id+" return n1,r,n2;");
@@ -223,6 +224,8 @@ public class RemoteNeo4jEntityService implements EntityService {
 		}
 		return entity;
 	}
+
+
 	public Entity getEntity(QName qname, long id) throws InvalidEntityException {
 		return getEntity(id);
 	}
@@ -426,8 +429,8 @@ public class RemoteNeo4jEntityService implements EntityService {
 		String query = "MATCH (n1),(n2) WHERE id(n1) = "+association.getSource()+" and id(n2) = "+association.getTarget();
 		query += " CREATE (n1)-[r:"+association.getQName().toString()+"]->(n2) return r;";
 
-		startListener.onBeforeAssociationAdd(association);
-		endListener.onBeforeAssociationAdd(association);
+		//startListener.onBeforeAssociationAdd(association);
+		//endListener.onBeforeAssociationAdd(association);
 
 		StatementResult result = session.run(query, toMap(association,dictionary));
 		try	{
@@ -441,8 +444,8 @@ public class RemoteNeo4jEntityService implements EntityService {
 		} finally {
 			session.close();
 		}
-		startListener.onAfterAssociationAdd(association);
-		endListener.onAfterAssociationAdd(association);
+		//startListener.onAfterAssociationAdd(association);
+		//endListener.onAfterAssociationAdd(association);
 
 		cacheService.put("node", String.valueOf(association.getSource()), association.getSourceEntity());
 		return association.getId();
@@ -746,8 +749,8 @@ public class RemoteNeo4jEntityService implements EntityService {
 			if(startListener == null) startListener = persistenceListeners.get("default");
 			EntityPersistenceListener endListener = persistenceListeners.get(association.getTargetName().toString());
 			if(endListener == null) endListener = persistenceListeners.get("default");
-			startListener.onBeforeAssociationDelete(association);
-			endListener.onBeforeAssociationDelete(association);
+			if(Objects.nonNull(startListener)) startListener.onBeforeAssociationDelete(association);
+			if(Objects.nonNull(endListener)) endListener.onBeforeAssociationDelete(association);
 
 			StatementResult result = session.run("MATCH [r] WHERE ID(r) = "+association.getId()+" DELETE r;");
 			while(result.hasNext()) {
@@ -755,8 +758,8 @@ public class RemoteNeo4jEntityService implements EntityService {
 				org.neo4j.driver.v1.types.Relationship r = record.get("r").asRelationship();
 				log.log(Level.INFO, "deleted association:"+r.id());
 			}
-			startListener.onAfterAssociationDelete(association);
-			endListener.onAfterAssociationDelete(association);
+			if(Objects.nonNull(startListener)) startListener.onAfterAssociationDelete(association);
+			if(Objects.nonNull(endListener)) endListener.onAfterAssociationDelete(association);
 			//cacheService.remove("entityCache", String.valueOf(association.getSource()));
 			//cacheService.remove("entityCache", String.valueOf(association.getTarget()));
 		} catch(Exception e) {
@@ -827,9 +830,10 @@ public class RemoteNeo4jEntityService implements EntityService {
 		ExportProcessor processor = getExportProcessor(entity.getQName().toString());
 		if(processor != null) {
 			return processor.export(instructions, entity);
-		} else {
+		} else if ( Objects.nonNull(defaultProcessor) ){
 			return defaultProcessor.export(instructions, entity);
 		}
+		return entity;
 	}
 
 	public Object export(FormatInstructions instructions, Association association)	throws InvalidEntityException {

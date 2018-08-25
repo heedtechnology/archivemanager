@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="/easyui/themes/color.css"/>
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/archivemanager.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/easyui/jquery-texteditor.css"/>
 		<style>
 			#cc .combo-panel{height:75px;}
 		</style>

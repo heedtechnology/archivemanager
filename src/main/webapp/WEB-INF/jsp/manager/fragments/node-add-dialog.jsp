@@ -2,9 +2,9 @@
     		data-options="title:'My Dialog',buttons:'#dlg-buttons',modal:true">
   <form id="nodeAddForm" method="post">
       <input id="source" name="source" type="hidden" value=""></>
-       <input id="assoc_qname" name="assoc_qname" type="hidden" value=""></>
-       <input id="entity_qname" name="entity_qname" type="hidden" value=""></>
-
+       <input id="node-add-assoc_qname" name="assoc_qname" type="hidden" value=""></>
+       <input id="node-add-entity_qname" name="entity_qname" type="hidden" value=""></>
+        <input id="node-add-description" name="description" type="hidden" value=""></>
       <div id="divContentType" style="margin-bottom: 2px" >
         <input id="contentTypeDropDown" name="contentType" label="Item Type:" value="aa" style="width:50%">
         </div>

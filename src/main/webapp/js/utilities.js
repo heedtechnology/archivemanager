@@ -107,18 +107,18 @@
   function customDateParser(s) {
 
       if (!s) return new Date();
-      if ( s.length == 10 && isValidDate(s)){
-        var ss = (s.split('-'));
+      if (s.length == 10 && isValidDate(s)) {
+          var ss = (s.split('-'));
 
-        var y = parseInt(ss[0], 10);
-        var m = parseInt(ss[1], 10);
-        var d = parseInt(ss[2], 10);
-        if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
-            return new Date(y, m - 1, d);
-        } else {
-            return new Date();
-        }
-      } else if (s.length == 10 && !isValidDate(s)){
+          var y = parseInt(ss[0], 10);
+          var m = parseInt(ss[1], 10);
+          var d = parseInt(ss[2], 10);
+          if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
+              return new Date(y, m - 1, d);
+          } else {
+              return new Date();
+          }
+      } else if (s.length == 10 && !isValidDate(s)) {
 
           $.messager.alert({
               title: 'Error',
@@ -127,26 +127,89 @@
 
           });
 
-          $('#'+this.id).datebox('setValue','');
-          $('#'+this.id).datebox('calendar').focus();
+          $('#' + this.id).datebox('setValue', '');
+          $('#' + this.id).datebox('calendar').focus();
 
       }
   }
 
   function isValidDate(dateString) {
-    var regEx = /^\d{4}-\d{2}-\d{2}$/;
-    var validDate = false;
-    if(!dateString.match(regEx)) return false;  // Invalid format
-    var d = new Date(dateString);
-    if(Number.isNaN(d.getTime())) return false; // Invalid date
+      var regEx = /^\d{4}-\d{2}-\d{2}$/;
+      var validDate = false;
+      if (!dateString.match(regEx)) return false; // Invalid format
+      var d = new Date(dateString);
+      if (Number.isNaN(d.getTime())) return false; // Invalid date
 
-    return d.toISOString().slice(0,10) === dateString;
+      return d.toISOString().slice(0, 10) === dateString;
+  }
+
+  function mapContenTypeToAssocQ(contentType) {
+      switch (contentType) {
+          case 'category':
+              return 'categories';
+          default:
+              return "items";
+
+      }
+  }
+
+  function convertNullString(inString) {
+      if (inString == "null") {
+          return "";
+      } else {
+          return inString;
+      }
   }
 
   function goHome() {
       var urlParams = new URLSearchParams(window.location.search);
       var tabIndex = urlParams.get('tab');
+      var pageIndex = urlParams.get('page');
       var rowIndex = urlParams.get('row');
-      window.location.replace('/apps/manager/home?tab=' + tabIndex + '&row=' + rowIndex);
+
+      window.location.replace('/manager');
       $('#tt').tabs('select', tabIndex);
+  }
+
+  function updateEntity(form_name) {
+      var node = $('#collectionTree').tree('getSelected');
+      $('#' + form_name + '-id').val(node.id);
+      $.ajax({
+          type: 'POST',
+          url: '/service/entity/update.json',
+          data: $('#' + form_name).serialize(),
+          success: function(result) {
+              if (result.response.status != 0) {
+                  $.messager.alert({
+                      title: 'Error',
+                      msg: result.errorMsg
+                  });
+              } else {
+                  $.messager.alert({
+                      title: 'Success',
+                      msg: result.response.data[0].name + ' updated successfully',
+                      fn: function() {
+                          // update the selected node text if the name of the entity was updated
+                          var node = $('#collectionTree').tree('getSelected');
+                          if (node.text != result.response.data[0].name) {
+                              $('#collectionTree').tree('update', {
+                                  target: node.target,
+                                  text: result.response.data[0].name
+                              });
+                          }
+                      },
+                      style: {
+                          right: '',
+                          bottom: ''
+                      }
+                  });
+              }
+          },
+          error: function(result, statusCode, errorMsg) {
+              $.messager.alert({
+                  title: 'Error',
+                  msg: 'There was an internal error processing this request: ' + statusCode + ': ' + errorMsg
+              });
+          }
+      });
   }

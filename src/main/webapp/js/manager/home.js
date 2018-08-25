@@ -2,10 +2,10 @@ $(window).load(function() {
 	$('#dg').datagrid('resize',{width:$(window).width()-340});
 });
 $(function() {
-    $('#collection-name').textbox({
+    $('#home-add-name').textbox({
         name: name
     });
-    $('#collection-scopeNote').texteditor({
+    $('#home-add-scopeNote').texteditor({
         toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
     });
 
@@ -169,40 +169,44 @@ function edit() {
     var row = $('#dg').datagrid('getSelected');
     var rowindex = $('#dg').datagrid('getRowIndex', row);
     var tab = $('#tt').tabs('getSelected');
-    var index = $('#tt').tabs('getTabIndex', tab);
+    var index = tab.panel('options').title;
+
     if (row) {
         window.location.replace('manager/collection?id=' + row.id + '&tab=' + index + '&row=' + rowindex);
     }
 }
 
-function save() {
+function save(form_name) {
 
     $('#addqname').val($('#qname').val());
     $.ajax({
         type: 'POST',
-        url: '/service/archivemanager/collection/add.json',
-        data: $('#fm').serialize(),
+        //url: '/service/archivemanager/collection/add.json',
+        url: '/service/entity/add.json',
+        data: $('#' + form_name).serialize(),
         success: function(result) {
             if (result.response.status != 0) {
-                $.messager.show({
+                $.messager.alert({
                     title: 'Error',
                     msg: result.errorMsg
                 });
             } else {
-                $.messager.show({
+                $.messager.alert({
                     title: 'Success',
                     msg: result.response.data[0].name + ' created successfully',
-                    timeout: 2000,
-                    showType: 'fade',
-                    style: {
-                        right: '',
-                        bottom: ''
-                    }
+
                 });
-                $('#dlg').dialog('close'); // close the dialog
-                $('#dg').datagrid('reload'); // reload the user data
-                window.location.replace('collection?id=' + result.response.data[0].id);
+
             }
+                            $('#dlg').dialog('close'); // close the dialog
+                            $('#dg').datagrid('reload'); // reload the user data
+                            window.location.replace('manager/collection?id=' + result.response.data[0].id);
+        },
+        error: function(result, statusCode, errorMsg){
+            $.messager.alert({
+              title: 'Error',
+              msg: statusCode + ': ' + errorMsg
+            });
         }
     });
 }
@@ -210,7 +214,7 @@ function save() {
 function destroy() {
     var row = $('#dg').datagrid('getSelected');
     if (row) {
-        $.messager.confirm('Confirm', 'Are you sure you want to remote ' + row.name + '?', function(r) {
+        $.messager.confirm('Confirm', 'Are you sure you want to remove ' + row.name + '?', function(r) {
             if (r) {
                 $.post('/service/entity/remove.json', { id: row.id }, function(result) {
                     if (result.response.status != 0) {
@@ -219,12 +223,25 @@ function destroy() {
                             msg: result.errorMsg
                         });
                     } else {
-                        $('#dg').datagrid('reload'); // reload the user data
+                                    $.messager.show({
+                                        title: 'Success',
+                                        msg: result.response.data[0].name + ' removed successfully',
+                                        timeout: 1000,
+                                        showType: 'fade',
+                                        style: {
+                                            right: '',
+                                            bottom: ''
+                                        }
+                                    });
+
                     }
                 }, 'json');
             }
         });
     }
+    // call 'refresh' method for tab panel to update its content
+                            var tab = $('#tt').tabs('getSelected');  // get selected panel
+                            tab.panel('refresh');
 }
 
 function formatContentType(val, row) {

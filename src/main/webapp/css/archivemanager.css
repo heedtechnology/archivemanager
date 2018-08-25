@@ -55,3 +55,24 @@ input{vertical-align:middle;}
 
 .icon-collection{background:url('../../images/apps/icons/collection.png') no-repeat center center;}
 .icon-file{background:url('../../images/apps/icons/file.png') no-repeat center center;}
+.icon-repository{background:url('../../images/apps/icons/repository.png') no-repeat center center;}
+.icon-category-open{background:url('../../images/apps/icons/category_open.png') no-repeat center center;}
+.icon-category-closed{background:url('../../images/apps/icons/category.png') no-repeat center center;}
+
+/*Items icons */
+.icon-audio{background:url('../../images/apps/icons/audio.png') no-repeat center center;}
+.icon-video{background:url('../../images/apps/icons/video.png') no-repeat center center;}
+.icon-correspondence{background:url('../../images/apps/icons/correspondence.png') no-repeat center center;}
+.icon-financial{background:url('../../images/apps/icons/financial.png') no-repeat center center;}
+.icon-legal{background:url('../../images/apps/icons/legal.png') no-repeat center center;}
+.icon-financial{background:url('../../images/apps/icons/financial.png') no-repeat center center;}
+.icon-manuscript{background:url('../../images/apps/icons/manuscript.png') no-repeat center center;}
+.icon-photographs{background:url('../../images/apps/icons/photographs.png') no-repeat center center;}
+.icon-printed_material{background:url('../../images/apps/icons/printed_material.png') no-repeat center center;}
+.icon-professional{background:url('../../images/apps/icons/professional.png') no-repeat center center;}
+.icon-research{background:url('../../images/apps/icons/research.png') no-repeat center center;}
+.icon-artwork{background:url('../../images/apps/icons/artwork.png') no-repeat center center;}
+.icon-journals{background:url('../../images/apps/icons/journals.png') no-repeat center center;}
+.icon-miscellaneous{background:url('../../images/apps/icons/miscellaneous.png') no-repeat center center;}
+.icon-notebooks{background:url('../../images/apps/icons/notebooks.png') no-repeat center center;}
+.icon-scrapbooks{background:url('../../images/apps/icons/scrapbooks.png') no-repeat center center;}

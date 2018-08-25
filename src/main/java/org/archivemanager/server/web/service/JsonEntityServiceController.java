@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 import javax.json.Json;
@@ -21,6 +22,7 @@ import org.heed.openapps.data.RestResponse;
 import org.heed.openapps.entity.Association;
 import org.heed.openapps.entity.Entity;
 import org.heed.openapps.entity.Property;
+import org.heed.openapps.entity.ValidationResult;
 import org.heed.openapps.entity.data.FormatInstructions;
 import org.heed.openapps.scheduling.Job;
 import org.heed.openapps.search.SearchRequest;
@@ -118,15 +120,26 @@ public class JsonEntityServiceController extends WebserviceSupport {
       //entity.setUser(user.getId());
       String fmt = request.getParameter("format");
       getEntityService().addEntity(entity);
-      if (fmt != null && fmt.equals("tree")) {
-        FormatInstructions instructions = new FormatInstructions(true);
-        instructions.setFormat(FormatInstructions.FORMAT_JSON);
-        data.getResponse().addData(getEntityService().export(instructions, entity));
-      } else {
-        FormatInstructions instructions = new FormatInstructions(false, true, false);
-        instructions.setFormat(FormatInstructions.FORMAT_JSON);
-        data.getResponse().addData(getEntityService().export(instructions, entity));
+      ValidationResult validationResult = validate(entity);
+      if (validationResult.isValid()) {
+        entity.setId(getEntityService().addEntity(entity));
+        getSearchService().update(entity);
+//        data.getResponse().getData().add(
+//            getNodeData(entity.getId(), false, false));
+//                //entity.getQName().toString(), entity.getQName().getLocalName()));
       }
+//      if (fmt != null && fmt.equals("tree")) {
+//        FormatInstructions instructions = new FormatInstructions(true);
+//        instructions.setFormat(FormatInstructions.FORMAT_JSON);
+//        data.getResponse().addData(getEntityService().export(instructions, entity));
+//      } else {
+//        FormatInstructions instructions = new FormatInstructions(false, true, false);
+//        instructions.setFormat(FormatInstructions.FORMAT_JSON);
+//        data.getResponse().addData(getEntityService().export(instructions, entity));
+//
+//
+//      }
+      data.getResponse().addData(entity);
       data.getResponse().setStatus(0);
     } catch (Exception e) {
       e.printStackTrace();
@@ -174,6 +187,11 @@ public class JsonEntityServiceController extends WebserviceSupport {
     RestResponse<Object> data = new RestResponse<Object>();
     try {
       Entity entity = getEntityService().getEntity(id);
+      String reqEntityName = request.getParameter("name");
+      if (Objects.nonNull(reqEntityName) && !entity.getName().equals(reqEntityName)){
+        entity.setName(reqEntityName);
+      }
+
       //entity.setUser(user.getId());
       String printTargets = request.getParameter("targets");
       String printSources = request.getParameter("sources");
@@ -193,9 +211,11 @@ public class JsonEntityServiceController extends WebserviceSupport {
         }
       }
       getEntityService().updateEntity(entity);
+      getSearchService().update(entity);
       FormatInstructions instr = new FormatInstructions(false, sources, targets);
       instr.setFormat(FormatInstructions.FORMAT_JSON);
-      data.getResponse().addData(getEntityService().export(instr, entity));
+      //data.getResponse().addData(getEntityService().export(instr, entity));
+      data.getResponse().addData(entity);
       data.getResponse().setStatus(0);
     } catch (Exception e) {
       data.getResponse().setStatus(-1);
@@ -220,6 +240,7 @@ public class JsonEntityServiceController extends WebserviceSupport {
       Map<String, Object> record = new HashMap<String, Object>();
       record.put("id", entity.getId());
       record.put("uid", entity.getUid());
+      record.put("name", entity.getName());
       data.getResponse().addData(record);
       data.getResponse().setStatus(0);
     } catch (Exception e) {
@@ -298,8 +319,7 @@ public class JsonEntityServiceController extends WebserviceSupport {
         if (entity.getId() == null || entity.getId() == 0) {
           if (NumberUtility.isLong(source)) {
             getEntityService().addEntity(Long.valueOf(source), null, assocQname, null, entity);
-            Entity sourceEntity = getEntityService().getEntity(Long.valueOf(source));
-            data.getResponse().addData(getEntityService().export(instructions, sourceEntity));
+//            data.getResponse().addData(getEntityService().export(instructions, sourceEntity));
           }
         }
       } else {
@@ -318,6 +338,8 @@ public class JsonEntityServiceController extends WebserviceSupport {
           data.getResponse().addData(getEntityService().export(instructions, sourceEntity));
         }
       }
+      data.getResponse().setStatus(0);
+      data.getResponse().addMessage("Association created successfully");
       return data;
 
     } catch (Exception e) {

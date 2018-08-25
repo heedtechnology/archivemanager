@@ -4,10 +4,6 @@
           toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'formatblock', 'fontname', 'fontsize']
       });
 
-      $('#collection-item-name').texteditor({
-          toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'formatblock', 'fontname', 'fontsize']
-      });
-
       $('#collection-scopeNote').texteditor({
           toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
       });
@@ -32,9 +28,9 @@
           }
       });
       //collection category form
-      $('#collection-category-name').texteditor({
-          toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
-      });
+      //$('#collection-category-name').texteditor({
+      //    toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
+      //});
       $('#collection-category-description').texteditor({
           toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
       });
@@ -47,10 +43,21 @@
           toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
       });
 
+      $('#collection-item-description').texteditor({
+          toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
+      });
+            $('#collection-item-summary').texteditor({
+                toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
+            });
+
       $('#collection-subject-datalist').datalist({
           data: [
             {}
           ]})
+
+      $('#repository-description').texteditor({
+          toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
+      });
 
       $('#contentTypeDropDown').combobox({
           url: '/service/archivemanager/entity/content_type.json',
@@ -61,7 +68,7 @@
 
       $('#mainLayout').layout();
       $('#collection-heading').layout();
-      $('#mainLayout').layout('resize', { height: 1700 });
+      $('#mainLayout').layout('resize', { width: 1200, height: 1700 });
       $('#abstractNoteEditor').texteditor({
           toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'formatblock', 'fontname', 'fontsize'],
           name: 'abstractNote'
@@ -148,7 +155,13 @@
       $('#application-body').tabs('select', name);
   }
 
+  function selectRootNode(node, data){
+      //var rootNode = $('#collectionTree').tree('getRoot');
+      //$('#collectionTree').tree('select', rootNode.target);
+  }
+
   function treeSelect(node) {
+
       $('#application-properties').tabs('select', 'collection-associations');
       var ajaxReq = $.ajax({
           url: '/service/archivemanager/entity/fetch.json?id=' + node.id,
@@ -171,29 +184,77 @@
               $('#collection-identifier').textbox('setValue', entity.identifier);
               $('#collection-accession-date').textbox('setValue', entity.accessionDate);
               $('#collection-date-expression').textbox('setValue', entity.dateExpression);
-              $('#collection-begin-date').textbox('setValue', entity.beginDate);
-              $('#collection-end-date').textbox('setValue', entity.endDate);
-              $('#collection-begin').textbox('setValue', entity.begin);
-              $('#collection-end').textbox('setValue', entity.end);
+              $('#collection-bulk-begin-date').textbox('setValue', entity.bulkBegin);
+              $('#collection-bulk-end-date').textbox('setValue', entity.bulkEnd);
+              $('#collection-begin-date').textbox('setValue', entity.begin);
+              $('#collection-end-date').textbox('setValue', entity.end);
               $('#collection-extent-units').textbox('setValue', entity.extentUnits);
               $('#collection-extent-value').textbox('setValue', entity.extrnetValue);
               $('#application-body').tabs('select', 'collection-form');
           } else if (entity.contentType == 'category') {
               $('#collection-category-id').html(entity.id);
-              $('#collection-category-name').texteditor('setValue', entity.name);
+              $('#collection-category-name').textbox('setValue', entity.name);
               $('#collection-category-description').texteditor('setValue', entity.description);
               $('#contentType').val(entity.contentType);
               $('#application-body').tabs('select', 'collection-category-form');
+          } else if (entity.contentType == 'repository'){
+              $('#repository-id').html(entity.id);
+              $('#repository-language').combobox('setValue', entity.language);
+              $('#repository-owner').textbox('setValue', convertNullString(entity.user));
+              $('#repository-name').textbox('setValue', convertNullString(entity.name));
+              $('#repository-description').texteditor('setValue', convertNullString(entity.description));
+              $('#repository-agency-code').textbox('setValue', convertNullString(entity.data.agency_code));
+              $('#repository-branding').textbox('setValue', convertNullString(entity.data.branding));
+              $('#repository-country-code').textbox('setValue', convertNullString(entity.data.country_code));
+              $('#repository-institution').textbox('setValue', convertNullString(entity.data.institution));
+              $('#repository-internal').textbox('setValue', convertNullString(entity.data.isPublic));
+              $('#repository-nces').textbox('setValue', convertNullString(entity.data.nces));
+              $('#repository-short-name').textbox('setValue', convertNullString(entity.data.short_name));
+              $('#repository-type').textbox('setValue', convertNullString(entity.data.type));
+              $('#repository-url').textbox('setValue', convertNullString(entity.data.url));
+              $('#application-body').tabs('select', 'repository-form');
           } else {
               $('#collection-item-id').html(entity.id);
-              $('#collection-item-name').texteditor('setValue', entity.name);
+              $('#collection-item-name').textbox('setValue', entity.name);
+              $('#collection-item-description').texteditor('setValue',entity.description);
+              $('#collection-item-summary').texteditor('setValue',entity.summary);
+              $('#item-collection-id').textbox('setValue', entity.collectionId);
+              $('#item-collection-name').textbox('setValue', entity.collectionName);
+              $('#item-collection-url').textbox('setValue', entity.collectionUrl);
+              $('#collection-item-container').val(entity.container);
+
+              if (entity.data.medium != null){
+                $('#item-medium-div').css('display','block')
+              } else {
+                $('#item-medium-div').css('display','none')
+              }
+
+              if (entity.data.genre != null){
+                $('#item-genre-div').css('display','block')
+              } else {
+                $('#item-genre-div').css('display','none')
+              }
+              if (entity.data.form != null){
+                $('#item-form-div').css('display','block')
+              } else {
+                $('#item-form-div').css('display','none')
+              }
+
               addPropertyDiv();
               $('#application-body').tabs('select', 'collection-item-form');
           }
+
+
+         // var options = $('#application-body').tabs('options');
+         // $('#application-body').tabs('resize');
+//          var panel = $('#application-body').tabs('getSelected');
+//          panel.panel('resize',{width:800,height:2000});
+
       });
       ajaxReq.fail(function(jqXHR) {
           message('Entity Selection Failed', 'unable to locate entity for id:' + node.id + ' text:' + node.text);
       });
+
   }
 
   function treeFormat(node) {
@@ -208,7 +269,7 @@
 
       if (type == 'category') {
           $('#divContentType').hide();
-          $('#contentTypeDropDown').combobox('setValue', 'Category');
+          $('#contentTypeDropDown').combobox('setValue', 'category');
       } else {
           $('#divContentType').show();
       }
@@ -223,36 +284,42 @@
       var node = $('#collectionTree').tree('getSelected');
       var contentType = $('#contentTypeDropDown').val();
       $('#source').val(node.id);
-      $('#assoc_qname').val('openapps_org_repository_1_0_categories');
-      $('#entity_qname').val('openapps_org_repository_1_0_category');
 
-      //    $.ajax({
-      //      type: 'POST',
-      //      url: '/service/entity/association/add.json',
-      //      data: $('#nodeAddForm').serialize(),
-      //      success: function (result) {
-      //              if (result.response.status != 0 ){
-      //                $.messager.show({
-      //                  title: 'Error',
-      //                      msg: result.errorMsg
-      //                  });
-      //              } else {
-      //                $.messager.show({
-      //                  title: 'Success',
-      //                    msg: name + ' created successfully',
-      //                    timeout: 1000,
-      //                    showType: 'fade',
-      //                  style:{
-      //                      right:'',
-      //                      bottom:''
-      //                  }
-      //                });
-      //                $('#addNodeDialog').dialog('close');        // close the dialog
-      //                $('#collectionTree').tree('reload', node.target); //Reload tree node
-      //              }
-      //      }
-      //    });
-      //$('#collectionTree').tree('reload', node.target);
+       var qLocalName = mapContenTypeToAssocQ(contentType);
+      $('#node-add-entity_qname').val('openapps_org_repository_1_0_'+contentType);
+      if ( qLocalName == 'items'){
+          $('#node-add-description').val($('#abstractNoteEditor').texteditor('getValue'));
+      }
+      $('#node-add-assoc_qname').val('openapps_org_repository_1_0_'+ qLocalName);
+          $.ajax({
+            type: 'POST',
+            url: '/service/entity/association/add.json',
+            data: $('#nodeAddForm').serialize(),
+            success: function (result) {
+                    if (result.response.status != 0 ){
+                      $.messager.alert({
+                        title: 'Error',
+                            msg: result.errorMsg
+                        });
+                    } else {
+                      $.messager.alert({
+                        title: 'Success',
+                        msg: result.response.messages[0],
+                        fn: function(){$('#nodeAddDlg').dialog('close');},
+                        style:{
+                            right:'',
+                            bottom:''
+                        }
+                      });
+
+                      $('#collectionTree').tree('reload', node.target); //Reload tree node
+
+
+                    }
+            }
+          });
+          document.getElementById("nodeAddForm").reset();
+          $('#nodeAddDlg').dialog('close');        // close the dialog
   }
 
   function menuHandler(item) {
@@ -374,6 +441,26 @@
 
   function addPropertyDiv() {
 
-      $("<input id=\"collection-bulk-begin-date\" class=\"easyui-textbox\" label=\"Bulk Begin Date:\" labelPosition=\"top\" style=\"width:100%;\" />").appendTo("#lastrow");
-
+      //$("<input id=\"collection-bulk-begin-date\" class=\"easyui-textbox\" label=\"Bulk Begin Date:\" labelPosition=\"top\" style=\"width:100%;\" />").appendTo("#lastrow");
+//      var node = $('#collectionTree').tree('getSelected');
+//      var iconCls = node.iconCls;
+//      var qName = iconCls.substring(5,iconCls.length);
+//      var ajaxReq = $.ajax({
+//          url: '/service/dictionary/model/fetch.json?qname=openapps_org_repository_1_0_'+qName,
+//          type: 'GET',
+//          cache: false,
+//          contentType: false,
+//          processData: false
+//      });
+//
+//      ajaxReq.done(function(entity) {
+//        var fields = entity.response.data[0].fields;
+//        fields.forEach(function(item,index){
+//          //alert(index +': ' + item.name);
+//          $('<input id="name" class="easyui-textbox" label="' + item.name + '" value="'
+//          + item.name
+//          +'" />').appendTo('#lastrow');
+//          });
+//        //alert(entity.response.data[0].fields[0].name);
+//      });
   }

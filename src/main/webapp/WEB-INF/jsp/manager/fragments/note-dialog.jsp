@@ -1,6 +1,6 @@
 <div id="subject-dialog" class="easyui-dialog" title="Subject" style="width:400px;height:200px;padding:10px"
 	data-options="closed:true,modal:true">
-     <form id="collection-form" class="form">
+     <form id="subject-collection-form" class="form">
     	<div class="form-row" style="height:50px;">
     		<div style="width:20%;float:left;margin-top:3px;">
 	   			<label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;">ID:</label>

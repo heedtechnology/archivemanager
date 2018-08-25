@@ -94,26 +94,25 @@ public class JsonCollectionController extends WebserviceSupport {
 		String id = req.getParameter("id");
 		if(id == null) {
 			Entity entity = getEntityService().getEntity(Long.valueOf(collectionId));
-			List<Association> sourceAssociations = entity.getSourceAssociations(RepositoryModel.CATEGORIES, RepositoryModel.ITEMS, RepositoryModel.ITEM,RepositoryModel.COLLECTIONS);
+			List<Association> sourceAssociations = entity.getSourceAssociations(RepositoryModel.COLLECTIONS, RepositoryModel.CATEGORIES, RepositoryModel.ITEMS);
 			Collections.sort(sourceAssociations, assocSort);
 			if(sourceAssociations.size() == 0) {
-				nodes.add(new TreeNode(entity.getId(), entity.getName(), "open"));
+				nodes.add(createTreeNode(entity.getQName().getLocalName(), entity.getId(), entity.getName(), "open"));
 			} else {
-				TreeNode collectionNode = new TreeNode(entity.getId(), entity.getName(), "open");
-				collectionNode.setIconCls("icon-collection");
+				TreeNode collectionNode = createTreeNode(entity.getQName().getLocalName(), entity.getId(), entity.getName(), "open");
 				for(int i=0; i < sourceAssociations.size(); i++) {
 					Association assoc = sourceAssociations.get(i);
 					if(assoc.getTargetEntity() == null) {
 						assoc.setTargetEntity(getEntityService().getEntity(assoc.getTarget()));
 					}
 					String name = assoc.getTargetEntity().getName();
-					collectionNode.getChildren().add(new TreeNode(assoc.getTarget(), name, "closed"));
+					collectionNode.getChildren().add(createTreeNode(assoc.getTargetEntity().getQName().getLocalName(),assoc.getTarget(), name, "closed"));
 				}
 				nodes.add(collectionNode);
 			}
 		} else {
 			Entity entity = getEntityService().getEntity(Long.valueOf(id));
-			List<Association> sourceAssociations = entity.getSourceAssociations(RepositoryModel.CATEGORIES, RepositoryModel.ITEMS, RepositoryModel.ITEM);
+			List<Association> sourceAssociations = entity.getSourceAssociations(RepositoryModel.CATEGORIES, RepositoryModel.ITEMS);
 			Collections.sort(sourceAssociations, assocSort);
 			for(Association assoc : sourceAssociations) {
 				if(assoc.getTargetEntity() == null) {
@@ -122,7 +121,7 @@ public class JsonCollectionController extends WebserviceSupport {
 				String name = assoc.getTargetEntity().getName();
 				if(name == null) name = assoc.getTargetEntity().getPropertyValue(RepositoryModel.DATE_EXPRESSION);
 				if(name == null) name = assoc.getTargetEntity().getPropertyValue(RepositoryModel.CONTAINER);
-				nodes.add(new TreeNode(assoc.getTarget(), name, "closed"));
+				nodes.add(createTreeNode(assoc.getTargetEntity().getQName().getLocalName(), assoc.getTarget(), name, "closed"));
 			}
 		}
 		return nodes;
@@ -684,6 +683,23 @@ public class JsonCollectionController extends WebserviceSupport {
 			out.write("/" + entity.getName());
 		}
 		return out.toString();
+	}
+
+	private TreeNode createTreeNode(String localQName, long id, String name, String state){
+		TreeNode node = new TreeNode(id, name, state);
+		String iconCls = "icon-" + localQName;
+		node.setIconCls(iconCls);
+//		switch(localQName){
+//			case "repository": node.setIconCls("icon-repository"); break;
+//			case "collection": node.setIconCls("icon-collection"); break;
+//			case "category": if ( state.equals("open") ) {node.setIconCls("icon-category-open");}
+//											 else {node.setIconCls("icon-category-closed");} break;
+//			case "audio": node.setIconCls("icon-audio"); break;
+//			case "video": node.setIconCls("icon-video"); break;
+//			default: node.setIconCls("icon-file");
+//		}
+
+		return node;
 	}
 	protected void appendRepository(HttpServletRequest request, Entity entity) throws Exception {
 		String repository = request.getParameter("repository");
