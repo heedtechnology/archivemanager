@@ -6,15 +6,15 @@
        <input id="node-add-entity_qname" name="entity_qname" type="hidden" value=""></>
         <input id="node-add-description" name="description" type="hidden" value=""></>
       <div id="divContentType" style="margin-bottom: 2px" >
-        <input id="contentTypeDropDown" name="contentType" label="Item Type:" value="aa" style="width:50%">
+        <input id="node-add-content-type" name="contentType" label="Item Type:" value="" style="width:50%">
         </div>
       <div>
-      <input id="nameBox" name="name" class="easyui-textbox" required="true" label="Name:" style="width:100%;">
+      <input id="node-add-name" name="name" class="easyui-textbox" required="true" label="Name:" style="width:100%;">
       </div>
 
       <div class="form-row">
         <label class="textbox-label textbox-label-top" style="text-align: left;">Description:</label>
-        <div id="abstractNoteEditor" name="abstractNote" class="easyui-texteditor" style="width:100%;height:300px;padding:5px;"/>
+        <div id="node-add-abstract-note" name="abstractNote" class="easyui-texteditor" style="width:100%;height:300px;padding:5px;"/>
         </div>
       <div id="dlg-buttons">
         <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="addToCollection()" style="width:90px">Save</a>

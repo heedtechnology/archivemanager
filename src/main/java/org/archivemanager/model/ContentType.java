@@ -21,6 +21,7 @@ public enum ContentType {
   ARTWORK ("artwork","Artwork"),
   AUDIO ("audio","Audio"),
   CORRESPONDENCE ("correspondence","Correspondence"),
+  CATEGORY ("category","Category"),
   FINANCIAL ("financial","Financial Material"),
   JOURNALS ("journals","Journals"),
   LEGAL ("legal","Legal Material"),

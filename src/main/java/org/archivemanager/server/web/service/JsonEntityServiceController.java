@@ -319,7 +319,7 @@ public class JsonEntityServiceController extends WebserviceSupport {
         if (entity.getId() == null || entity.getId() == 0) {
           if (NumberUtility.isLong(source)) {
             getEntityService().addEntity(Long.valueOf(source), null, assocQname, null, entity);
-//            data.getResponse().addData(getEntityService().export(instructions, sourceEntity));
+            data.getResponse().addData(getEntityService().export(instructions, entity));
           }
         }
       } else {

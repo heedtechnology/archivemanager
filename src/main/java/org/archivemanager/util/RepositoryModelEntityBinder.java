@@ -131,7 +131,11 @@ public class RepositoryModelEntityBinder {
 					e.printStackTrace();
 				}
 			}
-		}				
+		}
+
+		Collections.sort(collection.getPeople(), sorter);
+		Collections.sort(collection.getCorporations(), sorter);
+		Collections.sort(collection.getSubjects(), sorter);
 		return collection;
 	}
 	public Permission getPermission(Entity entity) {

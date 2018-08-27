@@ -6,6 +6,7 @@
   }
 
   function doSearch2() {
+      clearChecked($('#assocSelectionGrid'));
       $('#assocSelectionGrid').datagrid('load', {
           qname: $('#searchQName').val(),
           query: $('#query').val()
@@ -13,6 +14,7 @@
   }
 
   function loadAndOpen(qnameIn) {
+      var node = $('#collectionTree').tree('getSelected');
 
       $('#addAssocSearch').after('<input id="searchQName" type="hidden" value="' + qnameIn + '"></input>');
       $('#assocSelectionGrid')
@@ -147,6 +149,8 @@
       switch (contentType) {
           case 'category':
               return 'categories';
+          case 'collection':
+              return 'collections';
           default:
               return "items";
 

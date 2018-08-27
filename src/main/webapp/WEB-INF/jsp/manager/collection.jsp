@@ -24,7 +24,7 @@
 
 <div id="mainLayout" class="easyui-layout"  data-options="fit:true">
     <div id="toolbar1">
-		<a id="add" href="javascript:void(0)" class="icon-add" style="float:left;margin:0 5px;" onclick='nodeAddToCollection()'></a>
+		<a id="add" href="javascript:void(0)" class="icon-add" style="float:left;margin:0 5px;" onclick='showAddNodeDialog()'></a>
 	    <a id="delete" href="javascript:void(0)" class="icon-remove" style="float:left;margin:0 5px;" onclick="destroyCollection()"></a>
 	          <a id="back" href="javascript:void(0)" class="icon-back" style="float:left;margin:0 5px;" onclick="goHome()"></a>
 	</div>
@@ -36,18 +36,19 @@
 	    </ul>
     </div>
 
-    <div id="bullshit" class="easyui-tabs" title=" " data-options="fit:true,region:'center'">
+    <div id="bullshit" class="easyui-tabs" title=" " style="width=60%" data-options="region:'center'">
     <div id="application-body" class="easyui-tabs" title=" " data-options="fit:true">
     	<%@ include file="fragments/repository-form.jsp" %>
     	<%@ include file="fragments/collection-form.jsp" %>
     	<%@ include file="fragments/collection-category-form.jsp" %>
 		  <%@ include file="fragments/collection-item-form.jsp" %>
+		  <%@ include file="fragments/collection-named-entity-form.jsp" %>
+		  <%@ include file="fragments/collection-subject-form.jsp" %>
 		  <%@ include file="fragments/collection-import.jsp" %>
     </div>
     </div>
-
-    <div id="application-properties" class="easyui-tabs" title=" " style="width:20%;" data-options="region:'east',split:true">
-    <div id="bullshit2" class="easyui-tabs" title=" " style="width: 100%;" data-options="">
+    <div id="bullshit2" class="easyui-tabs" title=" " style="width: 25%" data-options="region:'east'">
+    <div id="application-properties" class="easyui-tabs" title=" " data-options="fit:true">
     	<%@ include file="fragments/collection-associations.jsp" %>
     	<%@ include file="fragments/collection-import-properties.jsp" %>
     </div>
