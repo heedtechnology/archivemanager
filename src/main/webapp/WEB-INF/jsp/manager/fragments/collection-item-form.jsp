@@ -80,7 +80,6 @@
                         </div>
             </div>
 
-
             <div id="item-medium-div" class="form-row" style="display:none;">
                 <div style="width:38%;float:left;">
                     <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Medium:</label>
@@ -93,4 +92,5 @@
 
         <div id="lastrow" class="form-row"></div>
     </form>
+
 </div>

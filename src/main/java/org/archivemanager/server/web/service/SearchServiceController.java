@@ -18,6 +18,7 @@ import org.heed.openapps.entity.data.FormatInstructions;
 import org.heed.openapps.search.SearchRequest;
 import org.heed.openapps.search.SearchResponse;
 import org.heed.openapps.search.SearchResult;
+import org.heed.openapps.search.data.SearchRestResponse;
 import org.heed.openapps.security.GuestUser;
 import org.heed.openapps.util.NumberUtility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,15 +38,14 @@ public class SearchServiceController extends WebserviceSupport {
 	
 	@ResponseBody
 	@RequestMapping(value="/entity.json", method = RequestMethod.POST)
-	public RestResponse<Result> search(@RequestParam(required=false) String query, @RequestParam(required=false) QName qname, 
-			@RequestParam(required=false) int page, @RequestParam(required=false, defaultValue="20") int rows,
+	public SearchRestResponse<Result> search(@RequestParam(required=false) String query, @RequestParam(required=false) QName qname, 
+			@RequestParam(required=false, defaultValue="0") int page, @RequestParam(required=false, defaultValue="20") int rows,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RestResponse<Result> data = new RestResponse<Result>();
+		SearchRestResponse<Result> data = new SearchRestResponse<Result>();
 		if(qname == null) qname = RepositoryModel.COLLECTION;
 		SearchRequest entityQuery = new SearchRequest(qname, query);
 		entityQuery.setStartRow((page * rows)-rows);
 		entityQuery.setEndRow(page * rows);
-		//entityQuery.setFields(new String[] {"freetext"});
 		SearchResponse results = getSearchService().search(entityQuery);		
 		if(results != null) {
 			data.setStartRow(results.getStartRow());
@@ -55,8 +55,9 @@ public class SearchServiceController extends WebserviceSupport {
 			for(SearchResult entity : results.getResults()) {
 				data.addRow(binder.getResult(entity.getEntity(), true));
 			}
-		}
-		
+			data.setAttributes(results.getAttributes());
+			data.setBreadcrumb(results.getBreadcrumb());
+		}		
 		return data;
 	}
 	@ResponseBody

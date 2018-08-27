@@ -18,8 +18,8 @@ public class Result {
 	public Result(long id, String name, String description, String contentType) {
 		this.id = id;
 		this.name = name;
-		this.description = description;
-		this.contentType = contentType;
+		if(description != null) this.description = description;
+		if(contentType != null) this.contentType = contentType;
 	}
 			
 	public long getId() {

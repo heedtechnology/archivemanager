@@ -74,6 +74,9 @@
       });
 
       $('#node-add-content-type').combobox({
+
+      $('#contentTypeDropDown').combobox({
+
           url: '/service/archivemanager/entity/content_type.json',
           method: 'get',
           valueField: 'id',

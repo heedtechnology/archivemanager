@@ -9,6 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/archivemanager.css"/>
     <link rel="stylesheet" type="text/css" href="/css/easyui/jquery-texteditor.css"/>
 
+
 <script type="text/javascript" src="/js/utilities.js"></script>
 <script type="text/javascript" src="/easyui/plugins/jquery.texteditor.js"></script>
 <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
@@ -17,6 +18,9 @@
 <script type="text/javascript" src="/js/archivemanager.js"></script>
 <script type="text/javascript" src="/js/manager/collection.js"></script>
 <script type="text/javascript" src="/js/manager/easyui_overrides.js"></script>
+<script type="text/javascript" src="/js/apps/utilities.js"></script>
+<script type="text/javascript" src="/js/apps/manager/collection.js"></script>
+<script type="text/javascript" src="/js/apps/manager/easyui_overrides.js"></script>
 
 <style>
 	#cc .combo-panel{height:75px;}
@@ -26,7 +30,7 @@
     <div id="toolbar1">
 		<a id="add" href="javascript:void(0)" class="icon-add" style="float:left;margin:0 5px;" onclick='showAddNodeDialog()'></a>
 	    <a id="delete" href="javascript:void(0)" class="icon-remove" style="float:left;margin:0 5px;" onclick="destroyCollection()"></a>
-	          <a id="back" href="javascript:void(0)" class="icon-back" style="float:left;margin:0 5px;" onclick="goHome()"></a>
+	          <a id="back" href="javascript:void(0)" class="icon-bactyle="float:left;margin:0 5px;" onclick="goHome()"></a>
 	</div>
     <div id="collection-tree" title=" " style="width: 15%" data-options="region:'west',split:true,tools:'#toolbar1'">
 
@@ -36,9 +40,13 @@
 	    </ul>
     </div>
 
+<<<<<<< HEAD
     <div id="bullshit" class="easyui-tabs" title=" " style="width=60%" data-options="region:'center'">
     <div id="application-body" class="easyui-tabs" title=" " data-options="fit:true">
     	<%@ include file="fragments/repository-form.jsp" %>
+=======
+    <div id="application-body" class="easyui-tabs" title=" " style="height:100%" data-options="region:'center'">
+>>>>>>> origin/master
     	<%@ include file="fragments/collection-form.jsp" %>
     	<%@ include file="fragments/collection-category-form.jsp" %>
 		  <%@ include file="fragments/collection-item-form.jsp" %>

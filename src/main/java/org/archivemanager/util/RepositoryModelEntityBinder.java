@@ -29,6 +29,7 @@ import org.heed.openapps.entity.Entity;
 import org.heed.openapps.entity.EntityService;
 import org.archivemanager.model.Result;
 import org.heed.openapps.util.HTMLUtility;
+import org.jsoup.Jsoup;
 
 
 public class RepositoryModelEntityBinder {
@@ -463,7 +464,7 @@ public class RepositoryModelEntityBinder {
 	}
 	protected String decode(String in) {
 		if(in == null) return "";
-		return in.replace("&lt;", "<").replace("&gt;", ">").replace("&nbsp;", "").replace("<br>", "");
+		return Jsoup.parse(in).text();//in.replace("&lt;", "<").replace("&gt;", ">").replace("&nbsp;", "").replace("<br>", "");
 	}
 	protected List<Entity> getComponentPath(Entity comp) {
 		List<Entity> path = new ArrayList<Entity>();

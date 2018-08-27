@@ -2,14 +2,10 @@ package org.archivemanager.server.web;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.archivemanager.data.RestResponse;
-import org.archivemanager.data.SystemModelEntityBinder;
-import org.heed.openapps.SystemModel;
-import org.heed.openapps.User;
-import org.heed.openapps.search.SearchRequest;
-import org.heed.openapps.search.SearchResponse;
-import org.heed.openapps.search.SearchResult;
-import org.heed.openapps.search.SearchService;
+import org.archivemanager.model.Result;
+import org.archivemanager.util.RepositoryModelEntityBinder;
+import org.heed.openapps.entity.Entity;
+import org.heed.openapps.entity.EntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,31 +18,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/search")
 public class SearchController {
-	@Autowired private SearchService searchService;
-	@Autowired private SystemModelEntityBinder binder;
+	@Autowired private EntityService entityService;
+	@Autowired private RepositoryModelEntityBinder binder;
 	
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String getUsers(final Model model, HttpServletRequest request, HttpServletResponse resp) {		
+	public String getApplication(final Model model, HttpServletRequest request, HttpServletResponse resp) {		
 		return "search/home";
 	}	
 	
-	/** Services **/
+	@RequestMapping(value = "/embedded", method = RequestMethod.GET)
+	public String getEmbedded(final Model model, HttpServletRequest request, HttpServletResponse resp) {		
+		return "search/include/results";
+	}
+	
 	@ResponseBody
-	@RequestMapping(value="/search.json")
-	public RestResponse<User> search(@RequestParam(required=false) String query, @RequestParam(required=false, defaultValue="1") int page, 
-			@RequestParam(required=false, defaultValue="20") int size) throws Exception {
-		RestResponse<User> data = new RestResponse<User>();		
-		int start = (page*size) -  size;
-		int end = page*size;
-		data.setStartRow(start);
-		data.setEndRow(end);
-		SearchRequest request = new SearchRequest(SystemModel.USER);
-		SearchResponse results = searchService.search(request);
-		for(SearchResult result : results.getResults()) {
-			data.addRow(binder.getUser(result.getEntity()));
-		}
-		data.setTotal(results.getResultSize());
-		return data;
+	@RequestMapping(value="/detail.json")
+	public Result detail(@RequestParam long id) throws Exception {
+		Entity entity = entityService.getEntity(id);
+		return binder.getResult(entity, false);
 	}
 }
