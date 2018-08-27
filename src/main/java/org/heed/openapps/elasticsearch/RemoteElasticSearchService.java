@@ -348,7 +348,7 @@ public class RemoteElasticSearchService implements SearchService {
 	}
 	@Override
 	public void remove(Long id) {
-		//indexingService.remove(id);
+		indexingService.remove(id);
 	}
 	
 	protected Map<String,String> getContentTypeLabels() {

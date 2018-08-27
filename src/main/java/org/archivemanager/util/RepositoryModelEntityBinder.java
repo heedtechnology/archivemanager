@@ -132,7 +132,11 @@ public class RepositoryModelEntityBinder {
 					e.printStackTrace();
 				}
 			}
-		}				
+		}
+
+		Collections.sort(collection.getPeople(), sorter);
+		Collections.sort(collection.getCorporations(), sorter);
+		Collections.sort(collection.getSubjects(), sorter);
 		return collection;
 	}
 	public Permission getPermission(Entity entity) {
@@ -146,6 +150,7 @@ public class RepositoryModelEntityBinder {
 	}
 	public Category getCategory(Entity entity) {
 		Category category = new Category(entity.getId(), entity.getName());
+		category.setDescription(entity.getPropertyValue(RepositoryModel.DESCRIPTION));
 		category.setContentType("category");
 		if(entity.getSourceAssociations().size() > 0) {
 			for(int i=0; i < entity.getSourceAssociations().size(); i++) {
@@ -231,7 +236,7 @@ public class RepositoryModelEntityBinder {
 				if(node.getQName().equals(RepositoryModel.COLLECTION)) {
 					item.setCollectionId(String.valueOf(node.getId()));
 					item.setCollectionName(node.getName());
-					item.setCollectionUrl(node.getPropertyValue(new QName("openapps.org_repository_1.0", "url")));
+					item.setCollectionUrl(node.getPropertyValue(RepositoryModel.URL));
 				}
 			}
 		}

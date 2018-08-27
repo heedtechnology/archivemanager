@@ -18,17 +18,24 @@ public enum ContentType {
 //		if(in.equals("video")) return "Video";
 //		if(in.equals("research")) return "Research";
 
+  ARTWORK ("artwork","Artwork"),
   AUDIO ("audio","Audio"),
-  VIDEO ("video","Video"),
   CORRESPONDENCE ("correspondence","Correspondence"),
+  CATEGORY ("category","Category"),
   FINANCIAL ("financial","Financial Material"),
+  JOURNALS ("journals","Journals"),
   LEGAL ("legal","Legal Material"),
   MANUSCRIPT ("manuscript","Manuscript"),
+  MEDICAL ("medical","Medical"),
   MEMORABILIA ("memorabilia","Memorabilia"),
-  PHOTOGRAPHS ("photgraphs","Photographic Material"),
+  MISCELLANEOUS ("miscellaneous","Miscellaneous"),
+  NOTEBOOKS ("notebooks","Notebooks"),
+  PHOTOGRAPHS ("photographs","Photographic Material"),
   PRINTED_MATERIAL ("printed_material","Printed Material"),
   PROFESSIONAL ("professional","Professional"),
-  RESEARCH ("research","Research");
+  RESEARCH ("research","Research"),
+  SCRAPBOOKS ("scrapbooks","Scrapbooks"),
+  VIDEO ("video","Video");
 
 
   private final String key;

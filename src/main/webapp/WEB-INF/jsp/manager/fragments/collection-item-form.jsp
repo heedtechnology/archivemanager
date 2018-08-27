@@ -1,104 +1,96 @@
-
 <div id="collection-item-form" class="screen" title="collection-item-form">
-	<div class="form-row" style="min-height:25px;">
-		<div style="width:20%;float:left;margin-top:3px;">
-   			<label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;">ID:</label>
-   			<label id="collection.id" class="textbox-label textbox-label-top" style="text-align:left;float:left;">${collection.id}</label>
-   		</div>
-   		<div style="float:right;">
-			<a class="btn btn-primary" style="float:right;margin-right:5px;" href="javascript:void(0)" onclick="navigate('collection-import')">
-				<i class="fa fa-upload fa-fw"></i>Import</a>
-		</div>
-	</div>
-   	<div class="form-row" style="height:50px;">
-   		<div style="width:38%;float:left;">
-            <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Language:</label>
-          	<select id="collection.language" class="easyui-combobox" style="width:100%;float:left;">
-          		<option></option>
-          		<option value="en">English</option>
-          	</select>
+    <form id="collection-item-update-form" method="post" enctype="multipart/form-data">
+        <div class="form-row" style="min-height:25px;">
+            <div style="width:20%;float:left;margin-top:3px;">
+                <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;">ID:</label>
+                <label id="collection-item-id" class="textbox-label textbox-label-top" style="text-align:left;float:left;">${collection.id}</label>
+                <input id="collection-item-update-form-id" type="hidden" name="id" value=${collection.id}>
+            </div>
+            <div style="float:right;">
+                <a class="btn btn-primary" style="float:right;margin-right:5px;" href="javascript:void(0)" onclick="navigate('collection-import')">
+        <i class="fa fa-upload fa-fw"></i>Import</a>
+            </div>
         </div>
-        <div style="width:38%;float:right;">
-            <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Owner:</label>
-          	<input id="collection.owner" class="easyui-textbox" style="width:100%;float:left;" />
+        <div class="form-row" style="height:50px;">
+            <div style="width:38%;float:left;">
+                <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Language:</label>
+                <select id="collection-item-language" class="easyui-combobox" style="width:50%;float:left;">
+                    <option></option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+            <div style="width:38%;float:right;">
+                <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Owner:</label>
+                <input id="collection-item-owner" name="owner" class="easyui-textbox" style="width:50%;float:left;" />
+            </div>
         </div>
-   	</div>
-   	<div class="form-row">
-   		<label class="textbox-label textbox-label-top" style="text-align: left;">Heading:</label>
-    	<div id="collection-item-name" class="easyui-texteditor" style="width:100%;height:100px;padding:5px;">
+        <div class="form-row">
+        <!--
+            <label class="textbox-label textbox-label-top" style="text-align: left;">Name:</label>
+            <input id="collection-category-name" name="name" class="easyui-textbox" label="Name:" labelPosition="top" style="width:100%;" />
+            </div>
+        -->
+            <input id="collection-item-name" name="name" class="easyui-textbox" label="Name:" labelPosition="top" style="width:100%;" />
 
-		</div>
-	</div>
-   	<div class="form-row">
-   		<label class="textbox-label textbox-label-top" style="text-align: left;">Scope Note:</label>
-    	<div id="collection-scopeNote" class="easyui-texteditor" style="width:100%;height:300px;padding:5px;">
+        </div>
+        <div class="form-row">
+            <label class="textbox-label textbox-label-top" style="text-align: left;">Description:</label>
+            <div id="collection-item-description" name="description" class="easyui-texteditor" style="width:100%;height:100px;padding:5px;">
+            </div>
+        </div>
+        <div class="form-row">
+            <label class="textbox-label textbox-label-top" style="text-align: left;">Summary:</label>
+            <div id="collection-item-summary" name="summary" class="easyui-texteditor" style="width:100%;height:100px;padding:5px;">
+            </div>
+        </div>
+        <div class="form-row">
+            <label class="textbox-label textbox-label-top" style="text-align: left;">Container:</label>
+            <input id="collection-item-container" name="container" class="easyui-validatebox" data-options="validateOnBlur:true,validType:'isNumberAndLength'" style="width:10%;" />
+        </div>
+        <div class="form-row">
+            <input id="item-collection-id" class="easyui-textbox" label="Collection ID:" labelPosition="top" style="width:100%;" data-options="editable:false"/>
+        </div>
+                <div class="form-row">
+                    <input id="item-collection-name" class="easyui-textbox" label="Collection Name:" labelPosition="top" style="width:100%;" data-options="editable:false"/>
+                </div>
+                        <div class="form-row">
+                            <input id="item-collection-url" class="easyui-textbox" label="URL:" labelPosition="top" style="width:100%;" data-options="editable:false"/>
+                        </div>
+        <div class="form-row">
+            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'" onclick="updateEntity('collection-item-update-form')">Save</a>
+        </div>
 
-		</div>
-	</div>
-	<div class="form-row">
-   		<label class="textbox-label textbox-label-top" style="text-align: left;">Biographical Note:</label>
-    	<div id="collection-bioNote" class="easyui-texteditor" style="width:100%;height:300px;padding:5px;">
+            <div id="item-genre-div" class="form-row" style="display:none;">
+                <div style="width:38%;float:left;">
+                    <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Genre:</label>
+                    <select id="item-genre" name="genre" class="easyui-combobox" style="width:35%;float:left;">
+                        <option></option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+            </div>
 
-		</div>
-	</div>
+            <div id="item-form-div" class="form-row" style="display:none;">
+                        <div style="width:38%;float:left;">
+                            <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Form:</label>
+                            <select id="item-form" name="form" class="easyui-combobox" style="width:35%;float:left;">
+                                <option></option>
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+            </div>
 
-    <div class="form-row">
-   		<input id="collection-url" class="easyui-textbox" label="URL:" labelPosition="top" style="width:100%;" />
-   	</div>
-   	   		<div class="form-row" style="margin-top:15px;">
-       			<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">Save</a>
-       		</div>
-   	<div class="form-row-col1">
-   		<div class="form-row">
-   			<input id="collection-code" class="easyui-textbox" label="Code:" labelPosition="top" style="width:100%;" />
-   		</div>
-   		<div class="form-row">
-   			<input id="collection-accession-date" class="easyui-textbox" label="Accession Date:"
-            data-options="formatter:customDateFormatter,parser:customDateParser" labelPosition="top" style="width:100%;" />
-   		</div>
-   		<div class="form-row">
-   			<input id="collection-begin-date" class="easyui-textbox" label="Begin Date:"
-            data-options="formatter:customDateFormatter,parser:customDateParser" labelPosition="top" style="width:100%;" />
-   		</div>
-   		<div class="form-row">
-   			<input id="collection-bulk-begin-date" class="easyui-textbox" label="Bulk Begin Date:"
-            data-options="formatter:customDateFormatter,parser:customDateParser" labelPosition="top" style="width:100%;" />
-   		</div>
-   		<div id="lastrow" class="form-row">
+            <div id="item-medium-div" class="form-row" style="display:none;">
+                <div style="width:38%;float:left;">
+                    <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Medium:</label>
+                    <select id="item-medium" name="medium" class="easyui-combobox" style="width:35%;float:left;">
+                        <option></option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+            </div>
 
-   		</div>
+        <div id="lastrow" class="form-row"></div>
+    </form>
 
-   	</div>
-   	<div class="form-row-col2">
-   		<div class="form-row">
-   			<input id="collection-identifier" class="easyui-textbox" label="Identifier:" labelPosition="top" style="width:100%;" />
-   		</div>
-   		<div class="form-row">
-   			<input id="collection-date-expression" class="easyui-textbox" label="Date Expression:"
-            data-options="formatter:customDateFormatter,parser:customDateParser" labelPosition="top" style="width:100%;" />
-   		</div>
-   		<div class="form-row">
-   			<input id="collection-end-date" class="easyui-textbox" label="End Date:"
-            data-options="formatter:customDateFormatter,parser:customDateParser" labelPosition="top" style="width:100%;" />
-   		</div>
-   		<div class="form-row">
-   			<input id="collection-bulk-end-date" class="easyui-textbox" label="Bulk End Date:"
-            data-options="formatter:customDateFormatter,parser:customDateParser" labelPosition="top" style="width:100%;" />
-   		</div>
-   		<div class="form-row" style="min-height:35px;">
-   			<label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-left:50px;margin-right:10px;">Internal:</label>
-   			<input id="collection-internal" type="checkbox" style="float:left;" />
-   		</div>
-   		<div class="form-row">
-   			<label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:10px;">Public:</label>
-   			<input id="collection-public" type="checkbox" style="float:left;" />
-   		</div>
-   		   		<div class="form-row">
-         			<input id="collection-identifier" class="easyui-textbox" label="Identifier:" labelPosition="top" style="width:100%;" />
-         		</div>
-         		<div class="form-row">
-         			<input id="collection-date-expression" class="easyui-textbox" label="Date Expression:"
-            data-options="formatter:customDateFormatter,parser:customDateParser" labelPosition="top" style="width:100%;" />
-         		</div>
-   	</div>
 </div>

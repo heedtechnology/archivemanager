@@ -3,6 +3,7 @@ package org.archivemanager.server.web.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -385,6 +386,7 @@ public class JsonDictionaryServiceController extends WebserviceSupport {
 	}
 	protected Map<String, Object> modelToJson(Model model) {
 		SortedMap<String,Object> map = new TreeMap<String,Object>();
+
 		map.put("id", model.getId());
 		map.put("uid", model.getUid());
 		map.put("name", model.getName());
@@ -395,8 +397,10 @@ public class JsonDictionaryServiceController extends WebserviceSupport {
 		List<Map<String, Object>> fields = new ArrayList<Map<String, Object>>();
 		List<Map<String, Object>> relations = new ArrayList<Map<String, Object>>();
 		Model m = model;
+		System.out.println(m.getQName().getLocalName());
 		while(m != null) {
 			for(ModelField field : m.getFields()) {
+				System.out.println(field.getName() + ":" + field.getQName().getLocalName() + ":" + field.getType() +":"+ field.getPropertyType());
 				SortedMap<String,Object> fieldMap = new TreeMap<String,Object>();
 				fieldMap.put("id", field.getId());
 				fieldMap.put("uid", field.getUid());
@@ -413,6 +417,7 @@ public class JsonDictionaryServiceController extends WebserviceSupport {
 				fieldMap.put("order", field.getOrder());
 				fieldMap.put("sort", field.getSort());
 				fieldMap.put("type", field.getType());
+				fieldMap.put("values", field.getValues());
 				fields.add(fieldMap);
 			}
 			for(ModelRelation relation : m.getRelations()) {

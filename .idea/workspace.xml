@@ -1,0 +1,1382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7e7c8b16-7d28-45b4-8523-d17f7aa5e47b" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/model/JacksonQNameModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/heed/openapps/elasticsearch/FieldMappings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/embedded/results.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/apps/manager/easyui_overrides.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/apps/utilities.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/model/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/model/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/search/navigation/AttributeProviderPlugin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/search/navigation/DefaultBreadcrumbProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/search/navigation/DefaultBreadcrumbProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/search/navigation/DefinedAttributeProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/ArchiveManagerServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/ArchiveManagerServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/model/DataDictionaryRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/model/DataDictionaryRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonDictionaryServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonDictionaryServiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/SearchServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/SearchServiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/util/RepositoryModelEntityBinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/util/RepositoryModelEntityBinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/heed/openapps/elasticsearch/RemoteElasticSearchIndexingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/heed/openapps/elasticsearch/RemoteElasticSearchIndexingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/heed/openapps/elasticsearch/RemoteElasticSearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/heed/openapps/elasticsearch/RemoteElasticSearchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/heed/openapps/neo4j/RemoteNeo4jEntityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/heed/openapps/neo4j/RemoteNeo4jEntityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/dictionaries/dictionary.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/dictionaries/dictionary.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/menu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/site_header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/site_header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/collection.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/collection.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-form.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/registration.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/archive_results.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/collections.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/configuration.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/cooke-results.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/default.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/gallery1.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/gallery2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/help.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/include/attributes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/embedded/attributes.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/embedded/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/include/topbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/embedded/topbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/notable_figures_entries.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/results.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/results2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/series.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/series_with_notes.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/subject_guides.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/video2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/videos.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/archivemanager.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/archivemanager.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/apps/manager/collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/apps/manager/collection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/dictionaries/dictionary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/dictionaries/dictionary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/manager/collection.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/manager/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/apps/manager/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/manager/named_entities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/apps/manager/named_entities.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/search/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/search/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/utilities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/utilities.js" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="collection-category-form.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="collection-item-form.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="549">
+              <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RemoteNeo4jEntityService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/heed/openapps/neo4j/RemoteNeo4jEntityService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="501">
+              <caret line="922" column="77" lean-forward="true" selection-start-line="922" selection-start-column="77" selection-end-line="922" selection-end-column="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JsonDictionaryServiceController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonDictionaryServiceController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="32" column="4" lean-forward="true" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="collection.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/collection.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="404">
+              <caret line="32" column="66" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="collection-form.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-form.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="594">
+              <caret line="133" column="11" selection-start-line="133" selection-start-column="11" selection-end-line="133" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>menuHandler</find>
+      <find>nodeAddForm</find>
+      <find>subject</find>
+      <find>nodeAddTo</find>
+      <find>showAddNodeDialog</find>
+      <find>contentTypeDropDown</find>
+      <find>ContentTypeD</find>
+      <find>node-add-description</find>
+      <find>nameBox</find>
+      <find>node-add-content-type</find>
+      <find>abstractNoteEditor</find>
+      <find>abstractNoteE</find>
+      <find>*form.jsp</find>
+      <find>collection-category-up</find>
+      <find>name=&quot;id&quot;</find>
+      <find>updateEn</find>
+      <find>loadAn</find>
+      <find>showA</find>
+      <find>divContentType</find>
+      <find>hide</find>
+      <find>*update*form</find>
+      <find>addNew</find>
+      <find>showCon</find>
+      <find>newNode</find>
+      <find>&lt;%--</find>
+      <find>&lt;HEAD</find>
+      <find>&lt;&lt;</find>
+      <find>archivemanager</find>
+      <find>HEAD</find>
+      <find>A</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="newmanj" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-import-properties.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-associations.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/SearchServiceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/model/NamedEntity.java" />
+        <option value="$PROJECT_DIR$/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/util/RepositoryModelEntityBinder.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-context-menu.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/model/ContentType.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/node-add-dialog.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-named-entity-form.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-subject-form.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/repository-form.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/manager/collection.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-associations.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/utilities.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/apps/manager/collection.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/css/archivemanager.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-form.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/collection.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/org/heed/openapps/neo4j/RemoteNeo4jEntityService.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1920" />
+    <option name="y" value="90" />
+    <option name="width" value="1920" />
+    <option name="height" value="1158" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="archivemanager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="archivemanager" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="archivemanager" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="archivemanager" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="org.archivemanager.server" type="58d84e3e:PackageViewProjectNode" />
+              <item name="org.archivemanager.server" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="58d84e3e:PackageViewProjectNode" />
+              <item name="org.archivemanager.server" type="616d4139:PackageViewModuleNode" />
+              <item name="org" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="58d84e3e:PackageViewProjectNode" />
+              <item name="org.archivemanager.server" type="616d4139:PackageViewModuleNode" />
+              <item name="org" type="1f31426a:PackageElementNode" />
+              <item name="archivemanager" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="JsonDi&#9;PSI&#9;JAVA://org.archivemanager.server.web.service.JsonDictionaryServiceController&#10;Remote&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/java/org/heed/openapps/neo4j/RemoteNeo4jEntityService.java&#10;collection.jsp&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/collection.jsp&#10;collection-category&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp&#10;collection-form&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-form.jsp&#10;collection-item&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp&#10;archivemanager.&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/css/archivemanager.css&#10;collection.js&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/apps/manager/collection.js&#10;utilities.js&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/utilities.js&#10;*form.jsp&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp&#10;*form*jsp&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-subject-form.jsp&#10;contentty&#9;PSI&#9;JAVA://org.archivemanager.model.ContentType&#10;diction&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/resources/dictionaries/dictionary.xml&#10;menu&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/fragments/menu.jsp&#10;uti&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/utilities.js&#10;collection&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/manager/collection.js&#10;Classifica&#9;FILE&#9;jar:///Users/jnewman/.m2/repository/org/heed/openapps/org.heed.openapps.core.api/4.1.0/org.heed.openapps.core.api-4.1.0-sources.jar!/org/heed/openapps/dictionary/ClassificationModel.java&#10;dictionary&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/resources/dictionaries/dictionary.xml&#10;collection-&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-associations.jsp&#10;utili&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/utilities.js&#10;collection-import&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-import-properties.jsp&#10;collection.&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/manager/collection.js&#10;binder&#9;PSI&#9;JAVA://org.archivemanager.data.SystemModelEntityBinder&#10;ut&#9;PSI&#9;JAVA://org.archivemanager.model.AttributeValue" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+    </configuration>
+    <configuration name="ArchiveManagerServer" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.archivemanager.server.ArchiveManagerServer" />
+      <module name="org.archivemanager.server" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+      <method />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7e7c8b16-7d28-45b4-8523-d17f7aa5e47b" name="Default" comment="" />
+      <created>1535167963623</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1535167963623</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Commit 80 percent complete Collection Manager">
+      <created>1535184413588</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1535184413588</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Commit 90 percent complete Collection Manager (8-27-2018)">
+      <created>1535381162227</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1535381162228</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-1920" y="23" width="1920" height="1177" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32962963" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3287037" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="1" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3297561" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3287037" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32962963" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49725273" visible="true" weight="0.18903089" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297561" />
+      <window_info id="Structure" order="6" sideWeight="0.50274724" weight="0.18903089" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.34907407" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3297561" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49725273" visible="true" weight="0.18903089" />
+      <window_info id="Structure" order="6" sideWeight="0.50274724" weight="0.18903089" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3297561" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Image Layers" order="1" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297561" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.6809756" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3297561" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3287805" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3287805" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+    </layout-to-restore>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="RELOAD_CONTEXT" value="false" />
+    <MESSAGE value="Commit 80 percent complete Collection Manager" />
+    <MESSAGE value="Commit 90 percent complete Collection Manager (8-27-2018)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit 90 percent complete Collection Manager (8-27-2018)" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java</url>
+          <line>202</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/WebserviceSupport.java</url>
+          <line>209</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java</url>
+          <line>232</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java</url>
+          <line>114</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java</url>
+          <line>337</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java</url>
+          <line>328</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/util/RepositoryModelEntityBinder.java</url>
+          <line>241</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/util/RepositoryModelEntityBinder.java</url>
+          <line>142</line>
+          <properties />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/SearchServiceController.java</url>
+          <line>42</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/SearchServiceController.java</url>
+          <line>48</line>
+          <properties />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java</url>
+          <line>83</line>
+          <properties />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java</url>
+          <line>91</line>
+          <properties />
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java</url>
+          <line>125</line>
+          <properties />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java</url>
+          <line>109</line>
+          <properties />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java</url>
+          <line>369</line>
+          <properties />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java</url>
+          <line>107</line>
+          <properties />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="23" />
+    </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="setValue">
+      <expression>
+        <expression-string>&quot;subjects&quot;</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>&quot;openapps_org_classification_1_0&quot;</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5640">
+          <caret line="412" selection-start-line="412" selection-end-line="412" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/WebserviceSupport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2400">
+          <caret line="209" selection-start-line="209" selection-end-line="209" />
+          <folding>
+            <element signature="e#18285#18286#0" expanded="true" />
+            <element signature="e#18315#18316#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="136" lean-forward="true" selection-start-line="32" selection-start-column="136" selection-end-line="32" selection-end-column="136" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/heed/openapps/org.heed.openapps.core.api/4.1.0/org.heed.openapps.core.api-4.1.0-sources.jar!/org/heed/openapps/entity/EntityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/model/AttributeValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/apps_footer.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/data/SystemModelEntityBinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/collections.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-associations.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/data/ResultSorter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/model/Collection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="30" column="17" lean-forward="true" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/model/Note.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/archivemanager/server/test/SearchServiceTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="47" column="123" selection-start-line="47" selection-start-column="123" selection-end-line="47" selection-end-column="123" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/model/NamedEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding>
+            <element signature="e#299#311#0" expanded="true" />
+            <element signature="e#359#366#0" expanded="true" />
+            <element signature="e#539#540#0" expanded="true" />
+            <element signature="e#561#562#0" expanded="true" />
+            <element signature="e#605#606#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#681#682#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/heed/openapps/org.heed.openapps.core.api/4.1.0/org.heed.openapps.core.api-4.1.0-sources.jar!/org/heed/openapps/dictionary/ClassificationModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/menu.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="6" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/dictionaries/dictionary.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="1147" selection-start-line="1147" selection-end-line="1147" />
+          <folding>
+            <element signature="e#48#7921#0" />
+            <element signature="e#164#5688#0" />
+            <element signature="e#4375#4704#0" />
+            <element signature="e#4526#4688#0" />
+            <element signature="e#5026#5357#0" />
+            <element signature="e#5181#5341#0" />
+            <element signature="e#5692#7910#0" />
+            <element signature="e#5711#5889#0" />
+            <element signature="e#5894#6183#0" />
+            <element signature="e#6043#6164#0" />
+            <element signature="e#6188#6359#0" />
+            <element signature="e#6364#6670#0" />
+            <element signature="e#6521#6651#0" />
+            <element signature="e#6675#6837#0" />
+            <element signature="e#6842#7013#0" />
+            <element signature="e#7018#7180#0" />
+            <element signature="e#7185#7352#0" />
+            <element signature="e#7357#7531#0" />
+            <element signature="e#7536#7706#0" />
+            <element signature="e#7711#7891#0" />
+            <element signature="e#7924#10123#0" />
+            <element signature="e#8031#8667#0" />
+            <element signature="e#8671#10112#0" />
+            <element signature="e#8690#8861#0" />
+            <element signature="e#8866#9037#0" />
+            <element signature="e#9042#9213#0" />
+            <element signature="e#9218#9389#0" />
+            <element signature="e#9394#9565#0" />
+            <element signature="e#9570#9741#0" />
+            <element signature="e#9746#9917#0" />
+            <element signature="e#9922#10093#0" />
+            <element signature="e#10126#11980#0" />
+            <element signature="e#10232#11756#0" />
+            <element signature="e#10704#11126#0" />
+            <element signature="e#10848#11110#0" />
+            <element signature="e#11760#11969#0" />
+            <element signature="e#11779#11950#0" />
+            <element signature="e#11983#13886#0" />
+            <element signature="e#12214#13842#0" />
+            <element signature="e#12231#12805#0" />
+            <element signature="e#12377#12789#0" />
+            <element signature="e#12810#13379#0" />
+            <element signature="e#12955#13363#0" />
+            <element signature="e#13384#13825#0" />
+            <element signature="e#13528#13809#0" />
+            <element signature="e#13889#15056#0" />
+            <element signature="e#14006#14642#0" />
+            <element signature="e#14646#15045#0" />
+            <element signature="e#14665#14849#0" />
+            <element signature="e#14854#15026#0" />
+            <element signature="e#15059#15556#0" />
+            <element signature="e#15182#15512#0" />
+            <element signature="e#15559#16541#0" />
+            <element signature="e#15795#16497#0" />
+            <element signature="e#15812#16480#0" />
+            <element signature="e#15958#16464#0" />
+            <element signature="e#16544#17427#0" />
+            <element signature="e#16750#17383#0" />
+            <element signature="e#17430#19348#0" />
+            <element signature="e#17679#18736#0" />
+            <element signature="e#18740#19337#0" />
+            <element signature="e#18759#18954#0" />
+            <element signature="e#18959#19141#0" />
+            <element signature="e#19146#19318#0" />
+            <element signature="e#19351#22629#0" />
+            <element signature="e#19498#21082#0" />
+            <element signature="e#21086#22618#0" />
+            <element signature="e#21105#21276#0" />
+            <element signature="e#21281#21443#0" />
+            <element signature="e#21448#21610#0" />
+            <element signature="e#21615#21777#0" />
+            <element signature="e#21782#21946#0" />
+            <element signature="e#21951#22117#0" />
+            <element signature="e#22122#22288#0" />
+            <element signature="e#22293#22599#0" />
+            <element signature="e#22450#22580#0" />
+            <element signature="e#22632#23288#0" />
+            <element signature="e#22883#23244#0" />
+            <element signature="e#23291#24509#0" />
+            <element signature="e#23536#24465#0" />
+            <element signature="e#23553#23959#0" />
+            <element signature="e#23697#23943#0" />
+            <element signature="e#23964#24448#0" />
+            <element signature="e#24109#24432#0" />
+            <element signature="e#24512#26571#0" />
+            <element signature="e#24633#26181#0" />
+            <element signature="e#25881#26164#0" />
+            <element signature="e#26022#26148#0" />
+            <element signature="e#26185#26560#0" />
+            <element signature="e#26204#26368#0" />
+            <element signature="e#26373#26541#0" />
+            <element signature="e#26574#27399#0" />
+            <element signature="e#26692#27172#0" />
+            <element signature="e#27176#27388#0" />
+            <element signature="e#27195#27369#0" />
+            <element signature="e#27402#28301#0" />
+            <element signature="e#27561#27897#0" />
+            <element signature="e#27901#28290#0" />
+            <element signature="e#27920#28091#0" />
+            <element signature="e#28096#28271#0" />
+            <element signature="e#28304#28938#0" />
+            <element signature="e#28406#28894#0" />
+            <element signature="e#28941#30050#0" />
+            <element signature="e#29105#29816#0" />
+            <element signature="e#29820#30039#0" />
+            <element signature="e#29839#30020#0" />
+            <element signature="e#30053#30728#0" />
+            <element signature="e#30173#30684#0" />
+            <element signature="e#30190#30512#0" />
+            <element signature="e#30334#30496#0" />
+            <element signature="e#30731#31041#0" />
+            <element signature="e#31044#31676#0" />
+            <element signature="e#31144#31632#0" />
+            <element signature="e#31679#36582#0" />
+            <element signature="e#31782#33676#0" />
+            <element signature="e#33680#36571#0" />
+            <element signature="e#33699#34066#0" />
+            <element signature="e#33881#34047#0" />
+            <element signature="e#33900#34028#0" />
+            <element signature="e#34071#34255#0" />
+            <element signature="e#34260#34436#0" />
+            <element signature="e#34441#34603#0" />
+            <element signature="e#34608#34770#0" />
+            <element signature="e#34775#35364#0" />
+            <element signature="e#34926#35345#0" />
+            <element signature="e#35143#35326#0" />
+            <element signature="e#35224#35308#0" />
+            <element signature="e#35369#35958#0" />
+            <element signature="e#35520#35939#0" />
+            <element signature="e#35737#35920#0" />
+            <element signature="e#35818#35902#0" />
+            <element signature="e#35963#36552#0" />
+            <element signature="e#36114#36533#0" />
+            <element signature="e#36331#36514#0" />
+            <element signature="e#36412#36496#0" />
+            <element signature="e#36585#37308#0" />
+            <element signature="e#36829#37264#0" />
+            <element signature="e#36846#37247#0" />
+            <element signature="e#36991#37231#0" />
+            <element signature="e#37311#42574#0" />
+            <element signature="e#37418#40344#0" />
+            <element signature="e#38993#39712#0" />
+            <element signature="e#39142#39696#0" />
+            <element signature="e#40348#42563#0" />
+            <element signature="e#40367#40964#0" />
+            <element signature="e#40549#40945#0" />
+            <element signature="e#40568#40696#0" />
+            <element signature="e#40703#40926#0" />
+            <element signature="e#40791#40908#0" />
+            <element signature="e#40969#41153#0" />
+            <element signature="e#41158#41334#0" />
+            <element signature="e#41339#41501#0" />
+            <element signature="e#41506#41668#0" />
+            <element signature="e#41673#41841#0" />
+            <element signature="e#41846#42014#0" />
+            <element signature="e#42019#42198#0" />
+            <element signature="e#42203#42371#0" />
+            <element signature="e#42376#42544#0" />
+            <element signature="e#42577#43439#0" />
+            <element signature="e#42719#43055#0" />
+            <element signature="e#43059#43428#0" />
+            <element signature="e#43078#43240#0" />
+            <element signature="e#43245#43409#0" />
+            <element signature="e#43442#46089#0" />
+            <element signature="e#43673#46045#0" />
+            <element signature="e#46092#47295#0" />
+            <element signature="e#46330#47251#0" />
+            <element signature="e#47298#48275#0" />
+            <element signature="e#47543#48231#0" />
+            <element signature="e#47560#47847#0" />
+            <element signature="e#47704#47831#0" />
+            <element signature="e#47852#48214#0" />
+            <element signature="e#47997#48198#0" />
+            <element signature="e#48278#49069#0" />
+            <element signature="e#48514#49025#0" />
+            <element signature="e#48531#49008#0" />
+            <element signature="e#48676#48992#0" />
+            <element signature="e#49072#51569#0" />
+            <element signature="e#49227#50821#0" />
+            <element signature="e#50825#51558#0" />
+            <element signature="e#50844#51006#0" />
+            <element signature="e#51011#51173#0" />
+            <element signature="e#51178#51356#0" />
+            <element signature="e#51361#51539#0" />
+            <element signature="e#51572#52788#0" />
+            <element signature="e#51809#52744#0" />
+            <element signature="e#51826#52138#0" />
+            <element signature="e#51970#52122#0" />
+            <element signature="e#52143#52727#0" />
+            <element signature="e#52288#52711#0" />
+            <element signature="e#52791#53510#0" />
+            <element signature="e#53030#53466#0" />
+            <element signature="e#53047#53449#0" />
+            <element signature="e#53192#53433#0" />
+            <element signature="e#53513#54247#0" />
+            <element signature="e#53761#54203#0" />
+            <element signature="e#53778#54186#0" />
+            <element signature="e#53923#54170#0" />
+            <element signature="e#54250#54571#0" />
+            <element signature="e#54574#59556#0" />
+            <element signature="e#54697#57176#0" />
+            <element signature="e#55520#55787#0" />
+            <element signature="e#55673#55771#0" />
+            <element signature="e#55792#56121#0" />
+            <element signature="e#55940#56105#0" />
+            <element signature="e#56126#56518#0" />
+            <element signature="e#56276#56502#0" />
+            <element signature="e#57180#59545#0" />
+            <element signature="e#57199#57380#0" />
+            <element signature="e#57385#57792#0" />
+            <element signature="e#57544#57773#0" />
+            <element signature="e#57797#58215#0" />
+            <element signature="e#57967#58196#0" />
+            <element signature="e#58220#58382#0" />
+            <element signature="e#58387#58549#0" />
+            <element signature="e#58554#58730#0" />
+            <element signature="e#58735#59332#0" />
+            <element signature="e#58917#59313#0" />
+            <element signature="e#58936#59064#0" />
+            <element signature="e#59071#59294#0" />
+            <element signature="e#59159#59276#0" />
+            <element signature="e#59337#59526#0" />
+            <element signature="e#59559#60690#0" />
+            <element signature="e#59658#60141#0" />
+            <element signature="e#60145#60679#0" />
+            <element signature="e#60164#60326#0" />
+            <element signature="e#60331#60493#0" />
+            <element signature="e#60498#60660#0" />
+            <element signature="e#60693#61610#0" />
+            <element signature="e#60928#61566#0" />
+            <element signature="e#60945#61257#0" />
+            <element signature="e#61090#61241#0" />
+            <element signature="e#61262#61549#0" />
+            <element signature="e#61406#61533#0" />
+            <element signature="e#61613#62236#0" />
+            <element signature="e#61847#62192#0" />
+            <element signature="e#62239#62724#0" />
+            <element signature="e#62350#62680#0" />
+            <element signature="e#62727#63524#0" />
+            <element signature="e#62968#63480#0" />
+            <element signature="e#63527#64160#0" />
+            <element signature="e#63629#64116#0" />
+            <element signature="e#64163#65108#0" />
+            <element signature="e#64412#65064#0" />
+            <element signature="e#64429#65047#0" />
+            <element signature="e#64573#65031#0" />
+            <element signature="e#65111#65420#0" />
+            <element signature="e#65423#66239#0" />
+            <element signature="e#65672#66195#0" />
+            <element signature="e#65689#66178#0" />
+            <element signature="e#65834#66162#0" />
+            <element signature="e#66242#67026#0" />
+            <element signature="e#66492#66982#0" />
+            <element signature="e#66509#66965#0" />
+            <element signature="e#66654#66949#0" />
+            <element signature="e#67029#67510#0" />
+            <element signature="e#67136#67466#0" />
+            <element signature="e#67513#68183#0" />
+            <element signature="e#67629#67959#0" />
+            <element signature="e#67963#68172#0" />
+            <element signature="e#67982#68153#0" />
+            <element signature="e#68345#69945#0" />
+            <element signature="e#69968#70150#0" />
+            <element signature="e#70155#70317#0" />
+            <element signature="e#70350#79013#0" />
+            <element signature="e#70475#73468#0" />
+            <element signature="e#71447#71850#0" />
+            <element signature="e#71595#71834#0" />
+            <element signature="e#71855#72136#0" />
+            <element signature="e#72007#72120#0" />
+            <element signature="e#73099#73451#0" />
+            <element signature="e#73244#73435#0" />
+            <element signature="e#73472#79002#0" />
+            <element signature="e#73491#74239#0" />
+            <element signature="e#73665#74220#0" />
+            <element signature="e#73882#74201#0" />
+            <element signature="e#73963#74183#0" />
+            <element signature="e#74244#75003#0" />
+            <element signature="e#74429#74984#0" />
+            <element signature="e#74646#74965#0" />
+            <element signature="e#74727#74947#0" />
+            <element signature="e#75008#75208#0" />
+            <element signature="e#75213#75826#0" />
+            <element signature="e#75411#75807#0" />
+            <element signature="e#75430#75558#0" />
+            <element signature="e#75565#75788#0" />
+            <element signature="e#75653#75770#0" />
+            <element signature="e#75831#76022#0" />
+            <element signature="e#76027#76204#0" />
+            <element signature="e#76209#76395#0" />
+            <element signature="e#76400#76577#0" />
+            <element signature="e#76582#76773#0" />
+            <element signature="e#76778#77503#0" />
+            <element signature="e#76929#77484#0" />
+            <element signature="e#77146#77465#0" />
+            <element signature="e#77227#77447#0" />
+            <element signature="e#77508#77691#0" />
+            <element signature="e#77696#77890#0" />
+            <element signature="e#77895#78080#0" />
+            <element signature="e#78085#78263#0" />
+            <element signature="e#78268#78462#0" />
+            <element signature="e#78467#78789#0" />
+            <element signature="e#78640#78770#0" />
+            <element signature="e#78794#78983#0" />
+            <element signature="e#79016#79627#0" />
+            <element signature="e#79258#79583#0" />
+            <element signature="e#79275#79566#0" />
+            <element signature="e#79420#79550#0" />
+            <element signature="e#79630#80321#0" />
+            <element signature="e#79770#80106#0" />
+            <element signature="e#80110#80310#0" />
+            <element signature="e#80129#80291#0" />
+            <element signature="e#80324#81011#0" />
+            <element signature="e#80561#80967#0" />
+            <element signature="e#80578#80950#0" />
+            <element signature="e#80722#80934#0" />
+            <element signature="e#81014#81693#0" />
+            <element signature="e#81127#81464#0" />
+            <element signature="e#81468#81682#0" />
+            <element signature="e#81487#81663#0" />
+            <element signature="e#81696#82342#0" />
+            <element signature="e#81812#82298#0" />
+            <element signature="e#82345#86274#0" />
+            <element signature="e#82498#84849#0" />
+            <element signature="e#82979#83402#0" />
+            <element signature="e#83127#83386#0" />
+            <element signature="e#83407#84240#0" />
+            <element signature="e#83557#84224#0" />
+            <element signature="e#84565#84832#0" />
+            <element signature="e#84718#84816#0" />
+            <element signature="e#84853#86263#0" />
+            <element signature="e#84872#85279#0" />
+            <element signature="e#85031#85260#0" />
+            <element signature="e#85284#85702#0" />
+            <element signature="e#85454#85683#0" />
+            <element signature="e#85707#85869#0" />
+            <element signature="e#85874#86050#0" />
+            <element signature="e#86055#86244#0" />
+            <element signature="e#86277#86762#0" />
+            <element signature="e#86382#86718#0" />
+            <element signature="e#86765#88027#0" />
+            <element signature="e#86864#87812#0" />
+            <element signature="e#87816#88016#0" />
+            <element signature="e#87835#87997#0" />
+            <element signature="e#88030#89696#0" />
+            <element signature="e#88170#89459#0" />
+            <element signature="e#89110#89288#0" />
+            <element signature="e#89463#89685#0" />
+            <element signature="e#89482#89666#0" />
+            <element signature="e#89699#91237#0" />
+            <element signature="e#89944#91193#0" />
+            <element signature="e#89961#90748#0" />
+            <element signature="e#90105#90732#0" />
+            <element signature="e#90753#91176#0" />
+            <element signature="e#90899#91160#0" />
+            <element signature="e#91240#91870#0" />
+            <element signature="e#91338#91826#0" />
+            <element signature="e#91873#92974#0" />
+            <element signature="e#91987#92930#0" />
+            <element signature="e#92977#93775#0" />
+            <element signature="e#93094#93731#0" />
+            <element signature="e#93778#94557#0" />
+            <element signature="e#94027#94513#0" />
+            <element signature="e#94560#95349#0" />
+            <element signature="e#94819#95305#0" />
+            <element signature="n#lists#0;n#dictionary#0;n#!!top" />
+            <element signature="n#list#0;n#lists#0;n#dictionary#0;n#!!top" />
+            <element signature="n#values#0;n#list#0;n#lists#0;n#dictionary#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/model/ContentType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="35" lean-forward="true" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/SearchServiceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="41" column="82" lean-forward="true" selection-start-line="41" selection-start-column="82" selection-end-line="41" selection-end-column="82" />
+          <folding>
+            <element signature="e#1928#1936#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/rt.jar!/sun/reflect/DelegatingMethodAccessorImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.7.RELEASE/spring-web-5.0.7.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/association-selection-dialog.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="51" lean-forward="true" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-context-menu.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="107" selection-start-line="6" selection-start-column="107" selection-end-line="6" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-import.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-import-properties.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-named-entity-form.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="89" selection-start-line="6" selection-start-column="89" selection-end-line="6" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-subject-form.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="30" lean-forward="true" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/home-add-dialog.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/note-dialog.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/util/RepositoryModelEntityBinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3150">
+          <caret line="240" column="60" selection-start-line="240" selection-start-column="60" selection-end-line="240" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/RepositoryModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="73" column="28" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/heed/openapps/org.heed.openapps.core.api/4.1.0/org.heed.openapps.core.api-4.1.0-sources.jar!/org/heed/openapps/entity/EntityImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1620">
+          <caret line="182" selection-start-line="182" selection-end-line="182" />
+          <folding>
+            <element signature="e#11385#11386#0" expanded="true" />
+            <element signature="e#11420#11421#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/heed/openapps/org.heed.openapps.core.api/4.1.0/org.heed.openapps.core.api-4.1.0-sources.jar!/org/heed/openapps/QName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/manager/collection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5805">
+          <caret line="387" column="24" lean-forward="true" selection-start-line="387" selection-start-column="24" selection-end-line="387" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/repository-form.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="10" lean-forward="true" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/node-add-dialog.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4920">
+          <caret line="333" selection-start-line="333" selection-end-line="333" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/WebserviceSupport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5925">
+          <caret line="444" column="16" selection-start-line="444" selection-start-column="16" selection-end-line="444" selection-end-column="16" />
+          <folding>
+            <element signature="e#18285#18286#0" expanded="true" />
+            <element signature="e#18315#18316#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/utilities.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="196" column="42" lean-forward="true" selection-start-line="196" selection-start-column="42" selection-end-line="196" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-associations.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="94" column="18" lean-forward="true" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/apps/manager/collection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="314" column="10" lean-forward="true" selection-start-line="314" selection-start-column="10" selection-end-line="314" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/archivemanager.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-form.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="133" column="11" selection-start-line="133" selection-start-column="11" selection-end-line="133" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/collection.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="32" column="66" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/heed/openapps/neo4j/RemoteNeo4jEntityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="922" column="77" lean-forward="true" selection-start-line="922" selection-start-column="77" selection-end-line="922" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonDictionaryServiceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="4" lean-forward="true" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

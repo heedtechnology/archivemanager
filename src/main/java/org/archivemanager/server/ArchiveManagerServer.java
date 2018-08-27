@@ -31,6 +31,7 @@ import org.heed.openapps.elasticsearch.RemoteElasticSearchIndexingService;
 import org.heed.openapps.elasticsearch.RemoteElasticSearchService;
 import org.heed.openapps.entity.EntityService;
 import org.heed.openapps.entity.indexing.EntityIndexer;
+import org.heed.openapps.entity.service.DefaultEntityPersistenceListener;
 import org.heed.openapps.neo4j.RemoteNeo4jEntityService;
 import org.heed.openapps.property.PropertyService;
 import org.heed.openapps.property.service.StandardPropertyService;
@@ -266,12 +267,19 @@ public class ArchiveManagerServer {
 		
 		return processor;
 	}
+
+	@Bean
+	public DefaultEntityPersistenceListener getDefaultEntityPersistenceListener(){
+		DefaultEntityPersistenceListener defaultEntityPersistenceListener = new DefaultEntityPersistenceListener();
+		return defaultEntityPersistenceListener;
+
 	@Bean
 	public ObjectMapper getObjectMapper() {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
 		mapper.registerModule(new JacksonQNameModule());
 		return mapper;
+
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(ArchiveManagerServer.class, args);
