@@ -1,61 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e7c8b16-7d28-45b4-8523-d17f7aa5e47b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/model/JacksonQNameModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/heed/openapps/elasticsearch/FieldMappings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/embedded/results.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/apps/manager/easyui_overrides.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/apps/utilities.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/model/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/model/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/search/navigation/AttributeProviderPlugin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/search/navigation/DefaultBreadcrumbProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/search/navigation/DefaultBreadcrumbProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/search/navigation/DefinedAttributeProvider.java" beforeDir="false" />
+    <list default="true" id="7e7c8b16-7d28-45b4-8523-d17f7aa5e47b" name="Default" comment="Commit 95 percent complete Collection Manager (8-28-2018)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/model/EnumLanguage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/model/ContentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/model/ContentType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/ArchiveManagerServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/ArchiveManagerServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/model/DataDictionaryRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/model/DataDictionaryRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonDictionaryServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonDictionaryServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/SearchServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/SearchServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/util/RepositoryModelEntityBinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/util/RepositoryModelEntityBinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/heed/openapps/elasticsearch/RemoteElasticSearchIndexingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/heed/openapps/elasticsearch/RemoteElasticSearchIndexingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/heed/openapps/elasticsearch/RemoteElasticSearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/heed/openapps/elasticsearch/RemoteElasticSearchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/heed/openapps/neo4j/RemoteNeo4jEntityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/heed/openapps/neo4j/RemoteNeo4jEntityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/dictionaries/dictionary.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/dictionaries/dictionary.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/menu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/site_header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/site_header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/apps_header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/apps_header.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/collection.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/collection.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-form.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/registration.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/archive_results.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/collections.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/configuration.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/cooke-results.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/default.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/gallery1.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/gallery2.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/help.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/include/attributes.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/embedded/attributes.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/embedded/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/include/topbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/embedded/topbar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/notable_figures_entries.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/results.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/results2.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/series.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/series_with_notes.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/subject_guides.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/video2.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/videos.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/archivemanager.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/archivemanager.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/apps/manager/collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/apps/manager/collection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/dictionaries/dictionary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/dictionaries/dictionary.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/manager/collection.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/manager/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/apps/manager/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/manager/named_entities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/apps/manager/named_entities.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/search/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/search/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/named_entities.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/named_entities.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/apps/manager/collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/manager/collection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/apps/manager/easyui_overrides.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/manager/easyui_overrides.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/apps/manager/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/manager/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/apps/manager/named_entities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/manager/named_entities.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/apps/utilities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/manager/utilities.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/utilities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/utilities.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -68,38 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="collection-category-form.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collection-item-form.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RemoteNeo4jEntityService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/heed/openapps/neo4j/RemoteNeo4jEntityService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
-              <caret line="922" column="77" lean-forward="true" selection-start-line="922" selection-start-column="77" selection-end-line="922" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JsonDictionaryServiceController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JsonDictionaryServiceController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonDictionaryServiceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="4" lean-forward="true" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+            <state relative-caret-position="359">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,59 +41,127 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="collection.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/collection.jsp">
+      <file leaf-file-name="SearchServiceController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/SearchServiceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="32" column="66" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
+            <state relative-caret-position="15">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="collection-form.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-form.jsp">
+      <file leaf-file-name="utilities.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/manager/utilities.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="133" column="11" selection-start-line="133" selection-start-column="11" selection-end-line="133" selection-end-column="11" />
+            <state relative-caret-position="180">
+              <caret line="12" column="3" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utilities.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/utilities.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="3" selection-start-column="2" selection-end-line="20" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/home.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="collection.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/collection.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="536">
+              <caret line="64" column="50" lean-forward="true" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="collection-item-form.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="65" column="31" lean-forward="true" selection-start-line="65" selection-start-column="31" selection-end-line="65" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JsonCollectionController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="84" selection-start-line="84" selection-end-line="84" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="collection.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/manager/collection.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="588" column="9" selection-start-line="588" selection-start-column="9" selection-end-line="588" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="apps_header.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/apps_header.jsp">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>menuHandler</find>
-      <find>nodeAddForm</find>
-      <find>subject</find>
-      <find>nodeAddTo</find>
-      <find>showAddNodeDialog</find>
-      <find>contentTypeDropDown</find>
-      <find>ContentTypeD</find>
-      <find>node-add-description</find>
-      <find>nameBox</find>
-      <find>node-add-content-type</find>
-      <find>abstractNoteEditor</find>
-      <find>abstractNoteE</find>
-      <find>*form.jsp</find>
-      <find>collection-category-up</find>
-      <find>name=&quot;id&quot;</find>
-      <find>updateEn</find>
-      <find>loadAn</find>
-      <find>showA</find>
-      <find>divContentType</find>
-      <find>hide</find>
-      <find>*update*form</find>
-      <find>addNew</find>
       <find>showCon</find>
       <find>newNode</find>
       <find>&lt;%--</find>
       <find>&lt;HEAD</find>
       <find>&lt;&lt;</find>
       <find>archivemanager</find>
-      <find>HEAD</find>
       <find>A</find>
+      <find>EntityService</find>
+      <find>tt</find>
+      <find>home-add-sc</find>
+      <find>js/utili</find>
+      <find>js/ut</find>
+      <find>js/manager/coll</find>
+      <find>$('#tt').tabs</find>
+      <find>HEAD</find>
+      <find>easyui_overr</find>
+      <find>apps/manager</find>
+      <find>contentTypeDrop</find>
+      <find>Code</find>
+      <find>isNumberAndLength</find>
+      <find>English</find>
+      <find>ContentType</find>
+      <find>^    \&quot;</find>
+      <find>Language</find>
+      <find>node-add-content-type</find>
+      <find>handle</find>
+      <find>handleKey</find>
+      <find>doSearch</find>
+      <find>utilities.js</find>
+      <find>console.log</find>
     </findStrings>
+    <replaceStrings>
+      <replace>(&quot;</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/main/webapp/js/apps/manager</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -174,36 +176,58 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-import-properties.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-associations.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/SearchServiceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/model/NamedEntity.java" />
         <option value="$PROJECT_DIR$/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/util/RepositoryModelEntityBinder.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-context-menu.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/model/ContentType.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/node-add-dialog.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-named-entity-form.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-subject-form.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/repository-form.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/manager/collection.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-associations.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/utilities.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/apps/manager/collection.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/archivemanager.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-form.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/collection.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonDictionaryServiceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/heed/openapps/neo4j/RemoteNeo4jEntityService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/SearchServiceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/server/ArchiveManagerServer.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/apps/manager/home.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/collection.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/model/ContentType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/model/EnumLanguage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/utilities.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/home.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/manager/utilities.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/manager/collection.js" />
       </list>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="Archivemanager Server" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="Archivemanager Server" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1920" />
-    <option name="y" value="90" />
+    <option name="y" value="23" />
     <option name="width" value="1920" />
-    <option name="height" value="1158" />
+    <option name="height" value="1177" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -287,6 +311,106 @@
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="openapps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="openapps" type="462c0819:PsiDirectoryNode" />
+              <item name="elasticsearch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="jsp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="jsp" type="462c0819:PsiDirectoryNode" />
+              <item name="fragments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="jsp" type="462c0819:PsiDirectoryNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="org.archivemanager.server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="archivemanager copy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="jsp" type="462c0819:PsiDirectoryNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+              <item name="fragments" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -317,10 +441,16 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="JsonDi&#9;PSI&#9;JAVA://org.archivemanager.server.web.service.JsonDictionaryServiceController&#10;Remote&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/java/org/heed/openapps/neo4j/RemoteNeo4jEntityService.java&#10;collection.jsp&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/collection.jsp&#10;collection-category&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp&#10;collection-form&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-form.jsp&#10;collection-item&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp&#10;archivemanager.&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/css/archivemanager.css&#10;collection.js&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/apps/manager/collection.js&#10;utilities.js&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/utilities.js&#10;*form.jsp&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp&#10;*form*jsp&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-subject-form.jsp&#10;contentty&#9;PSI&#9;JAVA://org.archivemanager.model.ContentType&#10;diction&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/resources/dictionaries/dictionary.xml&#10;menu&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/fragments/menu.jsp&#10;uti&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/utilities.js&#10;collection&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/manager/collection.js&#10;Classifica&#9;FILE&#9;jar:///Users/jnewman/.m2/repository/org/heed/openapps/org.heed.openapps.core.api/4.1.0/org.heed.openapps.core.api-4.1.0-sources.jar!/org/heed/openapps/dictionary/ClassificationModel.java&#10;dictionary&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/resources/dictionaries/dictionary.xml&#10;collection-&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-associations.jsp&#10;utili&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/utilities.js&#10;collection-import&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-import-properties.jsp&#10;collection.&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/manager/collection.js&#10;binder&#9;PSI&#9;JAVA://org.archivemanager.data.SystemModelEntityBinder&#10;ut&#9;PSI&#9;JAVA://org.archivemanager.model.AttributeValue" />
+    <property name="SearchEverywhereHistoryKey" value="utilities.js&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/manager/utilities.js&#10;collection.jsp&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/collection.jsp&#10;collection-ass&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-associations.jsp&#10;collection.js&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/manager/collection.js&#10;collection&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp&#10;node-a&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/node-add-dialog.jsp&#10;collection-c&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp&#10;home.js&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/apps/manager/home.js&#10;home.jsp&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/search/home.jsp&#10;ArchiveM&#9;PSI&#9;JAVA://org.archivemanager.server.ArchiveManagerServer&#10;JsonDi&#9;PSI&#9;JAVA://org.archivemanager.server.web.service.JsonDictionaryServiceController&#10;Remote&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/java/org/heed/openapps/neo4j/RemoteNeo4jEntityService.java&#10;collection-category&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp&#10;collection-form&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-form.jsp&#10;collection-item&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp&#10;archivemanager.&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/css/archivemanager.css&#10;*form.jsp&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp&#10;*form*jsp&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-subject-form.jsp&#10;contentty&#9;PSI&#9;JAVA://org.archivemanager.model.ContentType&#10;diction&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/resources/dictionaries/dictionary.xml&#10;menu&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/fragments/menu.jsp&#10;uti&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/utilities.js&#10;Classifica&#9;FILE&#9;jar:///Users/jnewman/.m2/repository/org/heed/openapps/org.heed.openapps.core.api/4.1.0/org.heed.openapps.core.api-4.1.0-sources.jar!/org/heed/openapps/dictionary/ClassificationModel.java&#10;dictionary&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/resources/dictionaries/dictionary.xml&#10;collection-&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-associations.jsp&#10;utili&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/utilities.js&#10;collection-import&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-import-properties.jsp&#10;collection.&#9;FILE&#9;file:///Users/jnewman/Development/heedtechnology/archivemanager copy/src/main/webapp/js/manager/collection.js&#10;binder&#9;PSI&#9;JAVA://org.archivemanager.data.SystemModelEntityBinder&#10;ut&#9;PSI&#9;JAVA://org.archivemanager.model.AttributeValue" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/js/manager" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.archivemanager.model" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments" />
     </key>
@@ -442,7 +572,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="23" width="1920" height="1177" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32962963" />
@@ -451,19 +580,19 @@
       <window_info id="Image Layers" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3297561" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3287037" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32962963" />
+      <window_info anchor="right" id="Maven Projects" order="3" weight="0.32960597" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32962963" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.3287037" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32962963" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49725273" visible="true" weight="0.18903089" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49725273" visible="true" weight="0.26411074" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3297561" />
-      <window_info id="Structure" order="6" sideWeight="0.50274724" weight="0.18903089" />
+      <window_info id="Structure" order="6" sideWeight="0.50274724" weight="0.14589989" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.34907407" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.475" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -507,17 +636,12 @@
     <option name="RELOAD_CONTEXT" value="false" />
     <MESSAGE value="Commit 80 percent complete Collection Manager" />
     <MESSAGE value="Commit 90 percent complete Collection Manager (8-27-2018)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit 90 percent complete Collection Manager (8-27-2018)" />
+    <MESSAGE value="Commit 95 percent complete Collection Manager (8-28-2018)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit 95 percent complete Collection Manager (8-28-2018)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java</url>
-          <line>202</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/WebserviceSupport.java</url>
           <line>209</line>
@@ -574,25 +698,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java</url>
-          <line>83</line>
+          <line>84</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java</url>
-          <line>91</line>
+          <line>92</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java</url>
-          <line>125</line>
+          <line>126</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java</url>
-          <line>109</line>
+          <line>110</line>
           <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
@@ -604,12 +728,36 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java</url>
-          <line>107</line>
+          <line>108</line>
           <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java</url>
+          <line>184</line>
+          <properties />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/WebserviceSupport.java</url>
+          <line>150</line>
+          <properties />
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java</url>
+          <line>204</line>
+          <properties />
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonDictionaryServiceController.java</url>
+          <line>42</line>
+          <properties />
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="23" />
+      <option name="time" value="28" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -627,107 +775,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5640">
-          <caret line="412" selection-start-line="412" selection-end-line="412" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/WebserviceSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2400">
-          <caret line="209" selection-start-line="209" selection-end-line="209" />
-          <folding>
-            <element signature="e#18285#18286#0" expanded="true" />
-            <element signature="e#18315#18316#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="136" lean-forward="true" selection-start-line="32" selection-start-column="136" selection-end-line="32" selection-end-column="136" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/heed/openapps/org.heed.openapps.core.api/4.1.0/org.heed.openapps.core.api-4.1.0-sources.jar!/org/heed/openapps/entity/EntityService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/model/AttributeValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/apps_footer.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/data/SystemModelEntityBinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/collections.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-associations.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/data/ResultSorter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/model/Collection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="30" column="17" lean-forward="true" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/model/Note.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/archivemanager/server/test/SearchServiceTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="47" column="123" selection-start-line="47" selection-start-column="123" selection-end-line="47" selection-end-column="123" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/model/NamedEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1136,23 +1183,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/model/ContentType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="35" lean-forward="true" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/SearchServiceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="41" column="82" lean-forward="true" selection-start-line="41" selection-start-column="82" selection-end-line="41" selection-end-column="82" />
-          <folding>
-            <element signature="e#1928#1936#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/rt.jar!/sun/reflect/DelegatingMethodAccessorImpl.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1211,13 +1241,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/note-dialog.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/util/RepositoryModelEntityBinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3150">
-          <caret line="240" column="60" selection-start-line="240" selection-start-column="60" selection-end-line="240" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/RepositoryModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1095">
@@ -1225,28 +1248,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/heed/openapps/org.heed.openapps.core.api/4.1.0/org.heed.openapps.core.api-4.1.0-sources.jar!/org/heed/openapps/entity/EntityImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="182" selection-start-line="182" selection-end-line="182" />
-          <folding>
-            <element signature="e#11385#11386#0" expanded="true" />
-            <element signature="e#11420#11421#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/heed/openapps/org.heed.openapps.core.api/4.1.0/org.heed.openapps.core.api-4.1.0-sources.jar!/org/heed/openapps/QName.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="56" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
         </state>
       </provider>
     </entry>
@@ -1264,52 +1269,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/node-add-dialog.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4920">
-          <caret line="333" selection-start-line="333" selection-end-line="333" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/WebserviceSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5925">
-          <caret line="444" column="16" selection-start-line="444" selection-start-column="16" selection-end-line="444" selection-end-column="16" />
-          <folding>
-            <element signature="e#18285#18286#0" expanded="true" />
-            <element signature="e#18315#18316#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/utilities.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="196" column="42" lean-forward="true" selection-start-line="196" selection-start-column="42" selection-end-line="196" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-associations.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="94" column="18" lean-forward="true" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/apps/manager/collection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="314" column="10" lean-forward="true" selection-start-line="314" selection-start-column="10" selection-end-line="314" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/css/archivemanager.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
@@ -1317,50 +1276,235 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/heed/openapps/org.heed.openapps.core.api/4.1.0/org.heed.openapps.core.api-4.1.0-sources.jar!/org/heed/openapps/entity/EntityService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-form.jsp">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/heed/openapps/org.heed.openapps.core.api/4.1.0/org.heed.openapps.core.api-4.1.0-sources.jar!/org/heed/openapps/search/data/SearchRestResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="133" column="11" selection-start-line="133" selection-start-column="11" selection-end-line="133" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/collection.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="32" column="66" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
+        <state relative-caret-position="135">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/heed/openapps/neo4j/RemoteNeo4jEntityService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="922" column="77" lean-forward="true" selection-start-line="922" selection-start-column="77" selection-end-line="922" selection-end-column="77" />
+        <state relative-caret-position="400">
+          <caret line="69" column="36" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonDictionaryServiceController.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="4" lean-forward="true" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+        <state relative-caret-position="-2457" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/heed/openapps/elasticsearch/RemoteElasticSearchService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="186" column="13" selection-start-line="186" selection-start-column="13" selection-end-line="186" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/ArchiveManagerServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="265" column="68" selection-start-line="265" selection-start-column="68" selection-end-line="265" selection-end-column="68" />
+          <folding>
+            <element signature="e#12103#12104#0" expanded="true" />
+            <element signature="e#12165#12166#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/home.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search/home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/manager/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="59" column="18" lean-forward="true" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/manager/easyui_overrides.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/manager/easyui_overrides.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/model/ContentType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/model/EnumLanguage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-category-form.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/node-add-dialog.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityImportController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/util/RepositoryModelEntityBinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="485" lean-forward="true" selection-start-line="485" selection-end-line="513" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-form.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="106" column="57" selection-start-line="106" selection-start-column="53" selection-end-line="106" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/heed/openapps/org.heed.openapps.core.api/4.1.0/org.heed.openapps.core.api-4.1.0-sources.jar!/org/heed/openapps/entity/EntityImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="348" selection-start-line="348" selection-end-line="348" />
+          <folding>
+            <element signature="e#11447#11448#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/WebserviceSupport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="209" selection-start-line="209" selection-end-line="209" />
+          <folding>
+            <element signature="e#18285#18286#0" expanded="true" />
+            <element signature="e#18315#18316#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonEntityServiceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="275" column="30" selection-start-line="275" selection-start-column="30" selection-end-line="275" selection-end-column="30" />
+          <folding>
+            <element signature="e#7619#7627#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-associations.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1402">
+          <caret line="94" column="18" lean-forward="true" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/utilities.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="3" selection-start-column="2" selection-end-line="20" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/manager/utilities.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="3" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/SearchServiceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonCollectionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/archivemanager/server/web/service/JsonDictionaryServiceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/fragments/collection-item-form.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="65" column="31" lean-forward="true" selection-start-line="65" selection-start-column="31" selection-end-line="65" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manager/collection.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="64" column="50" lean-forward="true" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/manager/collection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="588" column="9" selection-start-line="588" selection-start-column="9" selection-end-line="588" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/fragments/apps_header.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

@@ -269,9 +269,10 @@ public class ArchiveManagerServer {
 	}
 
 	@Bean
-	public DefaultEntityPersistenceListener getDefaultEntityPersistenceListener(){
+	public DefaultEntityPersistenceListener getDefaultEntityPersistenceListener() {
 		DefaultEntityPersistenceListener defaultEntityPersistenceListener = new DefaultEntityPersistenceListener();
 		return defaultEntityPersistenceListener;
+	}
 
 	@Bean
 	public ObjectMapper getObjectMapper() {

@@ -23,6 +23,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.io.IOUtils;
 import org.archivemanager.model.ContentType;
+import org.archivemanager.model.EnumLanguage;
 import org.archivemanager.model.Result;
 import org.archivemanager.server.web.model.TreeNode;
 import org.archivemanager.util.RepositoryModelEntityBinder;
@@ -608,6 +609,23 @@ public class JsonCollectionController extends WebserviceSupport {
 		for ( ContentType c : ContentType.values()){
 			JsonObjectBuilder object = Json.createObjectBuilder();
 			builder.add(object.add("id", c.key()).add("text",c.value()).build());
+		}
+
+		String jsonArray = builder.build().toString();
+		res.getWriter().print(jsonArray);
+		return null;
+
+	}
+
+	@ResponseBody
+	@RequestMapping(value="/entity/language.json", method = RequestMethod.GET)
+	public RestResponse<Object> getEnumLanguage (HttpServletRequest request, HttpServletResponse res) throws Exception {
+
+		JsonArrayBuilder builder = Json.createArrayBuilder();
+		int i = 0;
+		for ( EnumLanguage l : EnumLanguage.values()){
+			JsonObjectBuilder object = Json.createObjectBuilder();
+			builder.add(object.add("id", l.key()).add("text",l.value()).build());
 		}
 
 		String jsonArray = builder.build().toString();

@@ -61,32 +61,23 @@
         </div>
 
             <div id="item-genre-div" class="form-row" style="display:none;">
-                <div style="width:38%;float:left;">
-                    <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Genre:</label>
-                    <select id="item-genre" name="genre" class="easyui-combobox" style="width:35%;float:left;">
-                        <option></option>
-                        <option value="en">English</option>
-                    </select>
+                <div style="width:50%;float:left;">
+                    <label class="textbox-label textbox-label-top"  style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Genre:</label>
+                    <input id="item-genre" name="genre" class="easyui-combobox" data-options="valueField: 'value',textField: 'label'" style="width:50%;float:left;">
                 </div>
             </div>
 
             <div id="item-form-div" class="form-row" style="display:none;">
-                        <div style="width:38%;float:left;">
+                        <div style="width:50%;float:left;">
                             <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Form:</label>
-                            <select id="item-form" name="form" class="easyui-combobox" style="width:35%;float:left;">
-                                <option></option>
-                                <option value="en">English</option>
-                            </select>
+                            <input id="item-form" name="form" class="easyui-combobox" data-options="valueField: 'value',textField: 'label'" style="width:50%;float:left;">
                         </div>
             </div>
 
             <div id="item-medium-div" class="form-row" style="display:none;">
-                <div style="width:38%;float:left;">
+                <div style="width:50%;float:left;">
                     <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Medium:</label>
-                    <select id="item-medium" name="medium" class="easyui-combobox" style="width:35%;float:left;">
-                        <option></option>
-                        <option value="en">English</option>
-                    </select>
+                    <input id="item-medium" name="medium" class="easyui-combobox" data-options="valueField: 'value',textField: 'label'" style="width:50%;float:left;">
                 </div>
             </div>
 
