@@ -5,6 +5,7 @@
       }
   }
 
+
   function handleKeyPressCollectionSearch(e) {
       var key = e.keyCode || e.which;
       if (key == 13) {
@@ -14,6 +15,7 @@
 
   function doAssocSearch() {
       clearChecked($('#assocSelectionGrid'));
+
       $('#assocSelectionGrid').datagrid('load', {
           qname: $('#searchQName').val(),
           query: $('#query').val()

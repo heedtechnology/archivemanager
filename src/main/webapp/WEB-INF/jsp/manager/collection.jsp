@@ -37,7 +37,6 @@
 	    </ul>
     </div>
 
-
     <div id="bullshit" class="easyui-tabs" title=" " style="width=60%" data-options="region:'center'">
     <div id="application-body" class="easyui-tabs" title=" " data-options="fit:true">
     	<%@ include file="fragments/repository-form.jsp" %>

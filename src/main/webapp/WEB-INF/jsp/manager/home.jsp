@@ -2,6 +2,7 @@
 <script type="text/javascript" src="/js/manager/home.js"></script>
 <script type="text/javascript" src="/js/manager/utilities.js"></script>
 <script type="text/javascript" src="/easyui/plugins/jquery.texteditor.js"></script>
+
 <input type="hidden" id="qname" value="openapps_org_repository_1_0_repository"/>
 <div id="tt"></div>
 <style>

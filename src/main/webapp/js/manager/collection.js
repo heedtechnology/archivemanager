@@ -151,6 +151,7 @@
       $('#addAssociationsWindow').window({
           title: 'Add Associations',
           closed: true,
+          top: 100,
           onClose: function() {
               clearChecked($('#assocSelectionGrid'));
               clearChecked($('#selecctedItems'));
