@@ -1,15 +1,21 @@
   function handleKeyPress(e) {
       var key = e.keyCode || e.which;
       if (key == 13) {
-          doSearch2();
+          doAssocSearch();
       }
   }
 
-  function doSearch2() {
-<<<<<<< HEAD
+
+  function handleKeyPressCollectionSearch(e) {
+      var key = e.keyCode || e.which;
+      if (key == 13) {
+          doAssocSearch();
+      }
+  }
+
+  function doAssocSearch() {
       clearChecked($('#assocSelectionGrid'));
-=======
->>>>>>> origin/master
+
       $('#assocSelectionGrid').datagrid('load', {
           qname: $('#searchQName').val(),
           query: $('#query').val()
@@ -17,11 +23,8 @@
   }
 
   function loadAndOpen(qnameIn) {
-<<<<<<< HEAD
-      var node = $('#collectionTree').tree('getSelected');
-=======
->>>>>>> origin/master
 
+      var node = $('#collectionTree').tree('getSelected');
       $('#addAssocSearch').after('<input id="searchQName" type="hidden" value="' + qnameIn + '"></input>');
       $('#assocSelectionGrid')
           .datagrid({ url: '/service/search/entity.json', queryParams: { qname: $('#searchQName').val() } });

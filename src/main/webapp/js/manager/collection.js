@@ -74,15 +74,33 @@
       });
 
       $('#node-add-content-type').combobox({
-
-      $('#contentTypeDropDown').combobox({
-
           url: '/service/archivemanager/entity/content_type.json',
           method: 'get',
           valueField: 'id',
           textField: 'text'
       });
 
+      $('#collection-language').combobox({
+          url: '/service/archivemanager/entity/language.json',
+          method: 'get',
+          valueField: 'id',
+          textField: 'text'
+      });
+
+      $('#collection-item-language').combobox({
+          url: '/service/archivemanager/entity/language.json',
+          method: 'get',
+          valueField: 'id',
+          textField: 'text'
+      });
+
+      $('#repository-language').combobox({
+          url: '/service/archivemanager/entity/language.json',
+          method: 'get',
+          valueField: 'id',
+          textField: 'text'
+      });
+//item-genre
       $('#mainLayout').layout();
       $('#collection-heading').layout();
       $('#mainLayout').layout('resize', { width: 1200, height: 1700 });
@@ -133,6 +151,7 @@
       $('#addAssociationsWindow').window({
           title: 'Add Associations',
           closed: true,
+          top: 100,
           onClose: function() {
               clearChecked($('#assocSelectionGrid'));
               clearChecked($('#selecctedItems'));
@@ -207,7 +226,7 @@
               $('#collection-begin-date').textbox('setValue', entity.begin);
               $('#collection-end-date').textbox('setValue', entity.end);
               $('#collection-extent-units').textbox('setValue', entity.extentUnits);
-              $('#collection-extent-value').textbox('setValue', entity.extrnetValue);
+              $('#collection-extent-value').textbox('setValue', entity.extentValue);
               $('#application-body').tabs('select', 'collection-form');
               $('#application-properties').tabs('select', 'collection-associations');
           } else if (entity.contentType == 'category') {
@@ -247,6 +266,7 @@
               $('#subject-type').textbox('setValue', convertNullString(entity.type));
               $('#application-body').tabs('select', 'collection-subject-form');
           } else {
+              $('#application-body').tabs('select', 'collection-item-form');
               $('#collection-item-id').html(entity.id);
               $('#collection-item-name').textbox('setValue', entity.name);
               $('#collection-item-description').texteditor('setValue',entity.description);
@@ -257,24 +277,27 @@
               $('#collection-item-container').val(entity.container);
 
               if (entity.data.medium != null){
-                $('#item-medium-div').css('display','block')
+                getMedium(entity.contentType);
+                $('#item-medium-div').css('display','block');
+                $('#item-medium').combobox('setValue',entity.data.medium);
               } else {
-                $('#item-medium-div').css('display','none')
+                $('#item-medium-div').css('display','none');
               }
 
               if (entity.data.genre != null){
-                $('#item-genre-div').css('display','block')
+                getGenre(entity.contentType);
+                $('#item-genre-div').css('display','block');
+                $('#item-genre').combobox('setValue',entity.data.genre);
               } else {
-                $('#item-genre-div').css('display','none')
+                $('#item-genre-div').css('display','none');
               }
               if (entity.data.form != null){
-                $('#item-form-div').css('display','block')
+                getForm(entity.contentType);
+                $('#item-form-div').css('display','block');
+                $('#item-form').combobox('setValue',entity.data.form);
               } else {
-                $('#item-form-div').css('display','none')
+                $('#item-form-div').css('display','none');
               }
-
-              $('#application-body').tabs('select', 'collection-item-form');
-
           }
 
           reloadAssociations(entity);
@@ -536,4 +559,95 @@
           }
         );
       }
+  }
+
+  function getGenre(contentType){
+      var ajaxReq = $.ajax({
+          url: '/service/dictionary/model/fetch.json?qname=openapps_org_repository_1_0_' + contentType.toLowerCase(),
+          type: 'GET',
+          cache: false,
+          contentType: false,
+          processData: false
+      });
+
+      ajaxReq.done(function(entity) {
+      $('#item-genre').combobox('clear');
+        var fields = entity.fields;
+        for ( i=0; i < fields.length; i++ ){
+          if (fields[i].name == "Genre"){
+            var values = fields[i].values;
+            var genres = { genre: [] };
+            for ( var i in values ){
+              var temp = values[i];
+              genres.genre.push({
+                "label": temp.name,
+                "value": temp.name
+              });
+            }
+            $('#item-genre').combobox('loadData', genres.genre);
+            var stuff = $('#item-genre').combobox('getValues');
+          }
+        }
+      });
+
+  }
+
+function getForm(contentType){
+      var ajaxReq = $.ajax({
+          url: '/service/dictionary/model/fetch.json?qname=openapps_org_repository_1_0_' + contentType.toLowerCase(),
+          type: 'GET',
+          cache: false,
+          contentType: false,
+          processData: false
+      });
+
+      ajaxReq.done(function(entity) {
+      $('#item-form').combobox('clear');
+        var fields = entity.fields;
+        for ( i=0; i < fields.length; i++ ){
+          if (fields[i].name == "Form"){
+            var values = fields[i].values;
+            var forms = { form: [] };
+            for ( var i in values ){
+              var temp = values[i];
+              forms.form.push({
+                "label": temp.name,
+                "value": temp.name
+              });
+            }
+            $('#item-form').combobox('loadData', forms.form);
+          }
+        }
+      });
+
+  }
+
+function getMedium(contentType){
+      var ajaxReq = $.ajax({
+          url: '/service/dictionary/model/fetch.json?qname=openapps_org_repository_1_0_' + contentType.toLowerCase(),
+          type: 'GET',
+          cache: false,
+          contentType: false,
+          processData: false
+      });
+
+      ajaxReq.done(function(entity) {
+      $('#item-medium').combobox('clear');
+        var fields = entity.fields;
+        for ( i=0; i < fields.length; i++ ){
+          if (fields[i].name == "Medium"){
+            var values = fields[i].values;
+            var mediums = { medium: [] };
+            for ( var i in values ){
+              var temp = values[i];
+              mediums.medium.push({
+                "label": temp.name,
+                "value": temp.name
+              });
+            }
+            $('#item-medium').combobox('loadData', mediums.medium);
+          }
+        }
+      });
+
   }

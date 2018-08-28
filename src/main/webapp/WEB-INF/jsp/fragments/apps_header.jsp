@@ -18,7 +18,8 @@
 		<script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
 		<script type="text/javascript" src="https://www.jeasyui.com/easyui/easyloader.js"></script>
 		<script type="text/javascript" src="https://www.jeasyui.com/easyui/datagrid-scrollview.js"></script>
-		<script type="text/javascript" src="/js/utilities.js"></script>
+		<script type="text/javascript" src="/js/manager/utilities.js"></script>
+
 		<script src="/js/apps/archivemanager-apps.js"></script>
 	</head>
 	<body>
