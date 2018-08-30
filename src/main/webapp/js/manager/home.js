@@ -223,11 +223,9 @@ function destroy() {
                             msg: result.errorMsg
                         });
                     } else {
-                                    $.messager.show({
+                                    $.messager.alert({
                                         title: 'Success',
                                         msg: result.response.data[0].name + ' removed successfully',
-                                        timeout: 1000,
-                                        showType: 'fade',
                                         style: {
                                             right: '',
                                             bottom: ''

@@ -15,10 +15,12 @@
                 <option value="en">English</option>
             </select>
         </div>
-        <div style="width:38%;float:right;">
-            <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Owner:</label>
-            <input id="repository-owner" class="easyui-textbox" style="width:100%;float:left;" />
-        </div>
+            <!-- TODO - Implement Later
+            <div style="width:38%;float:right;">
+                <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Owner:</label>
+                <input id="collection-owner" name="owner" class="easyui-textbox" style="width:100%;float:left;" />
+            </div>
+            -->
     </div>
     <div class="form-row" style="height:50px;">
         <div style="width:100%;">

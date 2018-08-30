@@ -1,4 +1,4 @@
-<div id="collection-category-form" class="screen" title="collection-category-form">
+    <div id="collection-category-form" class="screen" title="collection-category-form">
     <form id="collection-category-update-form" method="post" enctype="multipart/form-data">
         <div class="form-row" style="min-height:25px;">
             <div style="width:20%;float:left;margin-top:3px;">

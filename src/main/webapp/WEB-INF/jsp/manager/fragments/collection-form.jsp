@@ -6,10 +6,6 @@
                 <label id="collection-id" class="textbox-label textbox-label-top" style="text-align:left;float:left;">${collection.id}</label>
                 <input id="collection-update-form-id" type="hidden" name="id" value=${collection.id}>
             </div>
-            <div style="float:right;">
-                <a class="btn btn-primary" style="float:right;margin-right:5px;" href="javascript:void(0)" onclick="navigate('collection-import');">
-        <i class="fa fa-upload fa-fw"></i>Import</a>
-            </div>
         </div>
         <div class="form-row" style="height:50px;">
             <div style="width:38%;float:left;">
@@ -19,10 +15,12 @@
                     <option value="en">English</option>
                 </select>
             </div>
+            <!-- TODO - Implement Later
             <div style="width:38%;float:right;">
                 <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Owner:</label>
                 <input id="collection-owner" name="owner" class="easyui-textbox" style="width:100%;float:left;" />
             </div>
+            -->
         </div>
         <div class="form-row">
             <label class="textbox-label textbox-label-top" style="text-align: left;">Heading:</label>
@@ -42,46 +40,42 @@
         <div class="form-row">
             <label class="textbox-label textbox-label-top" style="text-align: left;">Notes:</label>
                 <div class="form-row">
-                    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="updateEntity('collection-update-form')">Add</a>
-                    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onclick="updateEntity('collection-update-form')">Remove</a>
+                    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="showAddNoteDialog()">Add</a>
+                    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onclick="removeAssociation('collection-form-notes')">Remove</a>
                 </div>
                 <c:if test="${am:hasProperty(collection,'notes')}">
-                    <ul class="easyui-datalist" style="width:100%;height:100%;" data-options="showHeader:false,nowrap:false,singleSelect:false,emptyMsg:'No Notes'">
-                        <c:forEach items="${collection.notes}" var="note" varStatus="rstatus">
-                            <li id="${note.id}">${subject.name}</li>
-                        </c:forEach>
+                    <ul class="easyui-datalist" id="collection-form-notes" style="width:100%;height:100%;" data-options="showHeader:false,nowrap:false,singleSelect:false,emptyMsg:'No Notes'">
                     </ul>
                 </c:if>
         </div>
+<!--        <div class="form-row">
+            <label class="textbox-label textbox-label-top" style="text-align: left;">Subjects:</label>
+            <c:if test="${am:hasProperty(collection,'subjects')}">
+                <ul class="easyui-datalist" id="collection-form-subjects" style="width:100%;height:100%;" data-options="showHeader:false,nowrap:false,singleSelect:false,emptyMsg:'No Subjects'">
+                </ul>
+            </c:if>
+        </div>
+-->
         <div class="form-row">
             <label class="textbox-label textbox-label-top" style="text-align: left;">Subjects:</label>
             <c:if test="${am:hasProperty(collection,'subjects')}">
-                <ul class="easyui-datalist" style="width:100%;height:100%;" data-options="showHeader:false,nowrap:false,singleSelect:false,emptyMsg:'No Subjects'">
-                    <c:forEach items="${collection.subjects}" var="subject" varStatus="rstatus">
-                        <li id="${subject.id}">${subject.name}</li>
-                    </c:forEach>
+                <ul class="easyui-datalist" id="collection-form-subjects" style="width:100%;height:100%;" data-options="showHeader:false,nowrap:false,singleSelect:false,emptyMsg:'No Subjects'">
                 </ul>
             </c:if>
         </div>
         <div class="form-row">
             <label class="textbox-label textbox-label-top" style="text-align: left;">Corporations:</label>
             <c:if test="${am:hasProperty(collection,'corporations')}">
-                <ul class="easyui-datalist" style="width:100%;height:100%;" data-options="showHeader:false,nowrap:false,singleSelect:false,emptyMsg:'No Corporations'">
-                    <c:forEach items="${collection.corporations}" var="corporation" varStatus="rstatus">
-                        <li id="${corporation.id}">${corporation.name}</li>
-                    </c:forEach>
+                <ul class="easyui-datalist" id="collection-form-corporations" style="width:100%;height:100%;" data-options="showHeader:false,nowrap:false,singleSelect:false,emptyMsg:'No Corporations'">
                 </ul>
             </c:if>
         </div>
         <div class="form-row">
             <label class="textbox-label textbox-label-top" style="text-align: left;">People:</label>
-            <c:if test="${am:hasProperty(collection,'people')}">
-                <ul class="easyui-datalist" style="width:100%;height:100%;" data-options="showHeader:false,nowrap:false,singleSelect:false,emptyMsg:'No People'">
-                    <c:forEach items="${collection.people}" var="person" varStatus="rstatus">
-                        <li id="${person.id}">${person.name}</li>
-                    </c:forEach>
+
+                <ul class="easyui-datalist" id="collection-form-people" style="width:100%;height:100%;" data-options="showHeader:false,nowrap:false,singleSelect:false,emptyMsg:'No People'">
                 </ul>
-            </c:if>
+
         </div>
         <div class="form-row">
             <input id="collection-url" name="url" class="easyui-textbox" label="URL:" labelPosition="top" style="width:100%;" />

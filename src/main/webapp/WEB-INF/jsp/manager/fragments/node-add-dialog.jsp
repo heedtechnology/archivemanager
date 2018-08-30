@@ -1,7 +1,7 @@
  <div id="nodeAddDlg" class="easyui-dialog" style="width:600px;height:300px;" closed="true"
     		data-options="title:'My Dialog',buttons:'#dlg-buttons',modal:true">
   <form id="nodeAddForm" method="post">
-      <input id="source" name="source" type="hidden" value=""></>
+      <input id="node-add-source" name="source" type="hidden" value=""></>
        <input id="node-add-assoc_qname" name="assoc_qname" type="hidden" value=""></>
        <input id="node-add-entity_qname" name="entity_qname" type="hidden" value=""></>
         <input id="node-add-description" name="description" type="hidden" value=""></>

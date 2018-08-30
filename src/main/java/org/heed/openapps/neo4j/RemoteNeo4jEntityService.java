@@ -383,10 +383,10 @@ public class RemoteNeo4jEntityService implements EntityService {
 					association.addProperty(QName.createQualifiedName(key), val.asObject());
 
 				}
-				org.neo4j.driver.v1.types.Node sourceNode = record.get("n1").asNode();
-				org.neo4j.driver.v1.types.Node targetNode = record.get("n2").asNode();
-				Entity sourceEntity = getEntity(sourceNode);
-				Entity targetEntity = getEntity(targetNode);
+				//org.neo4j.driver.v1.types.Node sourceNode = association.;
+				//org.neo4j.driver.v1.types.Node targetNode = record.get("n2").asNode();
+				Entity sourceEntity = getEntity(r.startNodeId());
+				Entity targetEntity = getEntity(r.endNodeId());
 				association.setSourceEntity(sourceEntity);
 				association.setSourceName(sourceEntity.getQName());
 				association.setTargetEntity(targetEntity);
@@ -771,7 +771,8 @@ public class RemoteNeo4jEntityService implements EntityService {
 			if(Objects.nonNull(startListener)) startListener.onBeforeAssociationDelete(association);
 			if(Objects.nonNull(endListener)) endListener.onBeforeAssociationDelete(association);
 
-			StatementResult result = session.run("MATCH [r] WHERE ID(r) = "+association.getId()+" DELETE r;");
+			StatementResult result = session.run("MATCH (n1)-[r]-() WHERE ID(r)="+association.getId() + " and ID(n1)=" + source.getId() + " DELETE r");
+			//StatementResult result = session.run("MATCH (r) WHERE ID(r) = "+association.getId()+" DELETE r;");
 			while(result.hasNext()) {
 				Record record = result.next();
 				org.neo4j.driver.v1.types.Relationship r = record.get("r").asRelationship();

@@ -35,7 +35,7 @@ input{vertical-align:middle;}
 .tree-node-selected {background:#f5f5f5;color:#000000;font-weight:bold;}
 .datagrid-header .datagrid-cell{line-height:normal;height:auto;}
 .datagrid-cell{white-space: normal;}
-.datagrid-empty{position:absolute;left:0;padding-top: 100px;width:100%;textAlign:center;font-weight:bold;}
+.datagrid-empty{position:absolute;left:0;padding-top: 10px;width:100%;textAlign:center;font-weight:bold;}
 .datagrid-ftable{width:100%;}
 .pagination-info {margin:0 18px;line-height:38px;}
 .l-btn-plain, .l-btn-disabled, .l-btn-disabled:active, .textbox-button { box-shadow: 0 1px 2px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.05);}
