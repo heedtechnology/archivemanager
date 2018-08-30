@@ -23,15 +23,15 @@
 	#cc .combo-panel{height:75px;}
 </style>
 
-<div id="mainLayout" class="easyui-layout"  data-options="fit:true">
+<div id="mainLayout" class="easyui-layout"  data-options="fit:false">
     <div id="toolbar1">
 		<a id="add" href="javascript:void(0)" class="icon-add" style="float:left;margin:0 5px;" onclick='showAddNodeDialog()'></a>
-	    <a id="delete" href="javascript:void(0)" class="icon-remove" style="float:left;margin:0 5px;" onclick="destroyCollection()"></a>
+	    <a id="delete" href="javascript:void(0)" class="icon-remove" style="float:left;margin:0 5px;" onclick="removeEntity()"></a>
 	          <a id="back" href="javascript:void(0)" class="icon-back" style="float:left;margin:0 5px;" onclick="goHome()"></a>
 	</div>
     <div id="collection-tree" title=" " style="width: 15%" data-options="region:'west',split:true,tools:'#toolbar1'">
 
-    	<ul id="collectionTree" class="easyui-tree" style="width:100%;" data-options="animate:true,dnd:true,
+    	<ul id="collectionTree" class="easyui-tree" style="width:100%;" data-options="animate:true,
     		onContextMenu:showContextMenu,onSelect:treeSelect,formatter:treeFormat,onLoadSuccess:selectRootNode,
     		url:'/service/archivemanager/collection/taxonomy.json?collection='+${collection.id},method:'get'">
 	    </ul>
@@ -39,13 +39,13 @@
 
     <div id="bullshit" class="easyui-tabs" title=" " style="width=60%" data-options="region:'center'">
     <div id="application-body" class="easyui-tabs" title=" " data-options="fit:true">
-    	<%@ include file="fragments/repository-form.jsp" %>
-    	<%@ include file="fragments/collection-form.jsp" %>
     	<%@ include file="fragments/collection-category-form.jsp" %>
+      <%@ include file="fragments/collection-form.jsp" %>
+		  <%@ include file="fragments/collection-import.jsp" %>
 		  <%@ include file="fragments/collection-item-form.jsp" %>
 		  <%@ include file="fragments/collection-named-entity-form.jsp" %>
 		  <%@ include file="fragments/collection-subject-form.jsp" %>
-		  <%@ include file="fragments/collection-import.jsp" %>
+    	<%@ include file="fragments/repository-form.jsp" %>
     </div>
     </div>
     <div id="bullshit2" class="easyui-tabs" title=" " style="width: 25%" data-options="region:'east'">
@@ -57,8 +57,12 @@
     <div data-options="region:'south'" style="height:50px;"></div>
 </div>
 
+
 <%@ include file="fragments/association-selection-dialog.jsp" %>
-<%@ include file="fragments/note-dialog.jsp" %>
-<%@ include file="fragments/node-add-dialog.jsp" %>
 <%@ include file="fragments/collection-context-menu.jsp" %>
+<%@ include file="fragments/help-dialog.jsp" %>
+<%@ include file="fragments/node-add-dialog.jsp" %>
+<%@ include file="fragments/note-add-dialog.jsp" %>
+<%@ include file="fragments/weblink-add-dialog.jsp" %>
+
 <%@ include file="../fragments/site_footer.jsp" %>

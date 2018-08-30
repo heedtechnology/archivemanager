@@ -73,6 +73,9 @@
           toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
       });
 
+      $('#note-add-content').texteditor({
+          toolbar: ['bold', 'italic', 'strikethrough', 'underline', '-', 'insertorderedlist', 'insertunorderedlist', '-', 'formatblock', 'fontname', 'fontsize']
+      });
       $('#node-add-content-type').combobox({
           url: '/service/archivemanager/entity/content_type.json',
           method: 'get',
@@ -192,8 +195,11 @@
   }
 
   function selectRootNode(node, data){
-      var rootNode = $('#collectionTree').tree('getRoot');
-      $('#collectionTree').tree('select', rootNode.target);
+
+      if ( node == null ){
+         node = $('#collectionTree').tree('getRoot');
+         $('#collectionTree').tree('select', node.target);
+      }
   }
 
   function treeSelect(node) {
@@ -349,11 +355,46 @@
       $('#nodeAddDlg').dialog('open').dialog('center').dialog('setTitle', 'Add ');
   }
 
+  function addNoteToCollection() {
+      var node = $('#collectionTree').tree('getSelected');
+      $('#note-add-source').val(node.id);
+                $.ajax({
+                  type: 'POST',
+                  url: '/service/entity/association/add.json',
+                  data: $('#noteAddForm').serialize(),
+                  success: function (result) {
+                          if (result.response.status != 0 ){
+                            $.messager.alert({
+                              title: 'Error',
+                                  msg: result.errorMsg
+                              });
+                          } else {
+                            $.messager.alert({
+                              title: 'Success',
+                              msg: result.response.messages[0],
+                              fn: function(){$('#noteAddForm').dialog('close');},
+                              style:{
+                                  right:'',
+                                  bottom:''
+                              }
+                            });
+
+                              $('#collectionTree').tree('reload',node.target);
+
+                              $('#collectionTree').tree('append', { parent: node.target, data: [{id: result.response.data[0].id, text: result.response.data[0].name}]});
+                              var newNode = $('#collectionTree').tree('find',result.response.data[0].id);
+                            $('#collectionTree').tree('select', newNode.target);
+                          }
+                  }
+                });
+
+                $('#nodeAddDlg').dialog('close');        // close the dialog
+  }
   function addToCollection() {
       var rootNode = $('#collectionTree').tree('getRoot');
       var node = $('#collectionTree').tree('getSelected');
       var contentType = $('#node-add-content-type').val();
-      $('#source').val(node.id);
+      $('#node-add-source').val(node.id);
 
        var qLocalName = mapContenTypeToAssocQ(contentType);
       $('#node-add-entity_qname').val('openapps_org_repository_1_0_'+contentType);
@@ -381,22 +422,17 @@
                             bottom:''
                         }
                       });
-                      if( rootNode.id == node.id ){
-                        $('#collectionTree').tree('reload');
-                      } else {
+
                         $('#collectionTree').tree('reload',node.target);
-                      }
-                      var newNode = $('#collectionTree').tree('find', result.response.data[0].id);
-                      $('#collectionTree').tree('select', newNode);
+
+                        $('#collectionTree').tree('append', { parent: node.target, data: [{id: result.response.data[0].id, text: result.response.data[0].name}]});
+                        var newNode = $('#collectionTree').tree('find',result.response.data[0].id);
+                      $('#collectionTree').tree('select', newNode.target);
                     }
             }
           });
 
- //Reload tree node
-
           $('#nodeAddDlg').dialog('close');        // close the dialog
-
-
   }
 
   function showContextMenu(e, node) {
@@ -525,39 +561,56 @@
       panels.forEach(
         function(panel){
           var divName = null;
+          var collFormElement = null;
           var data = null;
-          var panel1 = panel;
           var panelTitle = panel.panel('options').title;
-          console.log(panelTitle);
 
           switch(panelTitle){
-            case 'Corporations': divName = 'coll_assoc_dl_corp'; if ( entity.corporations != null && entity.corporations.length > 0 ){data=entity.corporations} else data=null; break;
+            case 'Corporations': divName = 'coll_assoc_dl_corp'; collFormElement = 'collection-form-corporations'; if ( entity.corporations != null && entity.corporations.length > 0 ){data=entity.corporations} else data=null; break;
             case 'Digital Objects': divName = 'coll_assoc_dl_digitalObjects'; if ( entity.digitalObjects != null && entity.digitalObjects.length > 0 ){data=entity.digitalObjects} else data=null; break;
-            case 'People': divName = 'coll_assoc_dl_people'; if ( entity.people != null && entity.people.length > 0 ){data=entity.people} else data=null; break;
+            case 'People': divName = 'coll_assoc_dl_people'; collFormElement = 'collection-form-people'; if ( entity.people != null && entity.people.length > 0 ){data=entity.people} else data=null; break;
             case 'Permissions': divName = 'coll_assoc_dl_permissions'; if ( entity.permissions != null && entity.permissions.length > 0 ){data=entity.permissions} else data=null; break;
-            case 'Subjects': divName = 'coll_assoc_dl_subjects'; if ( entity.subjects != null && entity.subjects.length > 0 ){data=entity.subjects} else data=null; break;
+            case 'Subjects': divName = 'coll_assoc_dl_subjects'; collFormElement = 'collection-form-subjects'; if ( entity.subjects != null && entity.subjects.length > 0 ){data=entity.subjects} else data=null; break;
             case 'Web Links': divName = 'coll_assoc_dl_weblinks'; if ( entity.weblinks != null && entity.weblinks.length > 0 ){data=entity.weblinks} else data=null; break;
           }
 
           if ( divName != null){
-            updateAssocRows(divName,data);
+            updateAssocRows(divName,collFormElement,data);
+            collFormElement=null;
           }
         });
+
+        data = entity.notes;
+        if ( entity.notes != null && entity.notes.length > 0){
+            divName = 'collection-form-notes';
+            data = entity.notes;
+            collFormElement = null;
+            updateAssocRows(divName,collFormElement,data);
+        }
   }
 
-  function updateAssocRows(datalistName,data){
-//      var rows = $('#'+datalistName).datalist('getRows');
-//      var numberOfRows = rows.length;
-//      for ( i = 0; i < numberOfRows; i++){
-//        $('#'+datalistName).datalist('deleteRow',0);
-//      };
+  function updateAssocRows(datalistName,collFormElement,data){
+
       $('#'+datalistName).datagrid('loadData', []);
+      if ( collFormElement != null ){
+        $('#'+collFormElement).datagrid('loadData', []);
+      }
+
       if ( data != null ){
         data.forEach(
           function(entry){
-            $('#'+datalistName).datalist('appendRow', { text: entry.name, value: entry.name});
+          if ( datalistName == "coll_assoc_dl_weblinks"){
+            $('#'+datalistName).datalist('appendRow', { text: entry.url, id: entry.id});
+          } else if ( datalistName == "collection-form-notes" ){
+            $('#'+datalistName).datalist('appendRow', { text: entry.content, id: entry.id});
+          }else {
+            $('#'+datalistName).datalist('appendRow', { text: entry.name, id: entry.id});
           }
-        );
+
+          if ( collFormElement != null ){
+            $('#'+collFormElement).datalist('appendRow', { text: entry.name, id: entry.id});
+          }
+        });
       }
   }
 
@@ -650,4 +703,31 @@ function getMedium(contentType){
         }
       });
 
+  }
+
+  function showCreateWebLinkDialog(){
+      $('#webLinkAddDialog').dialog('open').dialog('center').dialog('setTitle', 'Add Web Link');
+  }
+
+  function createWebLink(){
+
+      var node = $('#collectionTree').tree('getSelected');
+      $('#web-link-add-source').val(node.id);
+      $('#web-link-add-assoc_qname').val('openapps_org_content_1_0_web_links'); //name="assoc_qname" type="hidden" value=""></>
+      $('#web-link-add-entity_qname').val('openapps_org_content_1_0_web_link'); //name="entity_qname" type="hidden" value=""></>
+
+      var ajaxReq = $.ajax({
+          url: '/service/entity/association/add.json',
+          type: 'POST',
+          data: $('#webLinkAddForm').serialize()
+      });
+
+      ajaxReq.done(function(entity) {
+            $('#collectionTree').tree('select', node.target);
+            $('#webLinkAddDialog').dialog('close');
+      });
+  }
+
+  function showAddNoteDialog(){
+    $('#noteAddDialog').dialog('open').dialog('center').dialog('setTitle', 'Add Note');
   }

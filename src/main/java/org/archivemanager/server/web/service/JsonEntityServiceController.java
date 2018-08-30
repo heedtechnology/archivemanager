@@ -91,7 +91,7 @@ public class JsonEntityServiceController extends WebserviceSupport {
   }
 
   @ResponseBody
-  @RequestMapping(value = "/get/{id}.json", method = RequestMethod.GET)
+  @RequestMapping(value = "/get.json/{id}", method = RequestMethod.GET)
   public RestResponse<Object> getEntity(HttpServletRequest request, HttpServletResponse response,
       @PathVariable("id") Long id) throws Exception {
     String sourcesStr = request.getParameter("sources");
