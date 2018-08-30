@@ -12,10 +12,12 @@
 	          		<option></option>
 	          	</select>
 	        </div>
+	        <!-- TODO - Implement Later
 	        <div style="width:38%;float:right;">    				   			
 	            <label class="textbox-label textbox-label-top" style="text-align:left;float:left;margin-right:5px;margin-top:2px;">Owner:</label>	            	
 	          	<input id="collection.owner" class="easyui-textbox" style="width:100%;float:left;" /> 
 	        </div>
+	        -->
 	   	</div>
 	</form>
 </div>
